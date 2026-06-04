@@ -39,6 +39,9 @@
 - Layouts under `src/layouts/`.
 - Site-local components under `src/components/`.
 - Central site metadata in `site.config.mjs`.
+- Cloudflare Workers static-assets deployment is configured through
+  `wrangler.jsonc`; do not add deployment automation, account IDs, API tokens,
+  or private deployment details without an explicit maintainer request.
 
 ## Commands
 
@@ -53,8 +56,9 @@ git diff --check
 ```
 
 Use `npm run dev` for local preview and `npm run preview` for built-site
-preview. Run browser checks or screenshots when visual layout, navigation,
-assets, or responsive behavior changes.
+preview. Use `npm run cf:preview` for local Wrangler preview after building the
+site. Run browser checks or screenshots when visual layout, navigation, assets,
+or responsive behavior changes.
 
 Do not claim validation passed unless the commands actually ran.
 

@@ -73,23 +73,36 @@ place of local `git diff --check`. There is no separate unit or end-to-end test
 runner configured yet. Do not add a placeholder test script that passes without
 testing.
 
-## Cloudflare Pages
+## Cloudflare Workers Static Assets
 
-Cloudflare Pages can build this static site without repository secrets.
+This site is configured for Cloudflare Workers static-assets deployment through
+Wrangler. Astro builds the static output into `dist/`, and Wrangler reads
+`wrangler.jsonc` to deploy that directory as static assets.
 
-Suggested settings:
+Build the site before deployment:
 
-| Setting          | Value                     |
-| ---------------- | ------------------------- |
-| Framework preset | Astro                     |
-| Build command    | `npm ci && npm run build` |
-| Output directory | `dist`                    |
-| Node version     | `22`                      |
+```bash
+npm run build
+```
+
+Preview the Worker locally:
+
+```bash
+npm run cf:preview
+```
+
+Deploy from an authenticated maintainer environment:
+
+```bash
+npm run deploy
+```
 
 No Cloudflare API tokens, account IDs, project IDs, or deployment credentials
-belong in this repository. Do not treat a temporary preview URL as the canonical
-production site unless project documentation explicitly changes the canonical
-site URL.
+belong in this repository. CI is validation-only; it does not deploy this site.
+If deployment automation is added later, configure required Cloudflare access
+through repository or environment secrets, not committed files. Do not treat a
+temporary preview URL as the canonical production site unless project
+documentation explicitly changes the canonical site URL.
 
 ## Content Boundaries
 

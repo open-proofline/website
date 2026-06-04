@@ -21,6 +21,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "cf:preview": "wrangler dev",
+    "deploy": "wrangler deploy",
     "astro": "astro"
   },
   "dependencies": {
@@ -38,7 +40,8 @@
     "globals": "^16.2.0",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript-eslint": "^8.33.1"
+    "typescript-eslint": "^8.33.1",
+    "wrangler": "^4.97.0"
   },
   "overrides": {
     "yaml": "^2.9.0"

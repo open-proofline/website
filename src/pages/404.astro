@@ -1,0 +1,19 @@
+---
+import PageSection from "../components/PageSection.astro";
+import SourceLink from "../components/SourceLink.astro";
+import ContentLayout from "../layouts/ContentLayout.astro";
+---
+
+<ContentLayout
+  title="Page Not Found"
+  eyebrow="404"
+  description="The requested Proofline website page could not be found."
+>
+  <PageSection title="Page not found">
+    <p class="max-w-3xl leading-7 text-proofline-text-secondary">
+      The page may have moved. Return to
+      <SourceLink href="/">Proofline home</SourceLink> or review
+      <SourceLink href="/status/">current status</SourceLink>.
+    </p>
+  </PageSection>
+</ContentLayout>
