@@ -89,62 +89,6 @@ const cryptoDonations = await Promise.all(
   eyebrow="Contribute, review, and help cover project costs"
   description="Support helps keep the maintainer-led open-source project moving. Donations do not make Proofline an emergency service or production emergency infrastructure."
 >
-  <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-    <ClaimCard label="Contribute" tone="success" title="Help in public repos">
-      Focused issues, documentation fixes, small pull requests, testing
-      feedback, and security-conscious review are welcome.
-    </ClaimCard>
-    <ClaimCard label="Funding" tone="info" title="Help cover upkeep">
-      Optional donations help with development, documentation, testing, security
-      review, hosting, monitoring, backups, maintenance, and release work.
-    </ClaimCard>
-    <ClaimCard label="Safety" tone="warning" title="Not emergency support">
-      Support does not provide emergency assistance, real-time review, hosted
-      account access, or support priority.
-    </ClaimCard>
-  </div>
-
-  <PageSection title="Ways to help">
-    <ul
-      class="grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
-    >
-      <li>Contribute focused issues and small pull requests on GitHub.</li>
-      <li>Improve documentation and point out unclear public wording.</li>
-      <li>Test local builds and report reproducible setup problems.</li>
-      <li>Review issues and pull requests with security boundaries in mind.</li>
-      <li>
-        Report problems responsibly, and do not report vulnerabilities publicly.
-      </li>
-      <li>
-        Help keep current, planned, and not-implemented behavior clearly
-        separated.
-      </li>
-    </ul>
-  </PageSection>
-
-  <PageSection title="Contribute on GitHub">
-    <p class="max-w-3xl text-sm leading-6 text-proofline-text-secondary">
-      Proofline is an experimental open-source safety and evidence-capture
-      project. It is maintainer-led, not operated as a for-profit business, and
-      not production-ready emergency infrastructure.
-    </p>
-    <ul
-      class="mt-4 grid gap-x-5 gap-y-2 text-sm leading-6 text-proofline-text-secondary sm:grid-cols-2"
-    >
-      {
-        contributionLinks.map((link) => (
-          <li>
-            <SourceLink href={link.href}>{link.label}</SourceLink>
-          </li>
-        ))
-      }
-    </ul>
-    <p class="mt-4 max-w-3xl text-sm leading-6 text-proofline-text-secondary">
-      For vulnerabilities or sensitive findings, follow the security guidance
-      instead of opening a public issue.
-    </p>
-  </PageSection>
-
   <PageSection title="Donations">
     <div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
       <div class="text-sm leading-6 text-proofline-text-secondary">
@@ -315,6 +259,62 @@ const cryptoDonations = await Promise.all(
         says a legally reviewed structure exists.
       </li>
     </ul>
+  </PageSection>
+
+  <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <ClaimCard label="Contribute" tone="success" title="Help in public repos">
+      Focused issues, documentation fixes, small pull requests, testing
+      feedback, and security-conscious review are welcome.
+    </ClaimCard>
+    <ClaimCard label="Funding" tone="info" title="Help cover upkeep">
+      Optional donations help with development, documentation, testing, security
+      review, hosting, monitoring, backups, maintenance, and release work.
+    </ClaimCard>
+    <ClaimCard label="Safety" tone="warning" title="Not emergency support">
+      Support does not provide emergency assistance, real-time review, hosted
+      account access, or support priority.
+    </ClaimCard>
+  </div>
+
+  <PageSection title="Ways to help">
+    <ul
+      class="grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
+    >
+      <li>Contribute focused issues and small pull requests on GitHub.</li>
+      <li>Improve documentation and point out unclear public wording.</li>
+      <li>Test local builds and report reproducible setup problems.</li>
+      <li>Review issues and pull requests with security boundaries in mind.</li>
+      <li>
+        Report problems responsibly, and do not report vulnerabilities publicly.
+      </li>
+      <li>
+        Help keep current, planned, and not-implemented behavior clearly
+        separated.
+      </li>
+    </ul>
+  </PageSection>
+
+  <PageSection title="Contribute on GitHub">
+    <p class="max-w-3xl text-sm leading-6 text-proofline-text-secondary">
+      Proofline is an experimental open-source safety and evidence-capture
+      project. It is maintainer-led, not operated as a for-profit business, and
+      not production-ready emergency infrastructure.
+    </p>
+    <ul
+      class="mt-4 grid gap-x-5 gap-y-2 text-sm leading-6 text-proofline-text-secondary sm:grid-cols-2"
+    >
+      {
+        contributionLinks.map((link) => (
+          <li>
+            <SourceLink href={link.href}>{link.label}</SourceLink>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="mt-4 max-w-3xl text-sm leading-6 text-proofline-text-secondary">
+      For vulnerabilities or sensitive findings, follow the security guidance
+      instead of opening a public issue.
+    </p>
   </PageSection>
 
   <PageSection title="Donation boundaries">
