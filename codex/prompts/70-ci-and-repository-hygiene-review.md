@@ -31,7 +31,8 @@ Do **not** deploy, push, create a remote repository, or configure secrets.
 - Node version is consistent
 - Dependabot schedule is conservative
 - `.gitignore` ignores generated and local files without hiding source assets
-- docs explain local development, validation, Cloudflare Pages basics, and
+- docs explain local development, validation, Cloudflare Workers static-assets
+  basics, and
   safety boundaries
 - prompts are scoped, reusable, and website-specific
 
