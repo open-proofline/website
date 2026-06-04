@@ -13,12 +13,14 @@ security review, or endorsement by OpenAI.
 
 ## Prompts
 
-- `05-project-context-check.md`: read repo context before changes
-- `10-codex-change-control.md`: decide whether a task is scoped enough
-- `15-source-of-truth-content-review.md`: review public copy against source docs
+- `00-project-context-check.md`: read repo context before changes
+- `05-codex-change-control.md`: decide whether a task is scoped enough
+- `10-source-of-truth-content-review.md`: review public copy against source docs
 - `20-website-content-update.md`: update website content without overclaiming
 - `30-navigation-visual-polish.md`: polish navigation and visual layout
 - `40-accessibility-and-responsive-review.md`: review accessibility and responsive behavior
+- `45-public-readability-and-approachability-review.md`: review public copy for clarity and approachability
+- `46-documentation-and-prompt-review.md`: comprehensive documentation, website content/source, and reusable-prompt consistency review
 - `50-seo-metadata-review.md`: review metadata, sitemap, robots, and assets
 - `60-security-claims-review.md`: review safety and security claims
 - `70-ci-and-repository-hygiene-review.md`: review repository hygiene and CI

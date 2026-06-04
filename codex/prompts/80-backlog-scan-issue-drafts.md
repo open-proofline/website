@@ -75,7 +75,7 @@ Create a `README.md` index and numbered public drafts named
 - repository hygiene and CI gaps
 - validation gaps
 - Codex workflow improvements
-- Cloudflare Pages documentation gaps
+- Cloudflare Workers static-assets documentation gaps
 
 ## Sensitive Findings
 
