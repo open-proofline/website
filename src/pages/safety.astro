@@ -1,0 +1,90 @@
+---
+import ClaimCard from "../components/ClaimCard.astro";
+import PageSection from "../components/PageSection.astro";
+import SourceList from "../components/SourceList.astro";
+import ContentLayout from "../layouts/ContentLayout.astro";
+
+const sources = [
+  {
+    label: "Organization profile safety wording",
+    href: "https://github.com/open-proofline/.github/blob/main/profile/README.md",
+  },
+  {
+    label: "Server SECURITY",
+    href: "https://github.com/open-proofline/server/blob/main/SECURITY.md",
+  },
+  {
+    label: "Server deployment boundaries",
+    href: "https://github.com/open-proofline/server/blob/main/docs/deployment.md",
+  },
+  {
+    label: "Server threat model",
+    href: "https://github.com/open-proofline/server/blob/main/docs/threat-model.md",
+  },
+  {
+    label: "Incident capture modes",
+    href: "https://github.com/open-proofline/server/blob/main/docs/incident-modes.md",
+  },
+  {
+    label: "Web-client SECURITY",
+    href: "https://github.com/open-proofline/web-client/blob/develop/SECURITY.md",
+  },
+];
+---
+
+<ContentLayout
+  title="Safety Boundaries"
+  eyebrow="Experimental · Not an emergency service"
+  description="Proofline is experimental software. It is not emergency dispatch, a guaranteed real-time safety system, or a replacement for contacting emergency services."
+  safetyMode="full"
+>
+  <div class="grid gap-4 md:grid-cols-2">
+    <ClaimCard label="Safety" tone="warning" title="No emergency dispatch">
+      Proofline does not currently contact emergency services. Users and trusted
+      contacts remain responsible for calling emergency services if they believe
+      someone is in immediate danger.
+    </ClaimCard>
+    <ClaimCard
+      label="Safety"
+      tone="warning"
+      title="No guaranteed real-time review"
+    >
+      Proofline is not a guaranteed real-time safety, monitoring, rescue, or
+      response system.
+    </ClaimCard>
+    <ClaimCard
+      label="Not yet"
+      tone="danger"
+      title="Notifications are not production-ready"
+    >
+      Trusted-contact SMS, email, push, Messenger, emergency-service
+      notification, live review, and safety-check escalation workflows are not
+      production behavior.
+    </ClaimCard>
+    <ClaimCard
+      label="Security-sensitive"
+      tone="warning"
+      title="Key access is under design"
+    >
+      Production trusted-contact key access, browser decryption, server escrow,
+      and break-glass access are security-sensitive areas under active design.
+      Current wrapped-key records are metadata, not a complete decryption
+      workflow.
+    </ClaimCard>
+  </div>
+
+  <PageSection title="What users and contacts need to know">
+    <ul
+      class="grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
+    >
+      <li>Do not wait for Proofline if immediate help is needed.</li>
+      <li>Do not assume a recording was uploaded, reviewed, or decrypted.</li>
+      <li>Do not assume a missed safety check contacted anyone.</li>
+      <li>Do not assume legal admissibility or legal advice.</li>
+      <li>Do not assume public hosted accounts or support exist today.</li>
+      <li>Check current project docs before relying on a feature.</li>
+    </ul>
+  </PageSection>
+
+  <SourceList sources={sources} />
+</ContentLayout>

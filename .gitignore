@@ -1,0 +1,33 @@
+node_modules/
+dist/
+.astro/
+.vite/
+
+coverage/
+*.lcov
+
+.env
+.env.local
+.env.*.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+.DS_Store
+Thumbs.db
+
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Codex generated issues / issue review drafts / generated review directories
+# Scripts directory should be local and ignored
+.backlog-drafts/
+.issue-review-drafts/
+.deep-research-drafts/
+scripts/
+.*-review/

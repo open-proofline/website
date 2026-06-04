@@ -1,0 +1,110 @@
+---
+import ClaimCard from "../components/ClaimCard.astro";
+import PageSection from "../components/PageSection.astro";
+import SourceLink from "../components/SourceLink.astro";
+import SourceList from "../components/SourceList.astro";
+import StatusBadge from "../components/StatusBadge.astro";
+import ContentLayout from "../layouts/ContentLayout.astro";
+import { site } from "../../site.config.mjs";
+
+const sources = [
+  {
+    label: "Organization profile",
+    href: "https://github.com/open-proofline/.github/blob/main/profile/README.md",
+  },
+  {
+    label: "Server README",
+    href: site.repositories.server,
+  },
+  {
+    label: "Web-client README",
+    href: site.repositories.webClient,
+  },
+  {
+    label: "Server security policy",
+    href: "https://github.com/open-proofline/server/blob/main/SECURITY.md",
+  },
+];
+---
+
+<ContentLayout
+  title="Proofline"
+  eyebrow="Experimental open-source safety and evidence capture"
+  description="Proofline is an early open-source project for encrypted incident capture and safety-context review. It is experimental and not an emergency service."
+  safetyMode="full"
+>
+  <PageSection title="Intended flow">
+    <div class="grid gap-5 lg:grid-cols-[auto_minmax(0,1fr)] lg:items-start">
+      <img
+        src="/proofline-shield-logo.svg"
+        alt=""
+        aria-hidden="true"
+        class="size-32 object-contain"
+      />
+      <div>
+        <div class="flex flex-wrap gap-2">
+          <StatusBadge tone="warning">Experimental</StatusBadge>
+          <StatusBadge tone="info">Open source</StatusBadge>
+          <StatusBadge tone="danger">Not an emergency service</StatusBadge>
+        </div>
+        <p
+          class="mt-4 max-w-3xl text-base leading-7 text-proofline-text-secondary"
+        >
+          The intended future Proofline flow is simple: a user starts an
+          incident, interaction record, safety check, or evidence note; a client
+          records audio, video, location, timestamps, and supporting context
+          where available; the client encrypts sensitive chunks before upload;
+          and the server preserves the already-encrypted evidence for authorized
+          review.
+        </p>
+        <p class="mt-4 text-sm leading-6 text-proofline-text-muted">
+          Start with <SourceLink href="/about/">about Proofline</SourceLink> or review
+          <SourceLink href="/status/">current status</SourceLink>.
+        </p>
+      </div>
+    </div>
+  </PageSection>
+
+  <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <ClaimCard label="Current" tone="success" title="Current status">
+      The active project has an experimental Go server backend and an
+      experimental React web-client prototype. The backend stores encrypted
+      chunks and metadata; the web client shows account and incident-review
+      surfaces in mock mode or where live API contracts are confirmed.
+    </ClaimCard>
+    <ClaimCard label="Safety" tone="warning" title="Not an emergency service">
+      Proofline does not contact emergency services, guarantee real-time review,
+      or replace user and trusted-contact judgment.
+    </ClaimCard>
+    <ClaimCard
+      label="Open source"
+      tone="info"
+      title="Self-hosting is part of the model"
+    >
+      Proofline is maintainer-led open-source work with self-hosting as part of
+      the model. Any future official hosted service would require paid
+      cost-recovery and operational hardening first.
+    </ClaimCard>
+    <ClaimCard
+      label="Funding"
+      tone="warning"
+      title="No company or response center"
+    >
+      There is no company, response center, charity, nonprofit status, support
+      team, or donation-gated account access implemented today.
+    </ClaimCard>
+    <ClaimCard label="Repositories" tone="info" title="Current source code">
+      Current repositories are
+      <SourceLink href={site.repositories.server}>server</SourceLink> and
+      <SourceLink href={site.repositories.webClient}>web-client</SourceLink>.
+      Native clients and protocol work are planned separately.
+    </ClaimCard>
+    <ClaimCard label="Not yet" tone="danger" title="Production service">
+      Production mobile clients, hosted subscriptions, trusted-contact
+      notification workflows, browser decryption, key escrow, and playable media
+      export are not implemented.
+    </ClaimCard>
+  </div>
+
+  <SourceList sources={sources} />
+</ContentLayout>

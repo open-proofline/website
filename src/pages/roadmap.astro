@@ -1,0 +1,97 @@
+---
+import ClaimCard from "../components/ClaimCard.astro";
+import PageSection from "../components/PageSection.astro";
+import SourceList from "../components/SourceList.astro";
+import ContentLayout from "../layouts/ContentLayout.astro";
+
+const sources = [
+  {
+    label: "Organization profile roadmap context",
+    href: "https://github.com/open-proofline/.github/blob/main/profile/README.md#current-status",
+  },
+  {
+    label: "Incident capture modes",
+    href: "https://github.com/open-proofline/server/blob/main/docs/incident-modes.md",
+  },
+  {
+    label: "Key custody planning",
+    href: "https://github.com/open-proofline/server/blob/main/docs/key-custody.md",
+  },
+  {
+    label: "Contact key sharing and grants",
+    href: "https://github.com/open-proofline/server/blob/main/docs/contact-key-sharing-grants.md",
+  },
+  {
+    label: "Browser decryption planning",
+    href: "https://github.com/open-proofline/server/blob/main/docs/browser-decryption.md",
+  },
+  {
+    label: "Production cluster scope",
+    href: "https://github.com/open-proofline/server/blob/main/docs/production-cluster-scope.md",
+  },
+  {
+    label: "Web-client planned scope",
+    href: "https://github.com/open-proofline/web-client/blob/develop/README.md#planned-account-portal-scope",
+  },
+];
+---
+
+<ContentLayout
+  title="Roadmap"
+  eyebrow="Planned work"
+  description="These areas are planned or under design. They are not current product behavior unless the status page says they are implemented."
+>
+  <div class="grid gap-4 md:grid-cols-2">
+    <ClaimCard label="Planned" tone="info" title="Native clients">
+      Future iOS and Android repositories are expected to handle recording,
+      encrypted local staging, upload, local account flows, and platform
+      lifecycle behavior.
+    </ClaimCard>
+    <ClaimCard label="Planned" tone="info" title="Location and context">
+      Future clients may capture GPS/location, timestamps, check-ins, notes,
+      photos, and supporting context where platform permissions and user choices
+      allow.
+    </ClaimCard>
+    <ClaimCard label="Planned" tone="info" title="Near-live encrypted upload">
+      Future upload flows may improve retry, resumability, partial/live access,
+      and regional ingest while preserving ciphertext-only backend boundaries.
+    </ClaimCard>
+    <ClaimCard label="Planned" tone="info" title="Notifications">
+      Future SMS, email, push, or other trusted-contact notifications need a
+      separate delivery design. They do not include emergency-services contact.
+    </ClaimCard>
+    <ClaimCard
+      label="Planned"
+      tone="info"
+      title="Hosted accounts and subscriptions"
+    >
+      Future hosted accounts may include paid subscriptions for cost recovery
+      after billing, abuse controls, public API exposure review, and operations
+      work exists.
+    </ClaimCard>
+    <ClaimCard label="Planned" tone="info" title="Trusted-contact workflows">
+      Future trusted-contact access may combine grants, wrapped keys,
+      client-side decryption, and separate urgent or non-urgent review
+      experiences.
+    </ClaimCard>
+    <ClaimCard label="Not yet" tone="danger" title="Browser decryption">
+      Browser decryption is documented as future design work. It is not
+      implemented in the current backend or web client.
+    </ClaimCard>
+    <ClaimCard label="Security" tone="warning" title="Key custody changes">
+      Any key custody, escrow, browser decryption, backend decryption, or
+      break-glass work would require explicit design, documentation, testing,
+      and threat modeling.
+    </ClaimCard>
+  </div>
+
+  <PageSection title="How to read this roadmap">
+    <p class="max-w-3xl text-sm leading-6 text-proofline-text-secondary">
+      Planned items are not active features. They do not provide access grants,
+      notifications, decryption, retention changes, public links, or emergency
+      response today.
+    </p>
+  </PageSection>
+
+  <SourceList sources={sources} />
+</ContentLayout>

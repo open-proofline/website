@@ -1,0 +1,61 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import SafetyLinkNote from "../components/SafetyLinkNote.astro";
+import SafetyNotice from "../components/SafetyNotice.astro";
+
+type Props = {
+  title: string;
+  description?: string;
+  eyebrow?: string;
+  safetyMode?: "full" | "compact" | "none";
+};
+
+const { title, description, eyebrow, safetyMode = "compact" } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="mx-auto grid max-w-6xl gap-6 px-4 py-6 sm:px-6 lg:py-10">
+    <section
+      class="overflow-hidden rounded-lg border border-proofline-border bg-proofline-surface shadow-lg shadow-proofline-bg-deep/30"
+    >
+      <div class="grid gap-0 lg:grid-cols-[minmax(0,1fr)_360px]">
+        <header class="relative min-w-0 p-6 sm:p-8 lg:p-10">
+          <img
+            src="/proofline-p-mark.svg"
+            alt=""
+            aria-hidden="true"
+            class="absolute right-4 top-4 size-24 opacity-10 sm:size-32"
+          />
+          <div class="relative max-w-3xl">
+            {
+              eyebrow ? (
+                <p class="text-sm font-medium text-proofline-accent-cyan">
+                  {eyebrow}
+                </p>
+              ) : null
+            }
+            <h1
+              class="mt-3 max-w-3xl text-3xl font-semibold tracking-normal text-proofline-text sm:text-5xl"
+            >
+              {title}
+            </h1>
+            {
+              description ? (
+                <p class="mt-4 max-w-3xl text-base leading-7 text-proofline-text-secondary sm:text-lg">
+                  {description}
+                </p>
+              ) : null
+            }
+          </div>
+        </header>
+        <div
+          class="border-t border-proofline-border bg-proofline-bg-deep/45 p-4 sm:p-6 lg:border-l lg:border-t-0"
+        >
+          {safetyMode === "full" ? <SafetyNotice compact /> : null}
+          {safetyMode === "compact" ? <SafetyLinkNote /> : null}
+        </div>
+      </div>
+    </section>
+    <slot />
+  </div>
+</BaseLayout>

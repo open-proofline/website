@@ -1,0 +1,25 @@
+---
+import StatusBadge from "./StatusBadge.astro";
+
+type Tone = "info" | "warning" | "success" | "danger";
+
+type Props = {
+  label: string;
+  title: string;
+  tone?: Tone;
+};
+
+const { label, title, tone = "info" } = Astro.props;
+---
+
+<article
+  class="flex min-h-full flex-col rounded-lg border border-proofline-border bg-proofline-surface-elevated p-4 shadow-lg shadow-proofline-bg-deep/10 sm:p-5"
+>
+  <StatusBadge tone={tone}>{label}</StatusBadge>
+  <h3 class="mt-4 text-base font-semibold tracking-normal text-proofline-text">
+    {title}
+  </h3>
+  <div class="mt-2 text-sm leading-6 text-proofline-text-secondary">
+    <slot />
+  </div>
+</article>

@@ -1,0 +1,46 @@
+{
+  "name": "proofline-website",
+  "version": "0.0.0",
+  "private": true,
+  "license": "AGPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/open-proofline/website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/open-proofline/website/issues"
+  },
+  "homepage": "https://proofline.live",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "typecheck": "astro check",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/sitemap": "^3.7.3",
+    "@tailwindcss/vite": "~4.1.18",
+    "astro": "^6.4.3",
+    "tailwindcss": "~4.1.18",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "eslint": "^9.28.0",
+    "eslint-plugin-astro": "^1.3.1",
+    "globals": "^16.2.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript-eslint": "^8.33.1"
+  },
+  "overrides": {
+    "yaml": "^2.9.0"
+  }
+}

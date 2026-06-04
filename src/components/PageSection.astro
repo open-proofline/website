@@ -1,0 +1,30 @@
+---
+type Props = {
+  eyebrow?: string;
+  title?: string;
+};
+
+const { eyebrow, title } = Astro.props;
+---
+
+<section
+  class="rounded-lg border border-proofline-border bg-proofline-surface p-5 shadow-lg shadow-proofline-bg-deep/20 sm:p-6 lg:p-7"
+>
+  {
+    eyebrow || title ? (
+      <div class="mb-4">
+        {eyebrow ? (
+          <p class="text-sm font-medium text-proofline-accent-cyan">
+            {eyebrow}
+          </p>
+        ) : null}
+        {title ? (
+          <h2 class="mt-1 text-xl font-semibold tracking-normal text-proofline-text">
+            {title}
+          </h2>
+        ) : null}
+      </div>
+    ) : null
+  }
+  <slot />
+</section>

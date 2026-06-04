@@ -1,0 +1,22 @@
+---
+type Props = {
+  compact?: boolean;
+};
+
+const { compact = false } = Astro.props;
+---
+
+<aside
+  class:list={[
+    "rounded-lg border border-proofline-warning/40 bg-proofline-warning-bg text-proofline-warning shadow-lg shadow-proofline-bg-deep/10",
+    compact ? "p-4 text-sm leading-6" : "p-5 text-base leading-7 sm:p-6",
+  ]}
+>
+  <p class="text-sm font-semibold uppercase text-proofline-warning">
+    Safety boundary
+  </p>
+  <p class="mt-2 text-proofline-text-secondary">
+    Proofline is experimental and not production-ready emergency infrastructure.
+    It does not dispatch emergency services or guarantee an emergency response.
+  </p>
+</aside>

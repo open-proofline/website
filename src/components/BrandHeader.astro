@@ -1,0 +1,221 @@
+---
+import Icon from "./Icon.astro";
+import { site } from "../../site.config.mjs";
+
+type IconName =
+  | "home"
+  | "info"
+  | "activity"
+  | "shield"
+  | "code"
+  | "route"
+  | "lock"
+  | "repo"
+  | "github";
+
+type NavItem = {
+  href: string;
+  label: string;
+  icon?: IconName;
+  external?: boolean;
+  ariaLabel?: string;
+};
+
+const desktopNavigation: readonly NavItem[] = [
+  { href: "/", label: "Home", icon: "home" },
+  { href: "/about/", label: "About", icon: "info" },
+  { href: "/status/", label: "Status", icon: "activity" },
+  { href: "/safety/", label: "Safety", icon: "shield" },
+  { href: "/security/", label: "Security", icon: "lock" },
+  { href: "/open-source/", label: "Open source", icon: "code" },
+  { href: "/roadmap/", label: "Roadmap", icon: "route" },
+  { href: "/repositories/", label: "Repositories", icon: "repo" },
+  {
+    href: site.githubOrg,
+    label: "GitHub",
+    icon: "github",
+    external: true,
+    ariaLabel: "Open Proofline on GitHub",
+  },
+] as const;
+
+const mobileGroups: readonly { label: string; items: readonly NavItem[] }[] = [
+  {
+    label: "Main",
+    items: [
+      { href: "/", label: "Home", icon: "home" },
+      { href: "/about/", label: "About Proofline", icon: "info" },
+      { href: "/status/", label: "Current status", icon: "activity" },
+    ],
+  },
+  {
+    label: "Trust & safety",
+    items: [
+      { href: "/safety/", label: "Safety boundaries", icon: "shield" },
+      { href: "/security/", label: "Security", icon: "lock" },
+    ],
+  },
+  {
+    label: "Project",
+    items: [
+      { href: "/open-source/", label: "Open source", icon: "code" },
+      { href: "/roadmap/", label: "Roadmap", icon: "route" },
+      { href: "/repositories/", label: "Repositories", icon: "repo" },
+      {
+        href: site.githubOrg,
+        label: "GitHub",
+        icon: "github",
+        external: true,
+        ariaLabel: "Open Proofline on GitHub",
+      },
+    ],
+  },
+] as const;
+
+const currentPath = Astro.url.pathname;
+
+function isCurrentPage(href: string, external = false) {
+  if (external) return false;
+
+  if (href === "/") {
+    return currentPath === "/";
+  }
+
+  return currentPath === href || currentPath.startsWith(href);
+}
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-proofline-border bg-proofline-bg-deep/95 backdrop-blur"
+>
+  <div
+    class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6"
+  >
+    <a
+      href="/"
+      class="inline-flex w-fit max-w-full items-center gap-3 rounded-md focus:outline-2 focus:outline-offset-4 focus:outline-proofline-focus"
+      aria-label="Proofline home"
+    >
+      <img
+        src="/proofline-shield-logo.svg"
+        alt=""
+        aria-hidden="true"
+        class="size-10 shrink-0 object-contain sm:size-11"
+      />
+      <span class="min-w-0">
+        <span class="flex flex-wrap items-center gap-2">
+          <span class="text-lg font-semibold leading-6 text-proofline-text">
+            Proofline
+          </span>
+          <span
+            class="rounded-full border border-proofline-warning/40 bg-proofline-warning-bg px-2 py-0.5 text-xs font-medium leading-4 text-proofline-warning"
+          >
+            Experimental
+          </span>
+        </span>
+      </span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden xl:block">
+      <ul class="flex items-center justify-end gap-1">
+        {
+          desktopNavigation.map((item) => {
+            const active = isCurrentPage(item.href, item.external);
+
+            return (
+              <li>
+                <a
+                  href={item.href}
+                  aria-label={item.ariaLabel}
+                  aria-current={active ? "page" : undefined}
+                  class:list={[
+                    "inline-flex h-9 items-center gap-1.5 whitespace-nowrap rounded-md border text-sm font-medium leading-none transition-colors focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus",
+                    active
+                      ? "border-proofline-border-strong bg-proofline-surface-strong text-proofline-text shadow-sm shadow-proofline-bg-deep/30"
+                      : "border-transparent text-proofline-text-muted hover:bg-proofline-surface-elevated hover:text-proofline-text",
+                    item.external ? "px-2.5" : "px-2.5 2xl:px-3",
+                  ]}
+                >
+                  {item.icon ? (
+                    <Icon
+                      name={item.icon}
+                      class={`shrink-0 self-center ${item.icon === "github" ? "size-[17px]" : "size-4"}`}
+                    />
+                  ) : null}
+                  {item.external ? (
+                    <span class="sr-only">{item.label}</span>
+                  ) : (
+                    item.label
+                  )}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+
+    <details class="group relative xl:hidden">
+      <summary
+        aria-controls="primary-mobile-navigation"
+        class="flex size-10 cursor-pointer list-none items-center justify-center rounded-md border border-proofline-border bg-proofline-surface text-proofline-text hover:bg-proofline-surface-elevated focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus [&::-webkit-details-marker]:hidden"
+      >
+        <span class="sr-only group-open:hidden">Open navigation</span>
+        <span class="sr-only hidden group-open:inline">Close navigation</span>
+        <Icon name="menu" class="size-5 group-open:hidden" />
+        <Icon name="x" class="hidden size-5 group-open:block" />
+      </summary>
+      <nav
+        id="primary-mobile-navigation"
+        aria-label="Primary menu"
+        class="absolute right-0 top-12 z-20 max-h-[calc(100vh-6rem)] w-[min(22rem,calc(100vw-2rem))] overflow-y-auto rounded-lg border border-proofline-border bg-proofline-bg-deep p-3 shadow-xl shadow-proofline-bg-deep/40"
+      >
+        <div class="grid gap-4">
+          {
+            mobileGroups.map((group) => (
+              <section
+                aria-labelledby={`mobile-nav-${group.label.toLowerCase().replaceAll(" ", "-").replaceAll("&", "and")}`}
+              >
+                <h2
+                  id={`mobile-nav-${group.label.toLowerCase().replaceAll(" ", "-").replaceAll("&", "and")}`}
+                  class="px-2 text-xs font-semibold uppercase tracking-normal text-proofline-text-subtle"
+                >
+                  {group.label}
+                </h2>
+                <ul class="mt-1 grid gap-1">
+                  {group.items.map((item) => {
+                    const active = isCurrentPage(item.href, item.external);
+
+                    return (
+                      <li>
+                        <a
+                          href={item.href}
+                          aria-label={item.ariaLabel}
+                          aria-current={active ? "page" : undefined}
+                          class:list={[
+                            "flex min-h-11 items-center gap-3 rounded-md border px-3 text-sm font-medium focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus",
+                            active
+                              ? "border-proofline-border-strong bg-proofline-surface-strong text-proofline-text"
+                              : "border-transparent text-proofline-text-muted hover:bg-proofline-surface-elevated hover:text-proofline-text",
+                          ]}
+                        >
+                          {item.icon ? (
+                            <Icon
+                              name={item.icon}
+                              class={`shrink-0 self-center ${item.icon === "github" ? "size-[17px]" : "size-4"}`}
+                            />
+                          ) : null}
+                          <span>{item.label}</span>
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </section>
+            ))
+          }
+        </div>
+      </nav>
+    </details>
+  </div>
+</header>

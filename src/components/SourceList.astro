@@ -1,0 +1,35 @@
+---
+import SourceLink from "./SourceLink.astro";
+
+type Source = {
+  href: string;
+  label: string;
+};
+
+type Props = {
+  sources: Source[];
+};
+
+const { sources } = Astro.props;
+---
+
+<div
+  class="rounded-lg border border-proofline-border bg-proofline-bg-deep/45 p-4 shadow-lg shadow-proofline-bg-deep/10 sm:p-5"
+>
+  <h2 class="text-sm font-semibold text-proofline-text">Sources</h2>
+  <p class="mt-2 max-w-3xl text-sm leading-6 text-proofline-text-muted">
+    These project documents provide more detail about the current
+    implementation, planned work, and security limits.
+  </p>
+  <ul
+    class="mt-3 grid gap-x-5 gap-y-2 text-sm leading-6 text-proofline-text-secondary sm:grid-cols-2"
+  >
+    {
+      sources.map((source) => (
+        <li>
+          <SourceLink href={source.href}>{source.label}</SourceLink>
+        </li>
+      ))
+    }
+  </ul>
+</div>

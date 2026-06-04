@@ -1,0 +1,28 @@
+---
+type Tone = "info" | "warning" | "success" | "danger";
+
+type Props = {
+  tone?: Tone;
+};
+
+const { tone = "info" } = Astro.props;
+
+const toneClass = {
+  info: "border-proofline-info/40 bg-proofline-info-bg text-proofline-info",
+  warning:
+    "border-proofline-warning/40 bg-proofline-warning-bg text-proofline-warning",
+  success:
+    "border-proofline-success/40 bg-proofline-success-bg text-proofline-success",
+  danger:
+    "border-proofline-danger/40 bg-proofline-danger-bg text-proofline-danger",
+}[tone];
+---
+
+<span
+  class:list={[
+    "inline-flex w-fit rounded-full border px-2.5 py-1 text-xs font-medium leading-4",
+    toneClass,
+  ]}
+>
+  <slot />
+</span>

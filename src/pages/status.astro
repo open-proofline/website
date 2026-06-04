@@ -1,0 +1,167 @@
+---
+import ClaimCard from "../components/ClaimCard.astro";
+import PageSection from "../components/PageSection.astro";
+import SourceList from "../components/SourceList.astro";
+import ContentLayout from "../layouts/ContentLayout.astro";
+
+const sources = [
+  {
+    label: "Organization profile current status",
+    href: "https://github.com/open-proofline/.github/blob/main/profile/README.md#current-status",
+  },
+  {
+    label: "Server README",
+    href: "https://github.com/open-proofline/server/blob/main/README.md",
+  },
+  {
+    label: "Server API documentation",
+    href: "https://github.com/open-proofline/server/blob/main/docs/api.md",
+  },
+  {
+    label: "Server security model",
+    href: "https://github.com/open-proofline/server/blob/main/docs/security-model.md",
+  },
+  {
+    label: "Contact key sharing and grants",
+    href: "https://github.com/open-proofline/server/blob/main/docs/contact-key-sharing-grants.md",
+  },
+  {
+    label: "Web-client README",
+    href: "https://github.com/open-proofline/web-client/blob/develop/README.md",
+  },
+];
+---
+
+<ContentLayout
+  title="Current Status"
+  eyebrow="Implemented, partial, planned, and not yet"
+  description="Proofline has experimental server and web-client prototypes. Production mobile capture, hosted accounts, notification workflows, and decryption workflows do not exist yet."
+>
+  <PageSection title="Implemented today">
+    <ul
+      class="grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
+    >
+      <li>Experimental Go server backend for authenticated main API routes.</li>
+      <li>
+        Experimental React web-client prototype for account and incident review.
+      </li>
+      <li>
+        Local username/password accounts, opaque server-side sessions, and
+        optional browser cookie-session support for future web-client use.
+      </li>
+      <li>
+        Public registration is disabled by default. Self-registration only works
+        when a deployment explicitly enables email verification.
+      </li>
+      <li>Private admin listener and private admin web surface.</li>
+      <li>Read-only token-scoped incident viewer routes.</li>
+      <li>
+        Encrypted chunk ingest, immutable storage, and ciphertext hash checks.
+      </li>
+      <li>
+        SQLite/local storage defaults with optional PostgreSQL, S3-compatible,
+        and Valkey backends.
+      </li>
+      <li>
+        Server-side incident metadata, owner-scoped read routes, and
+        deletion/retention workflows.
+      </li>
+      <li>
+        Owner-scoped contact public-key metadata, sharing-grant metadata, and
+        wrapped-key metadata routes.
+      </li>
+    </ul>
+  </PageSection>
+
+  <div class="grid gap-4 md:grid-cols-2">
+    <ClaimCard
+      label="Experimental / partial"
+      tone="warning"
+      title="Registration"
+    >
+      Open registration can be enabled only with reviewed server configuration
+      and email verification. Paid registration is a fail-closed placeholder,
+      not billing.
+    </ClaimCard>
+    <ClaimCard
+      label="Experimental / partial"
+      tone="warning"
+      title="Sharing metadata"
+    >
+      Contact keys, sharing grants, and wrapped-key metadata exist as private
+      API metadata. They do not add trusted-contact accounts, notifications,
+      browser decryption, backend decryption, or key escrow.
+    </ClaimCard>
+    <ClaimCard
+      label="Experimental / partial"
+      tone="warning"
+      title="Web-client live mode"
+    >
+      The web client can model account and incident review surfaces and uses
+      live backend routes only where the client contract is confirmed. It is not
+      a recording client, public admin dashboard, or production safety workflow.
+    </ClaimCard>
+    <ClaimCard
+      label="Experimental / partial"
+      tone="warning"
+      title="Cluster backends"
+    >
+      PostgreSQL, S3-compatible storage, and Valkey are optional implemented
+      backends. They do not make Proofline public-production-ready by
+      themselves.
+    </ClaimCard>
+  </div>
+
+  <PageSection title="Planned future work">
+    <ul
+      class="grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
+    >
+      <li>Native iOS and Android recording clients.</li>
+      <li>GPS/location capture and live context sharing where available.</li>
+      <li>Near-live encrypted upload and stronger client retry behavior.</li>
+      <li>SMS, email, push, or other trusted-contact notification delivery.</li>
+      <li>Trusted-contact accounts and grant-aware review workflows.</li>
+      <li>
+        Hosted accounts, subscriptions, billing, abuse controls, and support
+        operations.
+      </li>
+      <li>
+        Shared protocol specs, encryption envelopes, manifests, and conformance
+        tests.
+      </li>
+      <li>
+        Reviewed browser/client-side decryption or other trusted decrypt path.
+      </li>
+    </ul>
+  </PageSection>
+
+  <div class="grid gap-4 md:grid-cols-2">
+    <ClaimCard
+      label="Not yet"
+      tone="danger"
+      title="No production emergency workflow"
+    >
+      No emergency-services integration, dispatch, guaranteed real-time review,
+      rescue workflow, or emergency response center exists.
+    </ClaimCard>
+    <ClaimCard
+      label="Not yet"
+      tone="danger"
+      title="No production decryption path"
+    >
+      No browser decryption, backend decryption, trusted-contact decryption, raw
+      server-held media keys, server escrow, or break-glass key access is
+      implemented.
+    </ClaimCard>
+    <ClaimCard label="Not yet" tone="danger" title="No mobile capture apps">
+      There is no production iOS app, Android app, or platform-specific
+      recording client.
+    </ClaimCard>
+    <ClaimCard label="Not yet" tone="danger" title="No payment system">
+      There are no checkout sessions, subscriptions, billing webhooks, donation
+      account access, or active paid account creation.
+    </ClaimCard>
+  </div>
+
+  <SourceList sources={sources} />
+</ContentLayout>

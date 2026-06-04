@@ -1,0 +1,89 @@
+---
+import ClaimCard from "../components/ClaimCard.astro";
+import PageSection from "../components/PageSection.astro";
+import SourceList from "../components/SourceList.astro";
+import ContentLayout from "../layouts/ContentLayout.astro";
+
+const sources = [
+  {
+    label: "Organization profile funding reality",
+    href: "https://github.com/open-proofline/.github/blob/main/profile/README.md#maintainer-and-funding-reality",
+  },
+  {
+    label: "Server deployment docs",
+    href: "https://github.com/open-proofline/server/blob/main/docs/deployment.md",
+  },
+  {
+    label: "Production cluster scope",
+    href: "https://github.com/open-proofline/server/blob/main/docs/production-cluster-scope.md",
+  },
+  {
+    label: "Server license",
+    href: "https://github.com/open-proofline/server/blob/main/LICENSE",
+  },
+  {
+    label: "Web-client README",
+    href: "https://github.com/open-proofline/web-client/blob/develop/README.md",
+  },
+];
+---
+
+<ContentLayout
+  title="Open Source And Self-Hosting"
+  eyebrow="Project operation model"
+  description="Proofline is maintainer-led open-source work. It is not a company, response center, charity, nonprofit, or production hosted service today."
+>
+  <div class="grid gap-4 md:grid-cols-2">
+    <ClaimCard
+      label="Current"
+      tone="success"
+      title="Maintainer-led open source"
+    >
+      Proofline currently consists of open-source project repositories, not a
+      staffed company, emergency response center, public support desk, or public
+      account service.
+    </ClaimCard>
+    <ClaimCard label="Current" tone="success" title="Self-hosting">
+      The server is local-first by default, using SQLite metadata and local
+      encrypted blob storage unless optional PostgreSQL, S3-compatible, or
+      Valkey backends are explicitly configured.
+    </ClaimCard>
+    <ClaimCard label="Funding" tone="info" title="Hosted service costs">
+      If official hosted accounts are offered later, paid subscriptions are
+      intended to cover infrastructure and operating costs after billing, abuse
+      controls, security, deployment, and support work exists.
+    </ClaimCard>
+    <ClaimCard
+      label="Funding"
+      tone="warning"
+      title="Not a profit-first hosted business"
+    >
+      Proofline is not a profit-first hosted software business. Hosted accounts,
+      if offered, would exist to keep the service available and pay operating
+      costs, not to build a commercial emergency-response business.
+    </ClaimCard>
+    <ClaimCard
+      label="Not implemented"
+      tone="danger"
+      title="No donation-gated access"
+    >
+      Donations do not create accounts, unlock features, provide support,
+      trigger emergency review, or fund a registered charity/nonprofit status.
+    </ClaimCard>
+    <ClaimCard label="Safety" tone="warning" title="Self-hosting has limits">
+      Self-hosting documentation and optional cluster backends do not make the
+      current API public-ready or emergency-reliable.
+    </ClaimCard>
+  </div>
+
+  <PageSection title="Licensing and components">
+    <p class="max-w-3xl text-sm leading-6 text-proofline-text-secondary">
+      The website and server repositories declare AGPL-3.0-only licensing. The
+      web-client can be a visual reference for this website. Catalyst-derived
+      component source is not part of this static website’s reusable component
+      set.
+    </p>
+  </PageSection>
+
+  <SourceList sources={sources} />
+</ContentLayout>
