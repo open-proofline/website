@@ -155,7 +155,7 @@ function isCurrentPage(href: string, external = false) {
       </ul>
     </nav>
 
-    <details class="group relative xl:hidden">
+    <details class="group relative xl:hidden" data-mobile-nav-details>
       <summary
         aria-controls="primary-mobile-navigation"
         class="flex size-10 cursor-pointer list-none items-center justify-center rounded-md border border-proofline-border bg-proofline-surface text-proofline-text hover:bg-proofline-surface-elevated focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus [&::-webkit-details-marker]:hidden"
@@ -219,3 +219,27 @@ function isCurrentPage(href: string, external = false) {
     </details>
   </div>
 </header>
+
+<script>
+  const mobileNavDetails = document.querySelector<HTMLDetailsElement>(
+    "[data-mobile-nav-details]",
+  );
+
+  if (mobileNavDetails) {
+    document.addEventListener("pointerdown", (event) => {
+      if (!mobileNavDetails.open) return;
+
+      const target = event.target;
+      if (target instanceof Node && !mobileNavDetails.contains(target)) {
+        mobileNavDetails.open = false;
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || !mobileNavDetails.open) return;
+
+      mobileNavDetails.open = false;
+      mobileNavDetails.querySelector("summary")?.focus();
+    });
+  }
+</script>
