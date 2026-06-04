@@ -8,10 +8,14 @@ type Props = {
     | "code"
     | "route"
     | "lock"
+    | "qr-code"
+    | "copy"
+    | "heart"
     | "repo"
     | "github"
     | "menu"
-    | "x";
+    | "x"
+    | "chevron-down";
   class?: string;
 };
 
@@ -36,6 +40,23 @@ const paths = {
     "M18 11v4a4 4 0 0 1-4 4H9",
   ],
   lock: ["M7 11V8a5 5 0 0 1 10 0v3", "M6 11h12v10H6z"],
+  "qr-code": [
+    "M3 3h6v6H3z",
+    "M15 3h6v6h-6z",
+    "M3 15h6v6H3z",
+    "M15 15h2",
+    "M19 15h2v2",
+    "M15 19h2v2",
+    "M19 21h2",
+    "M21 19v2",
+  ],
+  copy: [
+    "M8 8h10v12H8z",
+    "M6 16H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1",
+  ],
+  heart: [
+    "M19.5 12.5 12 20l-7.5-7.5a5 5 0 0 1 7.1-7.1l.4.4.4-.4a5 5 0 0 1 7.1 7.1Z",
+  ],
   repo: [
     "M3 5a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z",
   ],
@@ -44,6 +65,7 @@ const paths = {
   ],
   menu: ["M4 7h16", "M4 12h16", "M4 17h16"],
   x: ["M18 6 6 18", "M6 6l12 12"],
+  "chevron-down": ["M6 9l6 6 6-6"],
 };
 ---
 
