@@ -10,6 +10,7 @@ type IconName =
   | "code"
   | "route"
   | "lock"
+  | "heart"
   | "repo"
   | "github";
 
@@ -21,15 +22,41 @@ type NavItem = {
   ariaLabel?: string;
 };
 
-const desktopNavigation: readonly NavItem[] = [
+type NavGroup = {
+  label: string;
+  icon: IconName;
+  items: readonly NavItem[];
+};
+
+const desktopPrimaryLinks: readonly NavItem[] = [
   { href: "/", label: "Home", icon: "home" },
   { href: "/about/", label: "About", icon: "info" },
   { href: "/status/", label: "Status", icon: "activity" },
-  { href: "/safety/", label: "Safety", icon: "shield" },
-  { href: "/security/", label: "Security", icon: "lock" },
-  { href: "/open-source/", label: "Open source", icon: "code" },
-  { href: "/roadmap/", label: "Roadmap", icon: "route" },
-  { href: "/repositories/", label: "Repositories", icon: "repo" },
+] as const;
+
+const desktopGroups: readonly NavGroup[] = [
+  {
+    label: "Trust",
+    icon: "shield",
+    items: [
+      { href: "/safety/", label: "Safety boundaries", icon: "shield" },
+      { href: "/security/", label: "Security", icon: "lock" },
+    ],
+  },
+  {
+    label: "Project",
+    icon: "code",
+    items: [
+      { href: "/open-source/", label: "Open source", icon: "code" },
+      { href: "/roadmap/", label: "Roadmap", icon: "route" },
+      { href: "/repositories/", label: "Repositories", icon: "repo" },
+      { href: "/services/", label: "Community services", icon: "route" },
+    ],
+  },
+] as const;
+
+const desktopUtilityLinks: readonly NavItem[] = [
+  { href: "/support/", label: "Support", icon: "heart" },
   {
     href: site.githubOrg,
     label: "GitHub",
@@ -61,6 +88,7 @@ const mobileGroups: readonly { label: string; items: readonly NavItem[] }[] = [
       { href: "/open-source/", label: "Open source", icon: "code" },
       { href: "/roadmap/", label: "Roadmap", icon: "route" },
       { href: "/repositories/", label: "Repositories", icon: "repo" },
+      { href: "/services/", label: "Community services", icon: "route" },
       {
         href: site.githubOrg,
         label: "GitHub",
@@ -69,6 +97,10 @@ const mobileGroups: readonly { label: string; items: readonly NavItem[] }[] = [
         ariaLabel: "Open Proofline on GitHub",
       },
     ],
+  },
+  {
+    label: "Support",
+    items: [{ href: "/support/", label: "Support Proofline", icon: "heart" }],
   },
 ] as const;
 
@@ -82,6 +114,14 @@ function isCurrentPage(href: string, external = false) {
   }
 
   return currentPath === href || currentPath.startsWith(href);
+}
+
+function isGroupActive(group: NavGroup) {
+  return group.items.some((item) => isCurrentPage(item.href, item.external));
+}
+
+function groupId(label: string) {
+  return `desktop-nav-${label.toLowerCase().replaceAll(" ", "-")}`;
 }
 ---
 
@@ -119,7 +159,7 @@ function isCurrentPage(href: string, external = false) {
     <nav aria-label="Primary" class="hidden xl:block">
       <ul class="flex items-center justify-end gap-1">
         {
-          desktopNavigation.map((item) => {
+          desktopPrimaryLinks.map((item) => {
             const active = isCurrentPage(item.href, item.external);
 
             return (
@@ -152,12 +192,120 @@ function isCurrentPage(href: string, external = false) {
             );
           })
         }
+        {
+          desktopGroups.map((group) => {
+            const active = isGroupActive(group);
+            const id = groupId(group.label);
+
+            return (
+              <li class="relative">
+                <details class="group" data-nav-details>
+                  <summary
+                    id={`${id}-trigger`}
+                    aria-controls={`${id}-menu`}
+                    aria-current={active ? "page" : undefined}
+                    aria-expanded="false"
+                    data-nav-summary
+                    class:list={[
+                      "inline-flex h-9 cursor-pointer list-none items-center gap-1.5 whitespace-nowrap rounded-md border px-2.5 text-sm font-medium leading-none transition-colors focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus 2xl:px-3 [&::-webkit-details-marker]:hidden",
+                      active
+                        ? "border-proofline-border-strong bg-proofline-surface-strong text-proofline-text shadow-sm shadow-proofline-bg-deep/30"
+                        : "border-transparent text-proofline-text-muted hover:bg-proofline-surface-elevated hover:text-proofline-text group-open:border-proofline-border group-open:bg-proofline-surface-elevated group-open:text-proofline-text",
+                    ]}
+                  >
+                    <Icon
+                      name={group.icon}
+                      class="size-4 shrink-0 self-center"
+                    />
+                    <span>{group.label}</span>
+                    <Icon
+                      name="chevron-down"
+                      class="size-3.5 shrink-0 self-center transition-transform group-open:rotate-180"
+                    />
+                  </summary>
+                  <div
+                    id={`${id}-menu`}
+                    aria-labelledby={`${id}-trigger`}
+                    class="absolute left-0 top-full z-30 mt-2 w-60 rounded-lg border border-proofline-border bg-proofline-bg-deep p-2 shadow-xl shadow-proofline-bg-deep/40"
+                  >
+                    <ul class="grid gap-1">
+                      {group.items.map((item) => {
+                        const itemActive = isCurrentPage(
+                          item.href,
+                          item.external,
+                        );
+
+                        return (
+                          <li>
+                            <a
+                              href={item.href}
+                              aria-current={itemActive ? "page" : undefined}
+                              class:list={[
+                                "flex min-h-10 items-center gap-2 rounded-md border px-3 text-sm font-medium focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus",
+                                itemActive
+                                  ? "border-proofline-border-strong bg-proofline-surface-strong text-proofline-text"
+                                  : "border-transparent text-proofline-text-muted hover:bg-proofline-surface-elevated hover:text-proofline-text",
+                              ]}
+                            >
+                              {item.icon ? (
+                                <Icon
+                                  name={item.icon}
+                                  class="size-4 shrink-0 self-center"
+                                />
+                              ) : null}
+                              <span>{item.label}</span>
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </details>
+              </li>
+            );
+          })
+        }
+        {
+          desktopUtilityLinks.map((item) => {
+            const active = isCurrentPage(item.href, item.external);
+
+            return (
+              <li>
+                <a
+                  href={item.href}
+                  aria-label={item.ariaLabel}
+                  aria-current={active ? "page" : undefined}
+                  class:list={[
+                    "inline-flex h-9 items-center gap-1.5 whitespace-nowrap rounded-md border px-2.5 text-sm font-medium leading-none transition-colors focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus 2xl:px-3",
+                    active
+                      ? "border-proofline-border-strong bg-proofline-surface-strong text-proofline-text shadow-sm shadow-proofline-bg-deep/30"
+                      : "border-transparent text-proofline-text-muted hover:bg-proofline-surface-elevated hover:text-proofline-text",
+                  ]}
+                >
+                  {item.icon ? (
+                    <Icon
+                      name={item.icon}
+                      class={`shrink-0 self-center ${item.icon === "github" ? "size-[17px]" : "size-4"}`}
+                    />
+                  ) : null}
+                  <span>{item.label}</span>
+                </a>
+              </li>
+            );
+          })
+        }
       </ul>
     </nav>
 
-    <details class="group relative xl:hidden" data-mobile-nav-details>
+    <details
+      class="group relative xl:hidden"
+      data-mobile-nav-details
+      data-nav-details
+    >
       <summary
         aria-controls="primary-mobile-navigation"
+        aria-expanded="false"
+        data-nav-summary
         class="flex size-10 cursor-pointer list-none items-center justify-center rounded-md border border-proofline-border bg-proofline-surface text-proofline-text hover:bg-proofline-surface-elevated focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus [&::-webkit-details-marker]:hidden"
       >
         <span class="sr-only group-open:hidden">Open navigation</span>
@@ -220,26 +368,4 @@ function isCurrentPage(href: string, external = false) {
   </div>
 </header>
 
-<script>
-  const mobileNavDetails = document.querySelector<HTMLDetailsElement>(
-    "[data-mobile-nav-details]",
-  );
-
-  if (mobileNavDetails) {
-    document.addEventListener("pointerdown", (event) => {
-      if (!mobileNavDetails.open) return;
-
-      const target = event.target;
-      if (target instanceof Node && !mobileNavDetails.contains(target)) {
-        mobileNavDetails.open = false;
-      }
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key !== "Escape" || !mobileNavDetails.open) return;
-
-      mobileNavDetails.open = false;
-      mobileNavDetails.querySelector("summary")?.focus();
-    });
-  }
-</script>
+<script is:inline src="/site-js/mobile-nav.js" defer></script>

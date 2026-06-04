@@ -1,0 +1,342 @@
+---
+import ClaimCard from "../components/ClaimCard.astro";
+import PageSection from "../components/PageSection.astro";
+import Icon from "../components/Icon.astro";
+import SourceLink from "../components/SourceLink.astro";
+import SourceList from "../components/SourceList.astro";
+import StatusBadge from "../components/StatusBadge.astro";
+import ContentLayout from "../layouts/ContentLayout.astro";
+import { site } from "../../site.config.mjs";
+import { toDataURL } from "qrcode";
+
+const sources = [
+  {
+    label: "Organization profile funding reality",
+    href: "https://github.com/open-proofline/.github/blob/main/profile/README.md#maintainer-and-funding-reality",
+  },
+  {
+    label: "Open source and self-hosting",
+    href: "/open-source/",
+  },
+  {
+    label: "Current status",
+    href: "/status/",
+  },
+  {
+    label: "Website security policy",
+    href: "https://github.com/open-proofline/website/blob/main/SECURITY.md",
+  },
+];
+
+const contributionLinks = [
+  {
+    label: "Proofline organization",
+    href: site.githubOrg,
+  },
+  {
+    label: "Server repository",
+    href: site.repositories.server,
+  },
+  {
+    label: "Web-client repository",
+    href: site.repositories.webClient,
+  },
+  {
+    label: "Website repository",
+    href: site.sourceCode,
+  },
+];
+
+const cryptoDonationInputs = [
+  {
+    slug: "bitcoin",
+    coin: "Bitcoin",
+    network: "Bitcoin",
+    address: "bc1qrcr475tv3dmn63jyk7wptyplhvv35dqyj2wspx",
+  },
+  {
+    slug: "ethereum",
+    coin: "Ethereum",
+    network: "Ethereum mainnet",
+    address: "0xba353C47D4d9bAe0C79635693bAb89B69C70cb1C",
+  },
+  {
+    slug: "litecoin",
+    coin: "Litecoin",
+    network: "Litecoin",
+    address: "ltc1q9hqknj3p0ej6lngszhudeag6w4kdvwrzlf5ya3",
+  },
+];
+
+const cryptoDonations = await Promise.all(
+  cryptoDonationInputs.map(async (donation) => ({
+    ...donation,
+    qrImage: await toDataURL(donation.address, {
+      errorCorrectionLevel: "M",
+      margin: 2,
+      width: 384,
+      color: {
+        dark: "#10051F",
+        light: "#FFFFFF",
+      },
+    }),
+  })),
+);
+---
+
+<ContentLayout
+  title="Support Proofline"
+  eyebrow="Contribute, review, and help cover project costs"
+  description="Support helps keep the maintainer-led open-source project moving. Donations do not make Proofline an emergency service or production emergency infrastructure."
+>
+  <PageSection title="Donations">
+    <div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
+      <div class="text-sm leading-6 text-proofline-text-secondary">
+        <p>
+          Donations are optional and help with maintenance and cost recovery.
+          They do not create accounts, unlock features, provide support
+          priority, or provide emergency assistance.
+        </p>
+        <p class="mt-3">
+          Future hosted services may have database, object storage, email
+          delivery, monitoring, backup, maintenance, and release costs.
+          Donations are separate from future hosted-account, billing, or
+          subscription flows.
+        </p>
+      </div>
+      <div
+        class="rounded-lg border border-proofline-border bg-proofline-bg-deep/45 p-4"
+      >
+        <StatusBadge tone="warning">Not available yet</StatusBadge>
+        <h3 class="mt-4 text-base font-semibold text-proofline-text">
+          Card donations
+        </h3>
+        <p class="mt-2 text-sm leading-6 text-proofline-text-secondary">
+          Card donations are not available yet. There is no payment button,
+          checkout link, payment-gated account access, or active paid account
+          creation on this page.
+        </p>
+      </div>
+    </div>
+  </PageSection>
+
+  <PageSection title="Cryptocurrency donations">
+    <div class="grid gap-4 lg:grid-cols-3">
+      {
+        cryptoDonations.map((donation) => (
+          <article class="rounded-lg border border-proofline-border bg-proofline-surface-elevated p-4 shadow-lg shadow-proofline-bg-deep/10 sm:p-5">
+            <StatusBadge tone="info">{donation.network}</StatusBadge>
+            <h3 class="mt-4 text-base font-semibold text-proofline-text">
+              {donation.coin}
+            </h3>
+            <p class="mt-2 text-xs font-medium uppercase tracking-normal text-proofline-text-muted">
+              Address
+            </p>
+            <div class="mt-2 grid gap-2 sm:grid-cols-[minmax(0,1fr)_5.5rem] sm:items-stretch">
+              <code class="block overflow-x-auto break-all rounded-md border border-proofline-border bg-proofline-bg-deep/70 p-3 font-mono text-sm leading-6 text-proofline-text">
+                {donation.address}
+              </code>
+              <div class="grid gap-2">
+                <button
+                  type="button"
+                  data-qr-open={donation.slug}
+                  aria-label={`Show ${donation.coin} donation QR code`}
+                  aria-controls={`${donation.slug}-qr-dialog`}
+                  aria-haspopup="dialog"
+                  class="grid min-h-11 w-full grid-cols-[1rem_minmax(0,1fr)_1rem] items-center gap-2 rounded-md border border-proofline-border-strong bg-proofline-surface-strong px-3 text-sm font-medium text-proofline-text hover:bg-proofline-border focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
+                >
+                  <Icon name="qr-code" class="size-4 justify-self-center" />
+                  <span class="justify-self-center text-center">QR</span>
+                  <span aria-hidden="true" class="size-4" />
+                </button>
+                <button
+                  type="button"
+                  data-copy-address={donation.address}
+                  aria-label={`Copy ${donation.coin} donation address`}
+                  class="grid min-h-11 w-full grid-cols-[1rem_minmax(0,1fr)_1rem] items-center gap-2 rounded-md border border-proofline-border-strong bg-proofline-surface-strong px-3 text-sm font-medium text-proofline-text hover:bg-proofline-border focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
+                >
+                  <Icon name="copy" class="size-4 justify-self-center" />
+                  <span
+                    data-copy-label
+                    aria-live="polite"
+                    class="justify-self-center text-center"
+                  >
+                    Copy
+                  </span>
+                  <span aria-hidden="true" class="size-4" />
+                </button>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+      <article
+        class="rounded-lg border border-proofline-border bg-proofline-surface-elevated p-4 shadow-lg shadow-proofline-bg-deep/10 sm:p-5"
+      >
+        <StatusBadge tone="warning">Planned</StatusBadge>
+        <h3 class="mt-4 text-base font-semibold text-proofline-text">Monero</h3>
+        <p class="mt-2 text-sm leading-6 text-proofline-text-secondary">
+          Monero donations are planned, but are not available yet.
+        </p>
+      </article>
+    </div>
+    {
+      cryptoDonations.map((donation) => (
+        <dialog
+          id={`${donation.slug}-qr-dialog`}
+          data-qr-dialog={donation.slug}
+          aria-labelledby={`${donation.slug}-qr-title`}
+          aria-describedby={`${donation.slug}-qr-description`}
+          class="m-auto w-[min(34rem,calc(100vw-2rem))] rounded-lg border border-proofline-border bg-proofline-surface p-0 text-proofline-text shadow-2xl shadow-proofline-bg-deep/60 backdrop:bg-proofline-bg-deep/80"
+        >
+          <div class="grid gap-5 p-5 sm:p-6">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <StatusBadge tone="info">{donation.network}</StatusBadge>
+                <h3
+                  id={`${donation.slug}-qr-title`}
+                  class="mt-4 text-xl font-semibold text-proofline-text"
+                >
+                  {donation.coin} donation QR code
+                </h3>
+                <p
+                  id={`${donation.slug}-qr-description`}
+                  class="mt-2 text-sm leading-6 text-proofline-text-secondary"
+                >
+                  This QR code encodes the address only. Confirm the asset and
+                  network in your wallet before sending.
+                </p>
+              </div>
+              <form method="dialog">
+                <button
+                  type="submit"
+                  class="inline-flex size-10 shrink-0 items-center justify-center rounded-md border border-proofline-border bg-proofline-bg-deep/60 text-xl leading-none text-proofline-text hover:bg-proofline-surface-elevated focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
+                  aria-label={`Close ${donation.coin} QR code`}
+                >
+                  ×
+                </button>
+              </form>
+            </div>
+
+            <div class="grid gap-4 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-center">
+              <img
+                src={donation.qrImage}
+                alt={`QR code for the ${donation.coin} donation address`}
+                class="mx-auto size-64 rounded-md bg-white p-3"
+                loading="lazy"
+                decoding="async"
+              />
+              <div>
+                <p class="text-xs font-medium uppercase tracking-normal text-proofline-text-muted">
+                  Address
+                </p>
+                <code class="mt-2 block break-all rounded-md border border-proofline-border bg-proofline-bg-deep/70 p-3 font-mono text-sm leading-6 text-proofline-text">
+                  {donation.address}
+                </code>
+                <ul class="mt-4 grid gap-2 text-sm leading-6 text-proofline-text-secondary">
+                  <li>
+                    Only send {donation.coin} on {donation.network}.
+                  </li>
+                  <li>Cryptocurrency transactions are irreversible.</li>
+                  <li>
+                    Do not send unsupported assets or tokens to this address.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </dialog>
+      ))
+    }
+    <ul
+      class="mt-5 grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
+    >
+      <li>Only send each asset on the listed network.</li>
+      <li>Cryptocurrency transactions are irreversible.</li>
+      <li>Do not send unsupported assets or tokens to these addresses.</li>
+      <li>
+        Donations are not tax-deductible unless future official documentation
+        says a legally reviewed structure exists.
+      </li>
+    </ul>
+  </PageSection>
+
+  <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <ClaimCard label="Contribute" tone="success" title="Help in public repos">
+      Focused issues, documentation fixes, small pull requests, testing
+      feedback, and security-conscious review are welcome.
+    </ClaimCard>
+    <ClaimCard label="Funding" tone="info" title="Help cover upkeep">
+      Optional donations help with development, documentation, testing, security
+      review, hosting, monitoring, backups, maintenance, and release work.
+    </ClaimCard>
+    <ClaimCard label="Safety" tone="warning" title="Not emergency support">
+      Support does not provide emergency assistance, real-time review, hosted
+      account access, or support priority.
+    </ClaimCard>
+  </div>
+
+  <PageSection title="Ways to help">
+    <ul
+      class="grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
+    >
+      <li>Contribute focused issues and small pull requests on GitHub.</li>
+      <li>Improve documentation and point out unclear public wording.</li>
+      <li>Test local builds and report reproducible setup problems.</li>
+      <li>Review issues and pull requests with security boundaries in mind.</li>
+      <li>
+        Report problems responsibly, and do not report vulnerabilities publicly.
+      </li>
+      <li>
+        Help keep current, planned, and not-implemented behavior clearly
+        separated.
+      </li>
+    </ul>
+  </PageSection>
+
+  <PageSection title="Contribute on GitHub">
+    <p class="max-w-3xl text-sm leading-6 text-proofline-text-secondary">
+      Proofline is an experimental open-source safety and evidence-capture
+      project. It is maintainer-led, not operated as a for-profit business, and
+      not production-ready emergency infrastructure.
+    </p>
+    <ul
+      class="mt-4 grid gap-x-5 gap-y-2 text-sm leading-6 text-proofline-text-secondary sm:grid-cols-2"
+    >
+      {
+        contributionLinks.map((link) => (
+          <li>
+            <SourceLink href={link.href}>{link.label}</SourceLink>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="mt-4 max-w-3xl text-sm leading-6 text-proofline-text-secondary">
+      For vulnerabilities or sensitive findings, follow the security guidance
+      instead of opening a public issue.
+    </p>
+  </PageSection>
+
+  <PageSection title="Donation boundaries">
+    <ul
+      class="grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
+    >
+      <li>Donations are optional.</li>
+      <li>Donations do not provide hosted account access.</li>
+      <li>Donations do not provide support priority.</li>
+      <li>Donations do not provide emergency assistance.</li>
+      <li>
+        Proofline is not an emergency service, emergency dispatch system, or
+        guaranteed real-time safety system.
+      </li>
+      <li>
+        Users and trusted contacts remain responsible for contacting emergency
+        services when immediate help is needed.
+      </li>
+    </ul>
+  </PageSection>
+
+  <SourceList sources={sources} />
+
+  <script is:inline src="/site-js/support.js" defer></script>
+</ContentLayout>
