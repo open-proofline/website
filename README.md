@@ -125,7 +125,8 @@ The website must not imply that Proofline currently provides:
 - trusted-contact SMS, email, push, or Messenger notifications
 - live location/context sharing
 - near-live audio/video upload as production behavior
-- billing or payment flows
+- hosted-account billing, subscriptions, payment-gated product access, or
+  active paid account creation
 - backend, browser, or trusted-contact decryption
 - key escrow or raw server-held media keys
 - playable media export

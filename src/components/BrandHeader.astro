@@ -324,12 +324,12 @@ function groupId(label: string) {
               <section
                 aria-labelledby={`mobile-nav-${group.label.toLowerCase().replaceAll(" ", "-").replaceAll("&", "and")}`}
               >
-                <h2
+                <p
                   id={`mobile-nav-${group.label.toLowerCase().replaceAll(" ", "-").replaceAll("&", "and")}`}
                   class="px-2 text-xs font-semibold uppercase tracking-normal text-proofline-text-subtle"
                 >
                   {group.label}
-                </h2>
+                </p>
                 <ul class="mt-1 grid gap-1">
                   {group.items.map((item) => {
                     const active = isCurrentPage(item.href, item.external);

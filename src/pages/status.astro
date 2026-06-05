@@ -33,7 +33,7 @@ const sources = [
 ---
 
 <ContentLayout
-  title="Current Status"
+  title="Current status"
   eyebrow="Implemented, partial, planned, and not yet"
   description="Proofline has experimental server and web-client prototypes. Mobile capture, hosted accounts, notifications, and decryption are not production features."
 >
@@ -95,7 +95,7 @@ const sources = [
     <ClaimCard
       label="Experimental / partial"
       tone="warning"
-      title="Web-client live mode"
+      title="Live API testing"
     >
       The web client can model account and incident review surfaces and uses
       live backend routes only where the client contract is confirmed. It is not
@@ -157,9 +157,13 @@ const sources = [
       There is no production iOS app, Android app, or platform-specific
       recording client.
     </ClaimCard>
-    <ClaimCard label="Not yet" tone="danger" title="No payment system">
-      There are no checkout sessions, subscriptions, billing webhooks, donation
-      account access, or active paid account creation.
+    <ClaimCard
+      label="Not yet"
+      tone="danger"
+      title="No hosted-account payment system"
+    >
+      There are no checkout sessions, subscriptions, billing webhooks,
+      payment-gated account access, or active paid account creation.
     </ClaimCard>
   </div>
 
