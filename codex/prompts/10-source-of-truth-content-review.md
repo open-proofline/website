@@ -34,8 +34,9 @@ open-proofline/website
 - not implemented behavior is clearly absent
 - Proofline is not described as production-ready emergency infrastructure
 - no emergency dispatch, emergency-services integration, guaranteed response,
-  production mobile recording, GPS/location capture, notifications, billing,
-  decryption, key escrow, raw server-held keys, or playable export is implied
+  production mobile recording, GPS/location capture, notifications,
+  hosted-account billing, payment-gated product access, decryption, key escrow,
+  raw server-held keys, or playable export is implied
 - source links still point to relevant public docs
 
 ## Output

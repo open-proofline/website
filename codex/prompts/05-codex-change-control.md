@@ -49,8 +49,9 @@ Do not rely on stale prompt assumptions if current repository files disagree.
   source-of-truth inputs.
 - Do not add backend behavior.
 - Do not add web-client app behavior such as auth/session/API client behavior.
-- Do not add recording, notification, billing, decryption, export,
-  admin/operator UI, emergency dispatch, or production-safety behavior.
+- Do not add recording, notification, hosted-account billing, payment-gated
+  product access, decryption, export, admin/operator UI, emergency dispatch, or
+  production-safety behavior.
 - Do not imply production readiness.
 - Do not imply emergency dispatch, emergency-services integration, or
   guaranteed emergency response.

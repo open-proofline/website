@@ -16,7 +16,7 @@
 
 - [ ] Current vs future behavior remains clear.
 - [ ] No production-readiness, emergency-service, or guaranteed-response claims were introduced.
-- [ ] No backend, app, admin/operator, decryption, notification, recording, billing, or export behavior was added.
+- [ ] No backend, app, admin/operator, decryption, notification, recording, hosted-account billing, payment-gated product access, or export behavior was added.
 - [ ] No secrets, tokens, private deployment details, exploit details, or user safety data were included.
 - [ ] Tailwind/Catalyst licensing boundaries were preserved.
 

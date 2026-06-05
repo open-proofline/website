@@ -19,8 +19,9 @@ separate.
 Proofline is experimental and not production-ready emergency infrastructure.
 Do not introduce claims that the website, server, or web client provide
 emergency dispatch, emergency-services integration, guaranteed emergency
-response, production recording, notifications, billing, decryption, key escrow,
-or admin/operator behavior.
+response, production recording, notifications, hosted-account billing,
+payment-gated product access, decryption, key escrow, or admin/operator
+behavior.
 
 ## Development
 

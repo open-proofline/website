@@ -15,8 +15,9 @@
 - Do not imply production readiness, emergency dispatch, emergency-services
   integration, guaranteed emergency response, or a staffed response center.
 - Do not add backend behavior, auth/session behavior, recording/capture
-  behavior, notification delivery, billing, decryption, export workflows,
-  admin/operator UI, mobile-client behavior, or protocol behavior.
+  behavior, notification delivery, hosted-account billing, payment-gated
+  product access, decryption, export workflows, admin/operator UI,
+  mobile-client behavior, or protocol behavior.
 - Preserve Tailwind/Catalyst licensing boundaries if visual ideas from
   `web-client` are adapted. Do not create a standalone UI kit, template,
   starter, package, or redistributed design asset set.
@@ -71,10 +72,11 @@ Before accepting changes, check:
 - safety wording still says Proofline is experimental and not an emergency
   service
 - future mobile, GPS/location, notifications, live context, near-live upload,
-  hosted accounts, billing, decryption, and key custody remain future-tense
-  unless source docs say otherwise
-- no backend/app/admin/decryption/notification/recording/billing/export
-  behavior was added
+  hosted accounts, hosted-account billing, payment-gated product access,
+  decryption, and key custody remain future-tense unless source docs say
+  otherwise
+- no backend/app/admin/decryption/notification/recording/hosted-account
+  billing, payment-gated product access, or export behavior was added
 - no secrets, tokens, private deployment details, exploit details, or user
   safety data were added
 - validation passed

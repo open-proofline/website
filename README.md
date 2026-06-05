@@ -180,8 +180,9 @@ Before merge, review that:
   separate
 - safety wording still says Proofline is experimental and not an emergency
   service
-- no backend, auth, recording, notification, billing, decryption, export, or
-  admin/operator behavior was added
+- no backend, auth, recording, notification, hosted-account billing,
+  payment-gated product access, decryption, export, or admin/operator behavior
+  was added
 - no secrets, tokens, private deployment details, exploit details, or user
   safety data were added
 - formatting, typecheck, lint, build, audit, and `git diff --check` passed

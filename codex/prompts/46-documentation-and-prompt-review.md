@@ -107,10 +107,10 @@ Preserve these website-specific boundaries:
   package, or design asset set.
 
 Do not add backend behavior, web-client app behavior, auth/session/API
-behavior, recording/capture, notifications, billing/payment behavior,
-decryption, export, key-custody behavior, admin/operator UI, emergency
-dispatch, emergency-services behavior, deployment automation, or product
-features unless explicitly scoped in a separate task.
+behavior, recording/capture, notifications, hosted-account billing,
+payment-gated product access, decryption, export, key-custody behavior,
+admin/operator UI, emergency dispatch, emergency-services behavior, deployment
+automation, or product features unless explicitly scoped in a separate task.
 
 Do not imply:
 
@@ -123,7 +123,8 @@ Do not imply:
 - implemented trusted-contact SMS/email notifications
 - implemented live location/context sharing
 - implemented near-live audio/video upload as production behavior
-- implemented billing/payment flows
+- implemented hosted-account billing, subscriptions, payment-gated product
+  access, or active paid account creation
 - backend decryption
 - browser decryption
 - trusted-contact decryption
@@ -232,8 +233,9 @@ Check safety and security wording:
 - Are production-readiness limitations clear?
 - Are reporting instructions safe?
 - Are sensitive-data warnings present where needed?
-- Are decryption, key custody, notification, billing, hosted-service,
-  emergency, and production-readiness boundaries accurate?
+- Are decryption, key custody, notification, funding/donation,
+  hosted-account billing, hosted-service, emergency, and production-readiness
+  boundaries accurate?
 
 Check validation and maintenance:
 
@@ -327,7 +329,7 @@ In edit mode, do not:
 - add auth/session/API behavior
 - add recording/capture
 - add notifications
-- add billing/payment behavior
+- add hosted-account billing, subscriptions, or payment-gated product access
 - add decryption/export/key-custody behavior
 - add admin/operator UI
 - add emergency dispatch or emergency-services behavior

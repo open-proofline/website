@@ -69,9 +69,9 @@ Also inspect website content and chrome, including:
 - any content collections or content directories if present
 
 If a public claim depends on backend, web-client, security, deployment,
-licensing, emergency, recording, notification, decryption, key custody, billing,
-or account behavior, verify it against the source documents before suggesting a
-change.
+licensing, emergency, recording, notification, decryption, key custody,
+funding, donations, hosted-account billing, or account behavior, verify it
+against the source documents before suggesting a change.
 
 ## Public Framing To Preserve
 
@@ -85,12 +85,12 @@ Preserve these boundaries:
   services.
 - Mobile recording clients, GPS/location capture, trusted-contact alerts,
   notifications, live context sharing, near-live upload, hosted accounts,
-  billing, decryption, account recovery, production deployment hardening, and
-  key-custody workflows remain future/planned unless source documents say they
-  are implemented.
+  hosted-account billing, payment-gated product access, decryption, account
+  recovery, production deployment hardening, and key-custody workflows remain
+  future/planned unless source documents say they are implemented.
 - The website must not add backend, web-client, admin/operator, recording,
-  notification, billing, decryption, export, protocol, or mobile-client
-  behavior.
+  notification, hosted-account billing, payment-gated product access,
+  decryption, export, protocol, or mobile-client behavior.
 - Do not expose secrets, tokens, private deployment details, exploit details,
   request bodies, uploaded bytes, plaintext, raw keys, wrapped-key ciphertext,
   object-store credentials, object keys, stored paths, or user safety data.

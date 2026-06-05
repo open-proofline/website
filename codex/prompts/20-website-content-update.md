@@ -4,8 +4,9 @@ Update website content while preserving public safety and source-of-truth
 boundaries.
 
 Do **not** modify sibling `../.github`, `../server`, or `../web-client`.
-Do **not** add backend, app, auth, recording, notification, billing, decryption,
-export, mobile, protocol, or admin/operator behavior.
+Do **not** add backend, app, auth, recording, notification, hosted-account
+billing, payment-gated product access, decryption, export, mobile, protocol, or
+admin/operator behavior.
 
 ## Source Documents To Inspect
 
