@@ -66,6 +66,13 @@ const cryptoDonationInputs = [
     network: "Litecoin",
     address: "ltc1q9hqknj3p0ej6lngszhudeag6w4kdvwrzlf5ya3",
   },
+  {
+    slug: "monero",
+    coin: "Monero",
+    network: "Monero",
+    address:
+      "88jsbrBXwSyF4vad9DYokdaE2jWErdxK8g4jUCeHWjveeSYVtwSCPL4i2rsvrSPRJMMKuk3zDCyJ726GSshzRZGwCcqkZEc",
+  },
 ];
 
 const cryptoDonations = await Promise.all(
@@ -132,7 +139,7 @@ const cryptoDonations = await Promise.all(
             <p class="mt-2 text-xs font-medium uppercase tracking-normal text-proofline-text-muted">
               Address
             </p>
-            <div class="mt-2 grid gap-2 sm:grid-cols-[minmax(0,1fr)_5.5rem] sm:items-stretch">
+            <div class="mt-2 grid gap-2 sm:grid-cols-[minmax(0,1fr)_7rem] sm:items-stretch">
               <code class="block overflow-x-auto break-all rounded-md border border-proofline-border bg-proofline-bg-deep/70 p-3 font-mono text-sm leading-6 text-proofline-text">
                 {donation.address}
               </code>
@@ -143,23 +150,25 @@ const cryptoDonations = await Promise.all(
                   aria-label={`Show ${donation.coin} donation QR code`}
                   aria-controls={`${donation.slug}-qr-dialog`}
                   aria-haspopup="dialog"
-                  class="grid min-h-11 w-full grid-cols-[1rem_minmax(0,1fr)_1rem] items-center gap-2 rounded-md border border-proofline-border-strong bg-proofline-surface-strong px-3 text-sm font-medium text-proofline-text hover:bg-proofline-border focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
+                  class="grid min-h-11 w-full grid-cols-[1rem_minmax(0,1fr)_1rem] items-center gap-1.5 rounded-md border border-proofline-border-strong bg-proofline-surface-strong px-2.5 text-sm font-medium text-proofline-text hover:bg-proofline-border focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
                 >
                   <Icon name="qr-code" class="size-4 justify-self-center" />
-                  <span class="justify-self-center text-center">QR</span>
+                  <span class="justify-self-center whitespace-nowrap text-center">
+                    QR
+                  </span>
                   <span aria-hidden="true" class="size-4" />
                 </button>
                 <button
                   type="button"
                   data-copy-address={donation.address}
                   aria-label={`Copy ${donation.coin} donation address`}
-                  class="grid min-h-11 w-full grid-cols-[1rem_minmax(0,1fr)_1rem] items-center gap-2 rounded-md border border-proofline-border-strong bg-proofline-surface-strong px-3 text-sm font-medium text-proofline-text hover:bg-proofline-border focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
+                  class="grid min-h-11 w-full grid-cols-[1rem_minmax(0,1fr)_1rem] items-center gap-1.5 rounded-md border border-proofline-border-strong bg-proofline-surface-strong px-2.5 text-sm font-medium text-proofline-text hover:bg-proofline-border focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
                 >
                   <Icon name="copy" class="size-4 justify-self-center" />
                   <span
                     data-copy-label
                     aria-live="polite"
-                    class="justify-self-center text-center"
+                    class="justify-self-center whitespace-nowrap text-center"
                   >
                     Copy
                   </span>
@@ -170,15 +179,6 @@ const cryptoDonations = await Promise.all(
           </article>
         ))
       }
-      <article
-        class="rounded-lg border border-proofline-border bg-proofline-surface-elevated p-4 shadow-lg shadow-proofline-bg-deep/10 sm:p-5"
-      >
-        <StatusBadge tone="warning">Planned</StatusBadge>
-        <h3 class="mt-4 text-base font-semibold text-proofline-text">Monero</h3>
-        <p class="mt-2 text-sm leading-6 text-proofline-text-secondary">
-          Monero donations are planned, but are not available yet.
-        </p>
-      </article>
     </div>
     {
       cryptoDonations.map((donation) => (
@@ -235,7 +235,8 @@ const cryptoDonations = await Promise.all(
                 </code>
                 <ul class="mt-4 grid gap-2 text-sm leading-6 text-proofline-text-secondary">
                   <li>
-                    Only send {donation.coin} on {donation.network}.
+                    Confirm this address matches the network shown above before
+                    sending.
                   </li>
                   <li>Cryptocurrency transactions are irreversible.</li>
                   <li>
@@ -251,7 +252,7 @@ const cryptoDonations = await Promise.all(
     <ul
       class="mt-5 grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
     >
-      <li>Only send each asset on the listed network.</li>
+      <li>Confirm the selected wallet network matches the address label.</li>
       <li>Cryptocurrency transactions are irreversible.</li>
       <li>Do not send unsupported assets or tokens to these addresses.</li>
       <li>
