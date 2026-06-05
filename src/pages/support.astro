@@ -66,6 +66,13 @@ const cryptoDonationInputs = [
     network: "Litecoin",
     address: "ltc1q9hqknj3p0ej6lngszhudeag6w4kdvwrzlf5ya3",
   },
+  {
+    slug: "monero",
+    coin: "Monero",
+    network: "Monero",
+    address:
+      "88jsbrBXwSyF4vad9DYokdaE2jWErdxK8g4jUCeHWjveeSYVtwSCPL4i2rsvrSPRJMMKuk3zDCyJ726GSshzRZGwCcqkZEc",
+  },
 ];
 
 const cryptoDonations = await Promise.all(
@@ -170,15 +177,6 @@ const cryptoDonations = await Promise.all(
           </article>
         ))
       }
-      <article
-        class="rounded-lg border border-proofline-border bg-proofline-surface-elevated p-4 shadow-lg shadow-proofline-bg-deep/10 sm:p-5"
-      >
-        <StatusBadge tone="warning">Planned</StatusBadge>
-        <h3 class="mt-4 text-base font-semibold text-proofline-text">Monero</h3>
-        <p class="mt-2 text-sm leading-6 text-proofline-text-secondary">
-          Monero donations are planned, but are not available yet.
-        </p>
-      </article>
     </div>
     {
       cryptoDonations.map((donation) => (
