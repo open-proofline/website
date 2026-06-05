@@ -180,9 +180,22 @@ const cryptoDonations = await Promise.all(
         ))
       }
     </div>
-    <p class="mt-4 max-w-3xl text-sm leading-6 text-proofline-text-secondary">
-      Monero is available for supporters who prefer stronger donation privacy.
-    </p>
+    <div
+      class="mt-5 grid max-w-4xl gap-2 text-sm leading-6 text-proofline-text-secondary"
+    >
+      <p>
+        Monero is available for supporters who prefer stronger donation privacy.
+      </p>
+      <ul class="grid gap-2">
+        <li>Confirm the selected wallet network matches the address label.</li>
+        <li>Cryptocurrency transactions are irreversible.</li>
+        <li>Do not send unsupported assets or tokens to these addresses.</li>
+        <li>
+          Donations are not tax-deductible unless future official documentation
+          says a legally reviewed structure exists.
+        </li>
+      </ul>
+    </div>
     {
       cryptoDonations.map((donation) => (
         <dialog
@@ -252,17 +265,6 @@ const cryptoDonations = await Promise.all(
         </dialog>
       ))
     }
-    <ul
-      class="mt-5 grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
-    >
-      <li>Confirm the selected wallet network matches the address label.</li>
-      <li>Cryptocurrency transactions are irreversible.</li>
-      <li>Do not send unsupported assets or tokens to these addresses.</li>
-      <li>
-        Donations are not tax-deductible unless future official documentation
-        says a legally reviewed structure exists.
-      </li>
-    </ul>
   </PageSection>
 
   <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
