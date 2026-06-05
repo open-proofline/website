@@ -139,7 +139,7 @@ const cryptoDonations = await Promise.all(
             <p class="mt-2 text-xs font-medium uppercase tracking-normal text-proofline-text-muted">
               Address
             </p>
-            <div class="mt-2 grid gap-2 sm:grid-cols-[minmax(0,1fr)_5.5rem] sm:items-stretch">
+            <div class="mt-2 grid gap-2 sm:grid-cols-[minmax(0,1fr)_7rem] sm:items-stretch">
               <code class="block overflow-x-auto break-all rounded-md border border-proofline-border bg-proofline-bg-deep/70 p-3 font-mono text-sm leading-6 text-proofline-text">
                 {donation.address}
               </code>
@@ -150,23 +150,25 @@ const cryptoDonations = await Promise.all(
                   aria-label={`Show ${donation.coin} donation QR code`}
                   aria-controls={`${donation.slug}-qr-dialog`}
                   aria-haspopup="dialog"
-                  class="grid min-h-11 w-full grid-cols-[1rem_minmax(0,1fr)_1rem] items-center gap-2 rounded-md border border-proofline-border-strong bg-proofline-surface-strong px-3 text-sm font-medium text-proofline-text hover:bg-proofline-border focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
+                  class="grid min-h-11 w-full grid-cols-[1rem_minmax(0,1fr)_1rem] items-center gap-1.5 rounded-md border border-proofline-border-strong bg-proofline-surface-strong px-2.5 text-sm font-medium text-proofline-text hover:bg-proofline-border focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
                 >
                   <Icon name="qr-code" class="size-4 justify-self-center" />
-                  <span class="justify-self-center text-center">QR</span>
+                  <span class="justify-self-center whitespace-nowrap text-center">
+                    QR
+                  </span>
                   <span aria-hidden="true" class="size-4" />
                 </button>
                 <button
                   type="button"
                   data-copy-address={donation.address}
                   aria-label={`Copy ${donation.coin} donation address`}
-                  class="grid min-h-11 w-full grid-cols-[1rem_minmax(0,1fr)_1rem] items-center gap-2 rounded-md border border-proofline-border-strong bg-proofline-surface-strong px-3 text-sm font-medium text-proofline-text hover:bg-proofline-border focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
+                  class="grid min-h-11 w-full grid-cols-[1rem_minmax(0,1fr)_1rem] items-center gap-1.5 rounded-md border border-proofline-border-strong bg-proofline-surface-strong px-2.5 text-sm font-medium text-proofline-text hover:bg-proofline-border focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
                 >
                   <Icon name="copy" class="size-4 justify-self-center" />
                   <span
                     data-copy-label
                     aria-live="polite"
-                    class="justify-self-center text-center"
+                    class="justify-self-center whitespace-nowrap text-center"
                   >
                     Copy
                   </span>
@@ -233,7 +235,8 @@ const cryptoDonations = await Promise.all(
                 </code>
                 <ul class="mt-4 grid gap-2 text-sm leading-6 text-proofline-text-secondary">
                   <li>
-                    Only send {donation.coin} on {donation.network}.
+                    Confirm this address matches the network shown above before
+                    sending.
                   </li>
                   <li>Cryptocurrency transactions are irreversible.</li>
                   <li>
@@ -249,7 +252,7 @@ const cryptoDonations = await Promise.all(
     <ul
       class="mt-5 grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
     >
-      <li>Only send each asset on the listed network.</li>
+      <li>Confirm the selected wallet network matches the address label.</li>
       <li>Cryptocurrency transactions are irreversible.</li>
       <li>Do not send unsupported assets or tokens to these addresses.</li>
       <li>
