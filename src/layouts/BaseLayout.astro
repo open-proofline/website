@@ -14,6 +14,7 @@ const { title = site.name, description = site.description } = Astro.props;
 const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
 const canonicalUrl = new URL(Astro.url.pathname, site.url).toString();
 const imageUrl = new URL(site.ogImage, site.url).toString();
+const isHomePage = Astro.url.pathname === "/";
 ---
 
 <!doctype html>
@@ -48,7 +49,14 @@ const imageUrl = new URL(site.ogImage, site.url).toString();
     <div class="flex min-h-screen flex-col">
       <a href="#content" class="skip-link"> Skip to content </a>
       <BrandHeader />
-      <main id="content" tabindex="-1" class="grow focus:outline-none">
+      <main
+        id="content"
+        tabindex="-1"
+        class:list={[
+          "grow focus:outline-none",
+          !isHomePage && "pt-24 sm:pt-28",
+        ]}
+      >
         <slot />
       </main>
       <Footer />

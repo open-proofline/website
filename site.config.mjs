@@ -2,7 +2,7 @@ export const site = {
   name: "Proofline",
   url: "https://proofline.live",
   description:
-    "Experimental open-source safety and evidence-capture project. Not an emergency service.",
+    "Experimental encrypted incident-capture infrastructure. Clients keep decryption control. Not an emergency service.",
   ogImage: "/android-chrome-512x512.png",
   githubOrg: "https://github.com/open-proofline",
   sourceCode: "https://github.com/open-proofline/website",

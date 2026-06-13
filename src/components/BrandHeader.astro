@@ -10,6 +10,7 @@ type IconName =
   | "code"
   | "route"
   | "lock"
+  | "globe"
   | "heart"
   | "repo"
   | "github";
@@ -30,27 +31,21 @@ type NavGroup = {
 
 const desktopPrimaryLinks: readonly NavItem[] = [
   { href: "/", label: "Home", icon: "home" },
-  { href: "/about/", label: "About", icon: "info" },
   { href: "/status/", label: "Status", icon: "activity" },
+  { href: "/services/", label: "Community services", icon: "globe" },
+  { href: "/about/", label: "About", icon: "info" },
 ] as const;
 
 const desktopGroups: readonly NavGroup[] = [
   {
-    label: "Trust",
-    icon: "shield",
-    items: [
-      { href: "/safety/", label: "Safety boundaries", icon: "shield" },
-      { href: "/security/", label: "Security", icon: "lock" },
-    ],
-  },
-  {
     label: "Project",
     icon: "code",
     items: [
+      { href: "/repositories/", label: "Repositories", icon: "repo" },
       { href: "/open-source/", label: "Open source", icon: "code" },
       { href: "/roadmap/", label: "Roadmap", icon: "route" },
-      { href: "/repositories/", label: "Repositories", icon: "repo" },
-      { href: "/services/", label: "Community services", icon: "route" },
+      { href: "/safety/", label: "Safety boundaries", icon: "shield" },
+      { href: "/security/", label: "Security", icon: "lock" },
     ],
   },
 ] as const;
@@ -71,24 +66,19 @@ const mobileGroups: readonly { label: string; items: readonly NavItem[] }[] = [
     label: "Main",
     items: [
       { href: "/", label: "Home", icon: "home" },
-      { href: "/about/", label: "About Proofline", icon: "info" },
       { href: "/status/", label: "Current status", icon: "activity" },
-    ],
-  },
-  {
-    label: "Trust & safety",
-    items: [
-      { href: "/safety/", label: "Safety boundaries", icon: "shield" },
-      { href: "/security/", label: "Security", icon: "lock" },
+      { href: "/services/", label: "Community services", icon: "globe" },
+      { href: "/about/", label: "About Proofline", icon: "info" },
     ],
   },
   {
     label: "Project",
     items: [
+      { href: "/repositories/", label: "Repositories", icon: "repo" },
       { href: "/open-source/", label: "Open source", icon: "code" },
       { href: "/roadmap/", label: "Roadmap", icon: "route" },
-      { href: "/repositories/", label: "Repositories", icon: "repo" },
-      { href: "/services/", label: "Community services", icon: "route" },
+      { href: "/safety/", label: "Safety boundaries", icon: "shield" },
+      { href: "/security/", label: "Security", icon: "lock" },
       {
         href: site.githubOrg,
         label: "GitHub",
@@ -126,10 +116,10 @@ function groupId(label: string) {
 ---
 
 <header
-  class="sticky top-0 z-50 border-b border-proofline-border bg-proofline-bg-deep/95 shadow-sm shadow-proofline-bg-deep/30 backdrop-blur"
+  class="fixed inset-x-0 top-0 z-50 border-b border-proofline-border/70 bg-proofline-bg/90 shadow-[0_16px_60px_rgba(0,0,0,0.35)] backdrop-blur-2xl xl:border-b-0 xl:bg-transparent xl:px-4 xl:py-3 xl:shadow-none xl:backdrop-blur-none"
 >
   <div
-    class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6"
+    class="flex w-full items-center justify-between gap-3 px-4 py-3 xl:mx-auto xl:max-w-6xl xl:rounded-full xl:border xl:border-proofline-border/70 xl:bg-proofline-bg/80 xl:px-3 xl:py-2 xl:shadow-[0_20px_70px_rgba(0,0,0,0.35)] xl:backdrop-blur-2xl"
   >
     <a
       href="/"
@@ -228,9 +218,9 @@ function groupId(label: string) {
                   <div
                     id={`${id}-menu`}
                     aria-labelledby={`${id}-trigger`}
-                    class="absolute left-0 top-full z-30 mt-2 w-60 overflow-hidden rounded-lg border border-proofline-border bg-proofline-bg-deep p-2 shadow-xl shadow-proofline-bg-deep/40"
+                    class="absolute left-0 top-full z-30 mt-3 w-60 overflow-hidden rounded-xl border border-proofline-border/80 bg-proofline-bg shadow-[0_24px_80px_rgba(0,0,0,0.5)]"
                   >
-                    <ul class="grid gap-1">
+                    <ul class="relative grid gap-1 p-2">
                       {group.items.map((item) => {
                         const itemActive = isCurrentPage(
                           item.href,
@@ -308,7 +298,7 @@ function groupId(label: string) {
         aria-controls="primary-mobile-navigation"
         aria-expanded="false"
         data-nav-summary
-        class="flex size-11 cursor-pointer list-none items-center justify-center rounded-md border border-proofline-border bg-proofline-surface text-proofline-text hover:bg-proofline-surface-elevated focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus [&::-webkit-details-marker]:hidden"
+        class="flex size-11 cursor-pointer list-none items-center justify-center rounded-md border border-proofline-border bg-proofline-bg/90 text-proofline-text shadow-sm shadow-proofline-bg/40 backdrop-blur-2xl hover:bg-proofline-surface-elevated focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus [&::-webkit-details-marker]:hidden"
       >
         <span class="sr-only group-open:hidden">Open navigation</span>
         <span class="sr-only hidden group-open:inline">Close navigation</span>
@@ -318,9 +308,11 @@ function groupId(label: string) {
       <nav
         id="primary-mobile-navigation"
         aria-label="Primary menu"
-        class="absolute right-0 top-14 z-20 max-h-[calc(100vh-6rem)] w-[min(23rem,calc(100vw-2rem))] overflow-y-auto overscroll-contain rounded-xl border border-proofline-border bg-proofline-bg-deep/98 p-3 shadow-2xl shadow-proofline-bg-deep/50 sm:max-h-[34rem]"
+        class="absolute right-0 top-14 z-20 max-h-[calc(100vh-6rem)] w-[min(23rem,calc(100vw-2rem))] overflow-hidden rounded-xl border border-proofline-border/80 bg-proofline-bg shadow-[0_24px_80px_rgba(0,0,0,0.5)] sm:max-h-[34rem]"
       >
-        <div class="grid gap-4">
+        <div
+          class="relative grid max-h-[calc(100vh-6rem)] gap-4 overflow-y-auto overscroll-contain p-3 sm:max-h-[34rem]"
+        >
           {
             mobileGroups.map((group) => (
               <section
