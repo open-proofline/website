@@ -7,23 +7,23 @@ import ContentLayout from "../layouts/ContentLayout.astro";
 const sources = [
   {
     label: "Server SECURITY",
-    href: "https://github.com/open-proofline/server/blob/main/SECURITY.md",
+    href: "https://github.com/open-proofline/server/blob/develop/SECURITY.md",
   },
   {
     label: "Server security model",
-    href: "https://github.com/open-proofline/server/blob/main/docs/security-model.md",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/security-model.md",
   },
   {
     label: "Server threat model",
-    href: "https://github.com/open-proofline/server/blob/main/docs/threat-model.md",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/threat-model.md",
   },
   {
     label: "Contact key sharing and grants",
-    href: "https://github.com/open-proofline/server/blob/main/docs/contact-key-sharing-grants.md",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/contact-key-sharing-grants.md",
   },
   {
     label: "Key custody and emergency access",
-    href: "https://github.com/open-proofline/server/blob/main/docs/key-custody.md",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/key-custody.md",
   },
   {
     label: "Web-client SECURITY",
@@ -43,8 +43,10 @@ const sources = [
       tone="success"
       title="Encrypted bytes only by default"
     >
-      The current backend validates and stores ciphertext bytes only in the
-      default path. It does not store raw media keys or decrypt uploaded chunks.
+      The current backend validates and stores ciphertext bytes in the default
+      upload path. It may store wrapped-key ciphertext as explicitly designed
+      authenticated metadata, but it does not store raw media keys or decrypt
+      uploaded chunks.
     </ClaimCard>
     <ClaimCard
       label="Current"
@@ -52,7 +54,9 @@ const sources = [
       title="Admin routes stay separate"
     >
       The server separates the main API/viewer listener from private admin
-      routes and surfaces. Token-gated viewer routes are read-only.
+      routes and surfaces. Admin operator actions require completed setup and
+      active factor verification where configured; token-gated viewer routes are
+      read-only.
     </ClaimCard>
     <ClaimCard label="Reporting" tone="warning" title="Report privately">
       Do not report security vulnerabilities through public GitHub issues. Use

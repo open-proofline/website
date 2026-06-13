@@ -11,23 +11,23 @@ const sources = [
   },
   {
     label: "Server architecture",
-    href: "https://github.com/open-proofline/server/blob/main/docs/architecture.md",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/architecture.md",
   },
   {
     label: "Incident capture modes",
-    href: "https://github.com/open-proofline/server/blob/main/docs/incident-modes.md",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/incident-modes.md",
   },
   {
     label: "Key custody planning",
-    href: "https://github.com/open-proofline/server/blob/main/docs/key-custody.md",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/key-custody.md",
   },
   {
     label: "Contact key sharing and grants",
-    href: "https://github.com/open-proofline/server/blob/main/docs/contact-key-sharing-grants.md",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/contact-key-sharing-grants.md",
   },
   {
     label: "Browser decryption planning",
-    href: "https://github.com/open-proofline/server/blob/main/docs/browser-decryption.md",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/browser-decryption.md",
   },
 ];
 ---
@@ -74,14 +74,19 @@ const sources = [
       contact public-key, sharing-grant, and wrapped-key metadata where its mock
       or confirmed live API contracts support that view.
     </ClaimCard>
-    <ClaimCard label="Planned" tone="info" title="Authorized review">
-      Future account-owner and trusted-contact review is planned around grants,
-      wrapped keys, and clear separation between metadata access, ciphertext
-      access, and decryption capability.
+    <ClaimCard
+      label="Experimental / partial"
+      tone="warning"
+      title="Authorized metadata"
+    >
+      Authenticated metadata routes and narrow trusted-contact wrapped-key
+      metadata delivery exist today. Full account-owner and trusted-contact
+      incident review, decryption, and production access workflows remain future
+      work.
     </ClaimCard>
     <ClaimCard label="Planned" tone="info" title="Trusted-contact access">
-      Trusted contacts may eventually review authorized incident context and
-      decrypt evidence client-side when policy and key custody allow it.
+      Trusted contacts may eventually review authorized incident context and use
+      a reviewed client-side decrypt path when policy and key custody allow it.
     </ClaimCard>
     <ClaimCard
       label="Not yet"

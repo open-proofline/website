@@ -13,11 +13,11 @@ const sources = [
   },
   {
     label: "Server AGENTS",
-    href: "https://github.com/open-proofline/server/blob/main/AGENTS.md",
+    href: "https://github.com/open-proofline/server/blob/develop/AGENTS.md",
   },
   {
     label: "Server README",
-    href: "https://github.com/open-proofline/server/blob/main/README.md",
+    href: "https://github.com/open-proofline/server/blob/develop/README.md",
   },
   {
     label: "Web-client AGENTS",
@@ -38,9 +38,11 @@ const sources = [
   <div class="grid gap-4 md:grid-cols-2">
     <ClaimCard label="Current" tone="success" title="open-proofline/server">
       Go backend for authenticated main API routes, local account/session auth,
-      private admin surfaces, read-only viewer, encrypted chunk ingest,
-      owner-scoped metadata, storage, releases, deployment docs, and backend
-      reference documentation.
+      second-factor gates, private admin surfaces, read-only viewer, encrypted
+      chunk ingest, owner and trusted-contact metadata, wrapped-key metadata,
+      deletion and retention workflows, quotas, optional
+      PostgreSQL/S3-compatible/Valkey backends, experimental relay primitives,
+      releases, deployment docs, and backend reference documentation.
       <p class="mt-3">
         <SourceLink href={site.repositories.server}
           >Open server repository</SourceLink
@@ -49,8 +51,9 @@ const sources = [
     </ClaimCard>
     <ClaimCard label="Current" tone="success" title="open-proofline/web-client">
       React account portal and incident-review prototype for account UI,
-      registration and verification flows, incident metadata review, contact
-      metadata, sharing grants, and wrapped-key metadata.
+      login/logout, registration and email-verification flows, conservative
+      browser session handling, mock/live API modes, incident metadata review,
+      contact and sharing-grant metadata views, and wrapped-key metadata views.
       <p class="mt-3">
         <SourceLink href={site.repositories.webClient}
           >Open web-client repository</SourceLink

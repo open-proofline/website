@@ -11,23 +11,27 @@ const sources = [
   },
   {
     label: "Incident capture modes",
-    href: "https://github.com/open-proofline/server/blob/main/docs/incident-modes.md",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/incident-modes.md",
   },
   {
     label: "Key custody planning",
-    href: "https://github.com/open-proofline/server/blob/main/docs/key-custody.md",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/key-custody.md",
   },
   {
     label: "Contact key sharing and grants",
-    href: "https://github.com/open-proofline/server/blob/main/docs/contact-key-sharing-grants.md",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/contact-key-sharing-grants.md",
   },
   {
     label: "Browser decryption planning",
-    href: "https://github.com/open-proofline/server/blob/main/docs/browser-decryption.md",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/browser-decryption.md",
   },
   {
     label: "Production cluster scope",
-    href: "https://github.com/open-proofline/server/blob/main/docs/production-cluster-scope.md",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/production-cluster-scope.md",
+  },
+  {
+    label: "Regional stream ingress relay",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/regional-stream-ingress-relay.md",
   },
   {
     label: "Web-client planned scope",
@@ -52,9 +56,19 @@ const sources = [
       photos, and supporting context where platform permissions and user choices
       allow.
     </ClaimCard>
-    <ClaimCard label="Planned" tone="info" title="Near-live encrypted upload">
-      Future upload flows may improve retry, resumability, partial/live access,
-      and regional ingest while preserving ciphertext-only backend boundaries.
+    <ClaimCard
+      label="Experimental / partial"
+      tone="warning"
+      title="Regional relay primitives"
+    >
+      Current relay primitives can move complete encrypted chunks through a
+      narrow stream-ingress service with optimistic encrypted fanout. The core
+      backend remains authoritative for durable commit.
+    </ClaimCard>
+    <ClaimCard label="Planned" tone="info" title="Production upload hardening">
+      Future upload work may add relay replay, resumability, partial/live
+      access, production service identity, and stronger client retry behavior
+      while preserving ciphertext-only backend boundaries.
     </ClaimCard>
     <ClaimCard label="Planned" tone="info" title="Notifications">
       Future SMS, email, push, or other trusted-contact notifications need a
@@ -70,8 +84,8 @@ const sources = [
       work exists.
     </ClaimCard>
     <ClaimCard label="Planned" tone="info" title="Trusted-contact workflows">
-      Future trusted-contact access may combine grants, wrapped keys,
-      client-side decryption, and separate urgent or non-urgent review
+      Future production trusted-contact workflows may combine grants, wrapped
+      keys, client-side decryption, and separate urgent or non-urgent review
       experiences.
     </ClaimCard>
     <ClaimCard label="Not yet" tone="danger" title="Browser decryption">
@@ -87,9 +101,11 @@ const sources = [
 
   <PageSection title="How to read this roadmap">
     <p class="max-w-3xl text-sm leading-6 text-proofline-text-secondary">
-      Planned items are not active features. They do not provide access grants,
+      Planned roadmap items are not active features. They do not add new
       notifications, decryption, retention changes, public links, or emergency
-      response today.
+      response today. Experimental relay and metadata primitives should not be
+      read as production client, notification, access-review, or decryption
+      behavior.
     </p>
   </PageSection>
 

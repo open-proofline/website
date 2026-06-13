@@ -15,7 +15,7 @@ const sources = [
   },
   {
     label: "Server README",
-    href: "https://github.com/open-proofline/server/blob/main/README.md",
+    href: "https://github.com/open-proofline/server/blob/develop/README.md",
   },
   {
     label: "Web-client README",
@@ -23,7 +23,7 @@ const sources = [
   },
   {
     label: "Server security policy",
-    href: "https://github.com/open-proofline/server/blob/main/SECURITY.md",
+    href: "https://github.com/open-proofline/server/blob/develop/SECURITY.md",
   },
 ];
 ---
@@ -86,9 +86,12 @@ const sources = [
   <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
     <ClaimCard label="Current" tone="success" title="Current status">
       The active project has an experimental Go server backend and an
-      experimental React web-client prototype. The backend stores encrypted
-      chunks and metadata; the web client shows account and incident-review
-      surfaces in mock mode or where live API contracts are confirmed.
+      experimental React web-client prototype. The backend provides
+      authenticated API routes, private admin surfaces, encrypted chunk storage,
+      owner and trusted-contact metadata, wrapped-key metadata, quota and
+      rate-limit controls, and experimental relay primitives; the web client
+      shows account and incident-review surfaces in mock mode or where live API
+      contracts are confirmed.
     </ClaimCard>
     <ClaimCard label="Safety" tone="warning" title="Not an emergency service">
       Proofline does not contact emergency services, guarantee real-time review,

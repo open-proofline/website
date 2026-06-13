@@ -126,14 +126,14 @@ function groupId(label: string) {
 ---
 
 <header
-  class="sticky top-0 z-50 border-b border-proofline-border bg-proofline-bg-deep/95 backdrop-blur"
+  class="sticky top-0 z-50 border-b border-proofline-border bg-proofline-bg-deep/95 shadow-sm shadow-proofline-bg-deep/30 backdrop-blur"
 >
   <div
-    class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6"
+    class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6"
   >
     <a
       href="/"
-      class="inline-flex w-fit max-w-full items-center gap-3 rounded-md focus:outline-2 focus:outline-offset-4 focus:outline-proofline-focus"
+      class="inline-flex min-w-0 max-w-full items-center gap-3 rounded-md focus:outline-2 focus:outline-offset-4 focus:outline-proofline-focus"
       aria-label="Proofline home"
     >
       <img
@@ -143,12 +143,14 @@ function groupId(label: string) {
         class="size-10 shrink-0 object-contain sm:size-11"
       />
       <span class="min-w-0">
-        <span class="flex flex-wrap items-center gap-2">
-          <span class="text-lg font-semibold leading-6 text-proofline-text">
+        <span class="flex min-w-0 items-center gap-2">
+          <span
+            class="truncate text-lg font-semibold leading-6 text-proofline-text"
+          >
             Proofline
           </span>
           <span
-            class="rounded-full border border-proofline-warning/40 bg-proofline-warning-bg px-2 py-0.5 text-xs font-medium leading-4 text-proofline-warning"
+            class="shrink-0 rounded-full border border-proofline-warning/40 bg-proofline-warning-bg px-2 py-0.5 text-xs font-medium leading-4 text-proofline-warning max-[340px]:hidden"
           >
             Experimental
           </span>
@@ -156,8 +158,8 @@ function groupId(label: string) {
       </span>
     </a>
 
-    <nav aria-label="Primary" class="hidden xl:block">
-      <ul class="flex items-center justify-end gap-1">
+    <nav aria-label="Primary" class="hidden min-w-0 xl:block">
+      <ul class="flex min-w-0 items-center justify-end gap-1">
         {
           desktopPrimaryLinks.map((item) => {
             const active = isCurrentPage(item.href, item.external);
@@ -226,7 +228,7 @@ function groupId(label: string) {
                   <div
                     id={`${id}-menu`}
                     aria-labelledby={`${id}-trigger`}
-                    class="absolute left-0 top-full z-30 mt-2 w-60 rounded-lg border border-proofline-border bg-proofline-bg-deep p-2 shadow-xl shadow-proofline-bg-deep/40"
+                    class="absolute left-0 top-full z-30 mt-2 w-60 overflow-hidden rounded-lg border border-proofline-border bg-proofline-bg-deep p-2 shadow-xl shadow-proofline-bg-deep/40"
                   >
                     <ul class="grid gap-1">
                       {group.items.map((item) => {
@@ -241,7 +243,7 @@ function groupId(label: string) {
                               href={item.href}
                               aria-current={itemActive ? "page" : undefined}
                               class:list={[
-                                "flex min-h-10 items-center gap-2 rounded-md border px-3 text-sm font-medium focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus",
+                                "flex min-h-10 min-w-0 items-center gap-2 rounded-md border px-3 text-sm font-medium focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus",
                                 itemActive
                                   ? "border-proofline-border-strong bg-proofline-surface-strong text-proofline-text"
                                   : "border-transparent text-proofline-text-muted hover:bg-proofline-surface-elevated hover:text-proofline-text",
@@ -253,7 +255,7 @@ function groupId(label: string) {
                                   class="size-4 shrink-0 self-center"
                                 />
                               ) : null}
-                              <span>{item.label}</span>
+                              <span class="min-w-0 truncate">{item.label}</span>
                             </a>
                           </li>
                         );
@@ -306,7 +308,7 @@ function groupId(label: string) {
         aria-controls="primary-mobile-navigation"
         aria-expanded="false"
         data-nav-summary
-        class="flex size-10 cursor-pointer list-none items-center justify-center rounded-md border border-proofline-border bg-proofline-surface text-proofline-text hover:bg-proofline-surface-elevated focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus [&::-webkit-details-marker]:hidden"
+        class="flex size-11 cursor-pointer list-none items-center justify-center rounded-md border border-proofline-border bg-proofline-surface text-proofline-text hover:bg-proofline-surface-elevated focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus [&::-webkit-details-marker]:hidden"
       >
         <span class="sr-only group-open:hidden">Open navigation</span>
         <span class="sr-only hidden group-open:inline">Close navigation</span>
@@ -316,13 +318,14 @@ function groupId(label: string) {
       <nav
         id="primary-mobile-navigation"
         aria-label="Primary menu"
-        class="absolute right-0 top-12 z-20 max-h-[calc(100vh-6rem)] w-[min(22rem,calc(100vw-2rem))] overflow-y-auto rounded-lg border border-proofline-border bg-proofline-bg-deep p-3 shadow-xl shadow-proofline-bg-deep/40"
+        class="absolute right-0 top-14 z-20 max-h-[calc(100vh-6rem)] w-[min(23rem,calc(100vw-2rem))] overflow-y-auto overscroll-contain rounded-xl border border-proofline-border bg-proofline-bg-deep/98 p-3 shadow-2xl shadow-proofline-bg-deep/50 sm:max-h-[34rem]"
       >
         <div class="grid gap-4">
           {
             mobileGroups.map((group) => (
               <section
                 aria-labelledby={`mobile-nav-${group.label.toLowerCase().replaceAll(" ", "-").replaceAll("&", "and")}`}
+                class="border-t border-proofline-border/70 pt-3 first:border-t-0 first:pt-0"
               >
                 <p
                   id={`mobile-nav-${group.label.toLowerCase().replaceAll(" ", "-").replaceAll("&", "and")}`}
@@ -341,7 +344,7 @@ function groupId(label: string) {
                           aria-label={item.ariaLabel}
                           aria-current={active ? "page" : undefined}
                           class:list={[
-                            "flex min-h-11 items-center gap-3 rounded-md border px-3 text-sm font-medium focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus",
+                            "flex min-h-11 min-w-0 items-center gap-3 rounded-md border px-3 text-sm font-medium focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus",
                             active
                               ? "border-proofline-border-strong bg-proofline-surface-strong text-proofline-text"
                               : "border-transparent text-proofline-text-muted hover:bg-proofline-surface-elevated hover:text-proofline-text",
@@ -353,7 +356,7 @@ function groupId(label: string) {
                               class={`shrink-0 self-center ${item.icon === "github" ? "size-[17px]" : "size-4"}`}
                             />
                           ) : null}
-                          <span>{item.label}</span>
+                          <span class="min-w-0 break-words">{item.label}</span>
                         </a>
                       </li>
                     );

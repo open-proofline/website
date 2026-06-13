@@ -11,19 +11,23 @@ const sources = [
   },
   {
     label: "Server README",
-    href: "https://github.com/open-proofline/server/blob/main/README.md",
+    href: "https://github.com/open-proofline/server/blob/develop/README.md",
   },
   {
     label: "Server API documentation",
-    href: "https://github.com/open-proofline/server/blob/main/docs/api.md",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/api.md",
   },
   {
     label: "Server security model",
-    href: "https://github.com/open-proofline/server/blob/main/docs/security-model.md",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/security-model.md",
   },
   {
     label: "Contact key sharing and grants",
-    href: "https://github.com/open-proofline/server/blob/main/docs/contact-key-sharing-grants.md",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/contact-key-sharing-grants.md",
+  },
+  {
+    label: "Regional stream ingress relay",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/regional-stream-ingress-relay.md",
   },
   {
     label: "Web-client README",
@@ -47,13 +51,22 @@ const sources = [
       </li>
       <li>
         Local username/password accounts, opaque server-side sessions, and
-        optional browser cookie-session support for future web-client use.
+        optional browser cookie-session support with CSRF checks and
+        exact-origin CORS for future web-client use.
       </li>
       <li>
-        Public registration is disabled by default. Self-registration only works
-        when a deployment explicitly enables email verification.
+        Public registration is disabled by default. Open self-registration only
+        works when a deployment explicitly enables SMTP-backed email
+        verification.
       </li>
-      <li>Private admin listener and private admin web surface.</li>
+      <li>
+        Email challenge, TOTP, and disabled-by-default WebAuthn/FIDO2
+        second-factor setup for account gating.
+      </li>
+      <li>
+        Private admin listener and private admin web surface with admin
+        second-factor gates and private-admin assisted lost-factor reset.
+      </li>
       <li>Read-only token-scoped incident viewer routes.</li>
       <li>
         Encrypted chunk ingest, immutable storage, and ciphertext hash checks.
@@ -63,12 +76,27 @@ const sources = [
         and Valkey backends.
       </li>
       <li>
+        Default local staging quota, account-scoped committed blob quota, and
+        app-level route-class rate limits.
+      </li>
+      <li>
         Server-side incident metadata, owner-scoped read routes, and
         deletion/retention workflows.
       </li>
       <li>
-        Owner-scoped contact public-key metadata, sharing-grant metadata, and
+        Owner-scoped account/device recipient-key metadata, trusted-contact
+        relationships, contact public-key metadata, sharing grants, and
         wrapped-key metadata routes.
+      </li>
+      <li>
+        Signed-in trusted-contact wrapped-key metadata reads when an accepted
+        relationship, active key, active grant, and active wrapped-key record
+        all authorize the request.
+      </li>
+      <li>
+        Experimental stream-ingress relay primitives for complete encrypted
+        chunk upload and optimistic encrypted fanout, with core backend
+        confirmation still authoritative.
       </li>
     </ul>
   </PageSection>
@@ -88,9 +116,10 @@ const sources = [
       tone="warning"
       title="Sharing metadata"
     >
-      Contact keys, sharing grants, and wrapped-key metadata exist as private
-      API metadata. They do not add trusted-contact accounts, notifications,
-      browser decryption, backend decryption, or key escrow.
+      Contact keys, trusted-contact relationships, sharing grants, and
+      wrapped-key records exist as authenticated API metadata. They do not add
+      trusted-contact incident review, notifications, browser decryption,
+      backend decryption, production key custody, or key escrow.
     </ClaimCard>
     <ClaimCard
       label="Experimental / partial"
@@ -110,6 +139,15 @@ const sources = [
       backends. They do not make Proofline public-production-ready by
       themselves.
     </ClaimCard>
+    <ClaimCard
+      label="Experimental / partial"
+      tone="warning"
+      title="Stream-ingress relay"
+    >
+      Relay upload and fanout primitives exist for complete encrypted chunks.
+      Relay replay, metrics, production service-identity rotation, durable relay
+      storage, and production deployment hardening are not implemented.
+    </ClaimCard>
   </div>
 
   <PageSection title="Planned future work">
@@ -118,9 +156,14 @@ const sources = [
     >
       <li>Native iOS and Android recording clients.</li>
       <li>GPS/location capture and live context sharing where available.</li>
-      <li>Near-live encrypted upload and stronger client retry behavior.</li>
+      <li>
+        Production-ready regional ingest, relay replay, resumable or partial
+        upload protocols, and stronger client retry behavior.
+      </li>
       <li>SMS, email, push, or other trusted-contact notification delivery.</li>
-      <li>Trusted-contact accounts and grant-aware review workflows.</li>
+      <li>
+        Production trusted-contact UX and grant-aware incident review workflows.
+      </li>
       <li>
         Hosted accounts, subscriptions, billing, abuse controls, and support
         operations.

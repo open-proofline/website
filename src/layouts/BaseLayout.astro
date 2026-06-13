@@ -46,12 +46,7 @@ const imageUrl = new URL(site.ogImage, site.url).toString();
   </head>
   <body class="bg-proofline-bg text-proofline-text">
     <div class="flex min-h-screen flex-col">
-      <a
-        href="#content"
-        class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:border focus:border-proofline-border-strong focus:bg-proofline-surface-strong focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-proofline-text focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
-      >
-        Skip to content
-      </a>
+      <a href="#content" class="skip-link"> Skip to content </a>
       <BrandHeader />
       <main id="content" tabindex="-1" class="grow focus:outline-none">
         <slot />
