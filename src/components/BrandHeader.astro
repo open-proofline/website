@@ -2,18 +2,7 @@
 import Icon from "./Icon.astro";
 import { site } from "../../site.config.mjs";
 
-type IconName =
-  | "home"
-  | "info"
-  | "activity"
-  | "shield"
-  | "code"
-  | "route"
-  | "lock"
-  | "globe"
-  | "heart"
-  | "repo"
-  | "github";
+type IconName = "home" | "info" | "activity" | "globe" | "heart" | "github";
 
 type NavItem = {
   href: string;
@@ -23,31 +12,11 @@ type NavItem = {
   ariaLabel?: string;
 };
 
-type NavGroup = {
-  label: string;
-  icon: IconName;
-  items: readonly NavItem[];
-};
-
 const desktopPrimaryLinks: readonly NavItem[] = [
   { href: "/", label: "Home", icon: "home" },
+  { href: "/about/", label: "About", icon: "info" },
   { href: "/status/", label: "Status", icon: "activity" },
   { href: "/services/", label: "Community services", icon: "globe" },
-  { href: "/about/", label: "About", icon: "info" },
-] as const;
-
-const desktopGroups: readonly NavGroup[] = [
-  {
-    label: "Project",
-    icon: "code",
-    items: [
-      { href: "/repositories/", label: "Repositories", icon: "repo" },
-      { href: "/open-source/", label: "Open source", icon: "code" },
-      { href: "/roadmap/", label: "Roadmap", icon: "route" },
-      { href: "/safety/", label: "Safety boundaries", icon: "shield" },
-      { href: "/security/", label: "Security", icon: "lock" },
-    ],
-  },
 ] as const;
 
 const desktopUtilityLinks: readonly NavItem[] = [
@@ -66,19 +35,10 @@ const mobileGroups: readonly { label: string; items: readonly NavItem[] }[] = [
     label: "Main",
     items: [
       { href: "/", label: "Home", icon: "home" },
+      { href: "/about/", label: "About Proofline", icon: "info" },
       { href: "/status/", label: "Current status", icon: "activity" },
       { href: "/services/", label: "Community services", icon: "globe" },
-      { href: "/about/", label: "About Proofline", icon: "info" },
-    ],
-  },
-  {
-    label: "Project",
-    items: [
-      { href: "/repositories/", label: "Repositories", icon: "repo" },
-      { href: "/open-source/", label: "Open source", icon: "code" },
-      { href: "/roadmap/", label: "Roadmap", icon: "route" },
-      { href: "/safety/", label: "Safety boundaries", icon: "shield" },
-      { href: "/security/", label: "Security", icon: "lock" },
+      { href: "/support/", label: "Support Proofline", icon: "heart" },
       {
         href: site.githubOrg,
         label: "GitHub",
@@ -87,10 +47,6 @@ const mobileGroups: readonly { label: string; items: readonly NavItem[] }[] = [
         ariaLabel: "Open Proofline on GitHub",
       },
     ],
-  },
-  {
-    label: "Support",
-    items: [{ href: "/support/", label: "Support Proofline", icon: "heart" }],
   },
 ] as const;
 
@@ -104,14 +60,6 @@ function isCurrentPage(href: string, external = false) {
   }
 
   return currentPath === href || currentPath.startsWith(href);
-}
-
-function isGroupActive(group: NavGroup) {
-  return group.items.some((item) => isCurrentPage(item.href, item.external));
-}
-
-function groupId(label: string) {
-  return `desktop-nav-${label.toLowerCase().replaceAll(" ", "-")}`;
 }
 ---
 
@@ -180,79 +128,6 @@ function groupId(label: string) {
                     item.label
                   )}
                 </a>
-              </li>
-            );
-          })
-        }
-        {
-          desktopGroups.map((group) => {
-            const active = isGroupActive(group);
-            const id = groupId(group.label);
-
-            return (
-              <li class="relative">
-                <details class="group" data-nav-details>
-                  <summary
-                    id={`${id}-trigger`}
-                    aria-controls={`${id}-menu`}
-                    aria-current={active ? "page" : undefined}
-                    aria-expanded="false"
-                    data-nav-summary
-                    class:list={[
-                      "inline-flex h-9 cursor-pointer list-none items-center gap-1.5 whitespace-nowrap rounded-md border px-2.5 text-sm font-medium leading-none transition-colors focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus 2xl:px-3 [&::-webkit-details-marker]:hidden",
-                      active
-                        ? "border-proofline-border-strong bg-proofline-surface-strong text-proofline-text shadow-sm shadow-proofline-bg-deep/30"
-                        : "border-transparent text-proofline-text-muted hover:bg-proofline-surface-elevated hover:text-proofline-text group-open:border-proofline-border group-open:bg-proofline-surface-elevated group-open:text-proofline-text",
-                    ]}
-                  >
-                    <Icon
-                      name={group.icon}
-                      class="size-4 shrink-0 self-center"
-                    />
-                    <span>{group.label}</span>
-                    <Icon
-                      name="chevron-down"
-                      class="size-3.5 shrink-0 self-center transition-transform group-open:rotate-180"
-                    />
-                  </summary>
-                  <div
-                    id={`${id}-menu`}
-                    aria-labelledby={`${id}-trigger`}
-                    class="absolute left-0 top-full z-30 mt-3 w-60 overflow-hidden rounded-xl border border-proofline-border/80 bg-proofline-bg shadow-[0_24px_80px_rgba(0,0,0,0.5)]"
-                  >
-                    <ul class="relative grid gap-1 p-2">
-                      {group.items.map((item) => {
-                        const itemActive = isCurrentPage(
-                          item.href,
-                          item.external,
-                        );
-
-                        return (
-                          <li>
-                            <a
-                              href={item.href}
-                              aria-current={itemActive ? "page" : undefined}
-                              class:list={[
-                                "flex min-h-10 min-w-0 items-center gap-2 rounded-md border px-3 text-sm font-medium focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus",
-                                itemActive
-                                  ? "border-proofline-border-strong bg-proofline-surface-strong text-proofline-text"
-                                  : "border-transparent text-proofline-text-muted hover:bg-proofline-surface-elevated hover:text-proofline-text",
-                              ]}
-                            >
-                              {item.icon ? (
-                                <Icon
-                                  name={item.icon}
-                                  class="size-4 shrink-0 self-center"
-                                />
-                              ) : null}
-                              <span class="min-w-0 truncate">{item.label}</span>
-                            </a>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                </details>
               </li>
             );
           })

@@ -10,108 +10,87 @@ const sources = [
     href: "https://github.com/open-proofline/.github/blob/main/profile/README.md",
   },
   {
-    label: "Server architecture",
-    href: "https://github.com/open-proofline/server/blob/develop/docs/architecture.md",
-  },
-  {
     label: "Incident capture modes",
     href: "https://github.com/open-proofline/server/blob/develop/docs/incident-modes.md",
   },
   {
-    label: "Key custody planning",
-    href: "https://github.com/open-proofline/server/blob/develop/docs/key-custody.md",
+    label: "Server security model",
+    href: "https://github.com/open-proofline/server/blob/develop/docs/security-model.md",
   },
   {
-    label: "Contact key sharing and grants",
-    href: "https://github.com/open-proofline/server/blob/develop/docs/contact-key-sharing-grants.md",
-  },
-  {
-    label: "Browser decryption planning",
-    href: "https://github.com/open-proofline/server/blob/develop/docs/browser-decryption.md",
+    label: "Web-client README",
+    href: "https://github.com/open-proofline/web-client/blob/develop/README.md",
   },
 ];
 ---
 
 <ContentLayout
   title="About Proofline"
-  eyebrow="Plain-language project model"
-  description="Proofline is intended to preserve encrypted incident, interaction, safety-check, and evidence-note records without treating capture as emergency response."
+  eyebrow="What Proofline is for"
+  description="Proofline is being built for moments when losing the record could matter. It helps preserve end-to-end encrypted evidence as events unfold, while giving trusted contacts controlled access when it matters."
+  safetyMode="full"
 >
-  <PageSection title="What Proofline is intended to do">
+  <PageSection title="Why it exists">
     <div
       class="grid gap-4 text-base leading-7 text-proofline-text-secondary lg:grid-cols-2"
     >
       <p>
-        Proofline is intended to let a person create an important record when
-        something needs to be preserved: an emergency incident, a non-emergency
-        interaction record, a timed safety check, or an evidence note. Future
-        clients may capture audio, video, GPS/location, timestamps, check-ins,
-        notes, photos, and supporting context where platform permissions and the
-        user’s choices allow.
+        Some moments are hard to reconstruct later: an unsafe situation, an
+        important interaction, a missed check-in, damage, harassment, threats,
+        or a dispute. Proofline is meant to help preserve a private record while
+        events are still unfolding.
       </p>
       <p>
-        Proofline’s core model is encryption before upload. Client apps encrypt
-        short chunks locally, then upload those already-encrypted chunks so the
-        server can preserve them even if the device is lost, damaged, powered
-        off, destroyed, or taken after some evidence has already reached the
-        server.
+        The goal is not to turn every record into an emergency. The goal is to
+        help a person keep evidence protected, decide who should see it, and
+        avoid depending on a single phone as the only copy.
       </p>
     </div>
   </PageSection>
 
   <div class="grid gap-4 md:grid-cols-2">
-    <ClaimCard
-      label="Current"
-      tone="success"
-      title="Server preserves ciphertext"
-    >
-      The current backend receives already-encrypted chunks, verifies hashes
-      over ciphertext, stores metadata, and can generate encrypted ZIP evidence
-      bundles for completed streams.
+    <ClaimCard label="Use cases" tone="info" title="More than emergencies">
+      Proofline is being designed for incident capture, safety checks,
+      interaction records, and evidence notes. Those labels should help explain
+      why a record exists; they should not silently trigger escalation or
+      sharing.
     </ClaimCard>
-    <ClaimCard label="Current" tone="success" title="Metadata review exists">
-      The current web-client prototype reviews account, incident, stream, chunk,
-      contact public-key, sharing-grant, and wrapped-key metadata where its mock
-      or confirmed live API contracts support that view.
+    <ClaimCard label="Evidence" tone="info" title="Context where available">
+      Future clients may preserve audio, video, location, timestamps, notes,
+      check-ins, photos, and supporting context where platform permissions and
+      user choices allow.
     </ClaimCard>
-    <ClaimCard
-      label="Experimental / partial"
-      tone="warning"
-      title="Authorized metadata"
-    >
-      Authenticated metadata routes and narrow trusted-contact wrapped-key
-      metadata delivery exist today. Full account-owner and trusted-contact
-      incident review, decryption, and production access workflows remain future
-      work.
+    <ClaimCard label="Privacy" tone="success" title="Encrypted by design">
+      Sensitive material should be encrypted before Proofline receives it.
+      Proofline itself should not be able to read the private contents of a
+      record.
     </ClaimCard>
-    <ClaimCard label="Planned" tone="info" title="Trusted-contact access">
-      Trusted contacts may eventually review authorized incident context and use
-      a reviewed client-side decrypt path when policy and key custody allow it.
-    </ClaimCard>
-    <ClaimCard
-      label="Not yet"
-      tone="danger"
-      title="No production recording client"
-    >
-      Production iOS and Android recording clients, production GPS capture,
-      near-live upload, and safety-check notification behavior are not current
-      product behavior.
-    </ClaimCard>
-    <ClaimCard label="Safety" tone="warning" title="Capture is not escalation">
-      Recording or labeling an incident does not automatically notify anyone,
-      contact emergency services, create public links, release keys, or change
-      retention policy.
+    <ClaimCard label="Access" tone="warning" title="Controlled sharing">
+      Trusted contacts may be given controlled access when it matters. That
+      access should be explicit, bounded, and separate from emergency dispatch
+      or automatic response.
     </ClaimCard>
   </div>
 
-  <PageSection title="Why server-side preservation matters">
-    <p class="max-w-3xl text-sm leading-6 text-proofline-text-secondary">
-      A phone-only encrypted recording can disappear with the phone. Proofline’s
-      long-term model is to preserve encrypted chunks outside the device while
-      keeping raw media keys, plaintext, and decryption behavior out of the
-      default backend path. Future production key custody is expected to avoid
-      relying on the phone as the only place usable keys exist.
-    </p>
+  <PageSection title="What it is not">
+    <ul
+      class="grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
+    >
+      <li>Proofline is not production-ready.</li>
+      <li>Proofline is not emergency dispatch.</li>
+      <li>Proofline does not guarantee real-time review or response.</li>
+      <li>
+        Proofline does not replace calling emergency services when immediate
+        help is needed.
+      </li>
+      <li>
+        Production iOS and Android capture clients are not available today.
+      </li>
+      <li>
+        Trusted-contact notifications, live context sharing, hosted accounts,
+        billing, and decryption workflows are not production features today.
+      </li>
+    </ul>
   </PageSection>
 
   <SourceList sources={sources} />

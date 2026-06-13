@@ -2,34 +2,14 @@
 import ClaimCard from "../components/ClaimCard.astro";
 import Icon from "../components/Icon.astro";
 import SourceLink from "../components/SourceLink.astro";
-import SourceList from "../components/SourceList.astro";
 import StatusBadge from "../components/StatusBadge.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { site } from "../../site.config.mjs";
-
-const sources = [
-  {
-    label: "Organization profile",
-    href: "https://github.com/open-proofline/.github/blob/main/profile/README.md",
-  },
-  {
-    label: "Server README",
-    href: "https://github.com/open-proofline/server/blob/develop/README.md",
-  },
-  {
-    label: "Web-client README",
-    href: "https://github.com/open-proofline/web-client/blob/develop/README.md",
-  },
-  {
-    label: "Server security policy",
-    href: "https://github.com/open-proofline/server/blob/develop/SECURITY.md",
-  },
-];
 ---
 
 <BaseLayout
   title="Proofline"
-  description="Experimental encrypted incident-capture infrastructure. Clients keep decryption control. Proofline is not an emergency service."
+  description="Proofline helps preserve end-to-end encrypted evidence as events unfold, while giving trusted contacts controlled access when it matters."
 >
   <section
     class="relative isolate overflow-hidden border-b border-proofline-border bg-[linear-gradient(135deg,#07030d_0%,#12051f_48%,#241142_100%)]"
@@ -66,7 +46,7 @@ const sources = [
         </p>
         <p class="mt-4 max-w-2xl text-sm leading-6 text-proofline-text-muted">
           Proofline is not production-ready, not emergency dispatch, and not a
-          guaranteed real-time safety system.
+          guaranteed real-time response system.
         </p>
 
         <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-2">
@@ -165,47 +145,47 @@ const sources = [
     <section>
       <div class="max-w-3xl">
         <p class="text-sm font-medium text-proofline-accent-cyan">
-          Current boundaries
+          What to know now
         </p>
         <h2
           class="mt-3 text-2xl font-semibold tracking-normal text-proofline-text sm:text-4xl"
         >
-          Early infrastructure with explicit limits.
+          A small public site for an early project.
         </h2>
       </div>
-      <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        <ClaimCard label="Current" tone="success" title="Experimental backend">
-          The active Go server provides authenticated API routes, encrypted
-          chunk storage, owner and trusted-contact metadata, wrapped-key
-          metadata, quotas, rate limits, and experimental relay primitives.
+      <div class="mt-6 grid gap-4 md:grid-cols-2">
+        <ClaimCard label="Start here" tone="info" title="Plain explanation">
+          Read the About page for what Proofline is being built for, why losing
+          the record can matter, and how trusted-contact access is meant to fit.
+          <p class="mt-3">
+            <SourceLink href="/about/">Read about Proofline</SourceLink>
+          </p>
         </ClaimCard>
-        <ClaimCard label="Current" tone="success" title="Web-client prototype">
-          The React web-client prototype shows account and incident-review
-          surfaces in mock mode or where live API contracts are confirmed.
+        <ClaimCard label="Reality check" tone="warning" title="Current status">
+          Proofline has experimental server and web-client work today. Mobile
+          capture, hosted accounts, notifications, and decryption workflows are
+          not production-ready.
+          <p class="mt-3">
+            <SourceLink href="/status/">Check current status</SourceLink>
+          </p>
         </ClaimCard>
-        <ClaimCard label="Open source" tone="info" title="Source-first project">
-          Current repositories are
-          <SourceLink href={site.repositories.server}>server</SourceLink> and
-          <SourceLink href={site.repositories.webClient}>web-client</SourceLink
-          >. Native clients and protocol work are planned separately.
+        <ClaimCard label="Separate" tone="info" title="Community services">
+          Community services are best-effort public tools operated separately
+          from Proofline's safety, evidence, account, and emergency boundaries.
+          <p class="mt-3">
+            <SourceLink href="/services/">View community services</SourceLink>
+          </p>
         </ClaimCard>
-        <ClaimCard label="Safety" tone="warning" title="No response center">
-          Proofline does not contact emergency services, guarantee real-time
-          review, or replace user and trusted-contact judgment.
-        </ClaimCard>
-        <ClaimCard label="Not yet" tone="danger" title="Production service">
-          Production mobile clients, hosted subscriptions, trusted-contact
-          notifications, browser decryption, key escrow, and playable media
-          export are not implemented.
-        </ClaimCard>
-        <ClaimCard label="Funding" tone="warning" title="No paid access today">
-          There is no company, response center, support department,
-          donation-gated account access, checkout flow, or active paid account
-          creation today.
+        <ClaimCard label="Developers" tone="success" title="Source on GitHub">
+          Detailed implementation notes, security models, repository roles, and
+          contribution work belong in the open-source repositories.
+          <p class="mt-3">
+            <SourceLink href={site.githubOrg}
+              >Open GitHub organization</SourceLink
+            >
+          </p>
         </ClaimCard>
       </div>
     </section>
-
-    <SourceList sources={sources} />
   </div>
 </BaseLayout>

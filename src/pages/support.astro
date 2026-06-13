@@ -15,10 +15,6 @@ const sources = [
     href: "https://github.com/open-proofline/.github/blob/main/profile/README.md#maintainer-and-funding-reality",
   },
   {
-    label: "Open source and self-hosting",
-    href: "/open-source/",
-  },
-  {
     label: "Current status",
     href: "/status/",
   },
@@ -320,6 +316,22 @@ const cryptoDonations = await Promise.all(
     <p class="mt-4 max-w-3xl text-sm leading-6 text-proofline-text-secondary">
       For vulnerabilities or sensitive findings, follow the security guidance
       instead of opening a public issue.
+    </p>
+  </PageSection>
+
+  <PageSection title="Security reports">
+    <p class="max-w-3xl text-sm leading-6 text-proofline-text-secondary">
+      Do not report security vulnerabilities through public GitHub issues. Use
+      the matching repository security policy and keep secrets, tokens, keys,
+      request bodies, uploaded bytes, private deployment details, and user
+      safety data out of public reports.
+    </p>
+    <p class="mt-3 text-sm leading-6 text-proofline-text-secondary">
+      <SourceLink
+        href="https://github.com/open-proofline/website/blob/main/SECURITY.md"
+      >
+        Read the website security policy
+      </SourceLink>
     </p>
   </PageSection>
 

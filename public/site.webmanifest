@@ -1,7 +1,7 @@
 {
   "name": "Proofline",
   "short_name": "Proofline",
-  "description": "Experimental open-source safety and evidence-capture project. Not an emergency service.",
+  "description": "Experimental encrypted incident-capture project. Not an emergency service.",
   "id": "/",
   "start_url": "/",
   "scope": "/",
@@ -18,6 +18,6 @@
     }
   ],
   "theme_color": "#10051F",
-  "background_color": "#1A0C2E",
+  "background_color": "#07030D",
   "display": "standalone"
 }

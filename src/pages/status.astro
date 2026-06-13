@@ -1,8 +1,10 @@
 ---
 import ClaimCard from "../components/ClaimCard.astro";
 import PageSection from "../components/PageSection.astro";
+import SourceLink from "../components/SourceLink.astro";
 import SourceList from "../components/SourceList.astro";
 import ContentLayout from "../layouts/ContentLayout.astro";
+import { site } from "../../site.config.mjs";
 
 const sources = [
   {
@@ -14,20 +16,8 @@ const sources = [
     href: "https://github.com/open-proofline/server/blob/develop/README.md",
   },
   {
-    label: "Server API documentation",
-    href: "https://github.com/open-proofline/server/blob/develop/docs/api.md",
-  },
-  {
     label: "Server security model",
     href: "https://github.com/open-proofline/server/blob/develop/docs/security-model.md",
-  },
-  {
-    label: "Contact key sharing and grants",
-    href: "https://github.com/open-proofline/server/blob/develop/docs/contact-key-sharing-grants.md",
-  },
-  {
-    label: "Regional stream ingress relay",
-    href: "https://github.com/open-proofline/server/blob/develop/docs/regional-stream-ingress-relay.md",
   },
   {
     label: "Web-client README",
@@ -38,177 +28,67 @@ const sources = [
 
 <ContentLayout
   title="Current status"
-  eyebrow="Implemented, partial, planned, and not yet"
-  description="Proofline has experimental server and web-client prototypes. Mobile capture, hosted accounts, notifications, and decryption are not production features."
+  eyebrow="What exists, what is partial, and what is not ready"
+  description="Proofline has experimental server and web-client work today. Production capture clients, hosted accounts, notifications, and decryption workflows are not ready."
+  safetyMode="full"
 >
-  <PageSection title="Implemented today">
-    <ul
-      class="grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
-    >
-      <li>Experimental Go server backend for authenticated main API routes.</li>
-      <li>
-        Experimental React web-client prototype for account and incident review.
-      </li>
-      <li>
-        Local username/password accounts, opaque server-side sessions, and
-        optional browser cookie-session support with CSRF checks and
-        exact-origin CORS for future web-client use.
-      </li>
-      <li>
-        Public registration is disabled by default. Open self-registration only
-        works when a deployment explicitly enables SMTP-backed email
-        verification.
-      </li>
-      <li>
-        Email challenge, TOTP, and disabled-by-default WebAuthn/FIDO2
-        second-factor setup for account gating.
-      </li>
-      <li>
-        Private admin listener and private admin web surface with admin
-        second-factor gates and private-admin assisted lost-factor reset.
-      </li>
-      <li>Read-only token-scoped incident viewer routes.</li>
-      <li>
-        Encrypted chunk ingest, immutable storage, and ciphertext hash checks.
-      </li>
-      <li>
-        SQLite/local storage defaults with optional PostgreSQL, S3-compatible,
-        and Valkey backends.
-      </li>
-      <li>
-        Default local staging quota, account-scoped committed blob quota, and
-        app-level route-class rate limits.
-      </li>
-      <li>
-        Server-side incident metadata, owner-scoped read routes, and
-        deletion/retention workflows.
-      </li>
-      <li>
-        Owner-scoped account/device recipient-key metadata, trusted-contact
-        relationships, contact public-key metadata, sharing grants, and
-        wrapped-key metadata routes.
-      </li>
-      <li>
-        Signed-in trusted-contact wrapped-key metadata reads when an accepted
-        relationship, active key, active grant, and active wrapped-key record
-        all authorize the request.
-      </li>
-      <li>
-        Experimental stream-ingress relay primitives for complete encrypted
-        chunk upload and optimistic encrypted fanout, with core backend
-        confirmation still authoritative.
-      </li>
-    </ul>
-  </PageSection>
-
   <div class="grid gap-4 md:grid-cols-2">
-    <ClaimCard
-      label="Experimental / partial"
-      tone="warning"
-      title="Registration"
-    >
-      Open registration can be enabled only with reviewed server configuration
-      and email verification. Paid registration is a fail-closed placeholder,
-      not billing.
+    <ClaimCard label="Current" tone="success" title="Experimental server">
+      The server can handle authenticated account routes, receive
+      already-encrypted evidence chunks, store metadata, enforce quotas and rate
+      limits, and support private operator workflows.
     </ClaimCard>
-    <ClaimCard
-      label="Experimental / partial"
-      tone="warning"
-      title="Sharing metadata"
-    >
-      Contact keys, trusted-contact relationships, sharing grants, and
-      wrapped-key records exist as authenticated API metadata. They do not add
-      trusted-contact incident review, notifications, browser decryption,
-      backend decryption, production key custody, or key escrow.
+    <ClaimCard label="Current" tone="success" title="Web-client prototype">
+      The web client is an experimental account and incident-review prototype.
+      It is not a recording client, mobile app, public admin dashboard, or
+      production safety workflow.
     </ClaimCard>
-    <ClaimCard
-      label="Experimental / partial"
-      tone="warning"
-      title="Live API testing"
-    >
-      The web client can model account and incident review surfaces and uses
-      live backend routes only where the client contract is confirmed. It is not
-      a recording client, public admin dashboard, or production safety workflow.
+    <ClaimCard label="Partial" tone="warning" title="Trusted-contact metadata">
+      Trusted-contact relationships, sharing grants, and wrapped-key metadata
+      exist as authenticated backend data. They do not yet add production
+      trusted-contact review, notification delivery, or decryption.
     </ClaimCard>
-    <ClaimCard
-      label="Experimental / partial"
-      tone="warning"
-      title="Cluster backends"
-    >
-      PostgreSQL, S3-compatible storage, and Valkey are optional implemented
-      backends. They do not make Proofline public-production-ready by
-      themselves.
+    <ClaimCard label="Partial" tone="warning" title="Deployment hardening">
+      Optional PostgreSQL, S3-compatible storage, Valkey coordination, and relay
+      primitives exist, but they do not make Proofline public-production
+      infrastructure by themselves.
     </ClaimCard>
-    <ClaimCard
-      label="Experimental / partial"
-      tone="warning"
-      title="Stream-ingress relay"
-    >
-      Relay upload and fanout primitives exist for complete encrypted chunks.
-      Relay replay, metrics, production service-identity rotation, durable relay
-      storage, and production deployment hardening are not implemented.
+    <ClaimCard label="Planned" tone="info" title="Product direction">
+      Native capture clients, location and context capture, trusted-contact
+      review, hosted accounts, billing, and stronger upload behavior are future
+      work.
+    </ClaimCard>
+    <ClaimCard label="Not ready" tone="danger" title="Emergency reliance">
+      There is no emergency-services integration, dispatch, staffed monitoring,
+      guaranteed real-time response, or production mobile recording workflow.
     </ClaimCard>
   </div>
 
-  <PageSection title="Planned future work">
+  <PageSection title="Not implemented today">
     <ul
       class="grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
     >
-      <li>Native iOS and Android recording clients.</li>
-      <li>GPS/location capture and live context sharing where available.</li>
+      <li>Production iOS or Android capture clients.</li>
+      <li>Trusted-contact SMS, email, push, or Messenger notifications.</li>
+      <li>Live location/context sharing as a production feature.</li>
+      <li>Browser, backend, or trusted-contact decryption workflows.</li>
+      <li>Raw server-held media keys, key escrow, or break-glass access.</li>
       <li>
-        Production-ready regional ingest, relay replay, resumable or partial
-        upload protocols, and stronger client retry behavior.
+        Hosted-account billing, checkout, or active paid account creation.
       </li>
-      <li>SMS, email, push, or other trusted-contact notification delivery.</li>
-      <li>
-        Production trusted-contact UX and grant-aware incident review workflows.
-      </li>
-      <li>
-        Hosted accounts, subscriptions, billing, abuse controls, and support
-        operations.
-      </li>
-      <li>
-        Shared protocol specs, encryption envelopes, manifests, and conformance
-        tests.
-      </li>
-      <li>
-        Reviewed browser/client-side decryption or other trusted decrypt path.
-      </li>
+      <li>Playable media export or legal-submission workflow.</li>
+      <li>Public production deployment hardening for broad API exposure.</li>
     </ul>
   </PageSection>
 
-  <div class="grid gap-4 md:grid-cols-2">
-    <ClaimCard
-      label="Not yet"
-      tone="danger"
-      title="No production emergency workflow"
-    >
-      No emergency-services integration, dispatch, guaranteed real-time review,
-      rescue workflow, or emergency response center exists.
-    </ClaimCard>
-    <ClaimCard
-      label="Not yet"
-      tone="danger"
-      title="No production decryption path"
-    >
-      No browser decryption, backend decryption, trusted-contact decryption, raw
-      server-held media keys, key escrow, or break-glass key access is
-      implemented.
-    </ClaimCard>
-    <ClaimCard label="Not yet" tone="danger" title="No mobile capture apps">
-      There is no production iOS app, Android app, or platform-specific
-      recording client.
-    </ClaimCard>
-    <ClaimCard
-      label="Not yet"
-      tone="danger"
-      title="No hosted-account payment system"
-    >
-      There are no checkout sessions, subscriptions, billing webhooks,
-      payment-gated account access, or active paid account creation.
-    </ClaimCard>
-  </div>
+  <PageSection title="Where detailed docs live">
+    <p class="max-w-3xl text-sm leading-6 text-proofline-text-secondary">
+      The public website is intentionally short. Developers and reviewers should
+      use the GitHub repositories for implementation details, deployment
+      boundaries, security models, and roadmap planning:
+      <SourceLink href={site.githubOrg}>open-proofline on GitHub</SourceLink>.
+    </p>
+  </PageSection>
 
   <SourceList sources={sources} />
 </ContentLayout>
