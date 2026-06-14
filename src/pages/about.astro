@@ -3,11 +3,12 @@ import ClaimCard from "../components/ClaimCard.astro";
 import PageSection from "../components/PageSection.astro";
 import SourceList from "../components/SourceList.astro";
 import ContentLayout from "../layouts/ContentLayout.astro";
+import { site } from "../../site.config.mjs";
 
 const sources = [
   {
     label: "Organization profile",
-    href: "https://github.com/open-proofline/.github/blob/main/profile/README.md",
+    href: site.githubOrg,
   },
   {
     label: "Incident capture modes",
