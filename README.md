@@ -111,7 +111,7 @@ The website may explain:
 - Proofline's public project framing
 - current server and web-client status
 - planned iOS, Android, and protocol repositories
-- self-hosting and future hosted-account direction
+- self-hosting and future official hosted-account cost-recovery direction
 - safety and security boundaries
 - source repository links
 

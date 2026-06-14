@@ -99,8 +99,14 @@ const cryptoDonations = await Promise.all(
         backups, maintenance, and release work.
       </p>
       <p class="mt-3">
-        Donations are separate from future hosted-account billing,
-        subscriptions, or payment-gated product access.
+        Donations are separate from any future official hosted-server
+        cost-recovery billing, subscriptions, or payment-gated account access.
+        Future billing is intended to recover hosting and maintenance costs, not
+        to turn Proofline into a profit-maximizing SaaS product.
+      </p>
+      <p class="mt-3">
+        Card donations are planned but not available yet. For now, Proofline
+        accepts cryptocurrency donations only.
       </p>
     </div>
   </PageSection>
@@ -173,10 +179,6 @@ const cryptoDonations = await Promise.all(
           says a legally reviewed structure exists.
         </li>
       </ul>
-      <p class="mt-3 text-proofline-text-muted">
-        Card donations are not available yet. There is no payment button or
-        checkout link on this page.
-      </p>
     </div>
     {
       cryptoDonations.map((donation) => (
