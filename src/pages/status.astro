@@ -28,56 +28,46 @@ const sources = [
 
 <ContentLayout
   title="Current status"
-  eyebrow="What exists, what is partial, and what is not ready"
-  description="Proofline has experimental server and web-client work today. Production capture clients, hosted accounts, notifications, and decryption workflows are not ready."
-  safetyMode="full"
+  eyebrow="Reality check"
+  description="Proofline has an experimental server and web-client prototype today. Native capture clients, trusted-contact review, notifications, hosted accounts, and decryption workflows are not ready today."
 >
   <div class="grid gap-4 md:grid-cols-2">
     <ClaimCard label="Current" tone="success" title="Experimental server">
-      The server can handle authenticated account routes, receive
-      already-encrypted evidence chunks, store metadata, enforce quotas and rate
-      limits, and support private operator workflows.
+      An experimental server exists today. It can receive already-encrypted
+      uploads and keep the records needed to organize them, but it is not broad
+      public-production infrastructure.
     </ClaimCard>
     <ClaimCard label="Current" tone="success" title="Web-client prototype">
-      The web client is an experimental account and incident-review prototype.
-      It is not a recording client, mobile app, public admin dashboard, or
-      production safety workflow.
+      An experimental web-client prototype exists for account and
+      incident-review flows. It is not a recording client, mobile app, public
+      admin dashboard, or production safety workflow.
     </ClaimCard>
-    <ClaimCard label="Partial" tone="warning" title="Trusted-contact metadata">
-      Trusted-contact relationships, sharing grants, and wrapped-key metadata
-      exist as authenticated backend data. They do not yet add production
-      trusted-contact review, notification delivery, or decryption.
-    </ClaimCard>
-    <ClaimCard label="Partial" tone="warning" title="Deployment hardening">
-      Optional PostgreSQL, S3-compatible storage, Valkey coordination, and relay
-      primitives exist, but they do not make Proofline public-production
-      infrastructure by themselves.
+    <ClaimCard label="Partial" tone="warning" title="Trusted-contact records">
+      Trusted-contact relationship, sharing, and wrapped-key records exist in
+      the backend. They do not yet provide trusted-contact review screens,
+      notifications, or decryption.
     </ClaimCard>
     <ClaimCard label="Planned" tone="info" title="Product direction">
       Native capture clients, location and context capture, trusted-contact
-      review, hosted accounts, billing, and stronger upload behavior are future
-      work.
+      review, future hosted accounts, billing, and stronger upload behavior are
+      future work.
     </ClaimCard>
     <ClaimCard label="Not ready" tone="danger" title="Emergency reliance">
-      There is no emergency-services integration, dispatch, staffed monitoring,
-      guaranteed real-time response, or production mobile recording workflow.
+      Proofline is experimental, not an emergency service, and not a guaranteed
+      real-time response system.
     </ClaimCard>
   </div>
 
-  <PageSection title="Not implemented today">
+  <PageSection title="Not ready today">
     <ul
       class="grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
     >
+      <li>Emergency reliance or guaranteed real-time response.</li>
       <li>Production iOS or Android capture clients.</li>
-      <li>Trusted-contact SMS, email, push, or Messenger notifications.</li>
-      <li>Live location/context sharing as a production feature.</li>
+      <li>Trusted-contact notifications or production live context sharing.</li>
       <li>Browser, backend, or trusted-contact decryption workflows.</li>
-      <li>Raw server-held media keys, key escrow, or break-glass access.</li>
-      <li>
-        Hosted-account billing, checkout, or active paid account creation.
-      </li>
+      <li>Hosted accounts, billing, or payment-gated access.</li>
       <li>Playable media export or legal-submission workflow.</li>
-      <li>Public production deployment hardening for broad API exposure.</li>
     </ul>
   </PageSection>
 

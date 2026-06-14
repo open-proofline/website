@@ -1,5 +1,4 @@
 ---
-import ClaimCard from "../components/ClaimCard.astro";
 import PageSection from "../components/PageSection.astro";
 import Icon from "../components/Icon.astro";
 import SourceLink from "../components/SourceLink.astro";
@@ -90,36 +89,19 @@ const cryptoDonations = await Promise.all(
 <ContentLayout
   title="Support Proofline"
   eyebrow="Contribute, review, and help cover project costs"
-  description="Support helps keep the maintainer-led open-source project moving. Donations do not make Proofline an emergency service or production emergency infrastructure."
+  description="Support helps keep the maintainer-led open-source project moving. Donations do not change Proofline's experimental status."
 >
   <PageSection title="Donations">
-    <div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
-      <div class="text-sm leading-6 text-proofline-text-secondary">
-        <p>
-          Donations are optional and help with maintenance and cost recovery.
-          They do not create accounts, unlock features, provide support
-          priority, or provide emergency assistance.
-        </p>
-        <p class="mt-3">
-          Future hosted services may have database, object storage, email
-          delivery, monitoring, backup, maintenance, and release costs.
-          Donations are separate from future hosted-account billing,
-          subscriptions, or payment-gated product access.
-        </p>
-      </div>
-      <div
-        class="rounded-lg border border-proofline-border bg-proofline-bg-deep/45 p-4"
-      >
-        <StatusBadge tone="warning">Not available yet</StatusBadge>
-        <h3 class="mt-4 text-base font-semibold text-proofline-text">
-          Card donations
-        </h3>
-        <p class="mt-2 text-sm leading-6 text-proofline-text-secondary">
-          Card donations are not available yet. There is no payment button,
-          checkout link, payment-gated account access, or active paid account
-          creation on this page.
-        </p>
-      </div>
+    <div class="max-w-3xl text-sm leading-6 text-proofline-text-secondary">
+      <p>
+        Donations are optional and help with maintainer time, development,
+        documentation, testing, security-conscious review, hosting, monitoring,
+        backups, maintenance, and release work.
+      </p>
+      <p class="mt-3">
+        Donations are separate from future hosted-account billing,
+        subscriptions, or payment-gated product access.
+      </p>
     </div>
   </PageSection>
 
@@ -191,6 +173,10 @@ const cryptoDonations = await Promise.all(
           says a legally reviewed structure exists.
         </li>
       </ul>
+      <p class="mt-3 text-proofline-text-muted">
+        Card donations are not available yet. There is no payment button or
+        checkout link on this page.
+      </p>
     </div>
     {
       cryptoDonations.map((donation) => (
@@ -263,45 +249,25 @@ const cryptoDonations = await Promise.all(
     }
   </PageSection>
 
-  <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-    <ClaimCard label="Contribute" tone="success" title="Help in public repos">
+  <PageSection title="Other ways to help">
+    <p class="max-w-3xl text-sm leading-6 text-proofline-text-secondary">
       Focused issues, documentation fixes, small pull requests, testing
-      feedback, and security-conscious review are welcome.
-    </ClaimCard>
-    <ClaimCard label="Funding" tone="info" title="Help cover upkeep">
-      Optional donations help with development, documentation, testing, security
-      review, hosting, monitoring, backups, maintenance, and release work.
-    </ClaimCard>
-    <ClaimCard label="Safety" tone="warning" title="Not emergency support">
-      Support does not provide emergency assistance, real-time review, hosted
-      account access, or support priority.
-    </ClaimCard>
-  </div>
-
-  <PageSection title="Ways to help">
+      feedback, and security-conscious review are welcome in the public
+      repositories.
+    </p>
     <ul
-      class="grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
+      class="mt-4 grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
     >
       <li>Contribute focused issues and small pull requests on GitHub.</li>
       <li>Improve documentation and point out unclear public wording.</li>
       <li>Test local builds and report reproducible setup problems.</li>
       <li>Review issues and pull requests with security boundaries in mind.</li>
       <li>
-        Report problems responsibly, and do not report vulnerabilities publicly.
-      </li>
-      <li>
         Help keep current, planned, and not-implemented behavior clearly
         separated.
       </li>
+      <li>Report vulnerabilities privately, not through public issues.</li>
     </ul>
-  </PageSection>
-
-  <PageSection title="Contribute on GitHub">
-    <p class="max-w-3xl text-sm leading-6 text-proofline-text-secondary">
-      Proofline is an experimental open-source safety and evidence-capture
-      project. It is maintainer-led, not operated as a for-profit business, and
-      not production-ready emergency infrastructure.
-    </p>
     <ul
       class="mt-4 grid gap-x-5 gap-y-2 text-sm leading-6 text-proofline-text-secondary sm:grid-cols-2"
     >
@@ -313,10 +279,6 @@ const cryptoDonations = await Promise.all(
         ))
       }
     </ul>
-    <p class="mt-4 max-w-3xl text-sm leading-6 text-proofline-text-secondary">
-      For vulnerabilities or sensitive findings, follow the security guidance
-      instead of opening a public issue.
-    </p>
   </PageSection>
 
   <PageSection title="Security reports">
@@ -335,23 +297,13 @@ const cryptoDonations = await Promise.all(
     </p>
   </PageSection>
 
-  <PageSection title="Donation boundaries">
-    <ul
-      class="grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
-    >
-      <li>Donations are optional.</li>
-      <li>Donations do not provide hosted account access.</li>
-      <li>Donations do not provide support priority.</li>
-      <li>Donations do not provide emergency assistance.</li>
-      <li>
-        Proofline is not an emergency service, emergency dispatch system, or
-        guaranteed real-time safety system.
-      </li>
-      <li>
-        Users and trusted contacts remain responsible for contacting emergency
-        services when immediate help is needed.
-      </li>
-    </ul>
+  <PageSection title="Support boundaries">
+    <p class="max-w-3xl text-sm leading-6 text-proofline-text-secondary">
+      Donations and contributions do not create accounts, unlock features,
+      provide support priority, or provide emergency assistance. Proofline is
+      experimental, not an emergency service, and not a guaranteed real-time
+      response system.
+    </p>
   </PageSection>
 
   <SourceList sources={sources} />

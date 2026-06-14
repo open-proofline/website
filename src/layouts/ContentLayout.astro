@@ -10,15 +10,20 @@ type Props = {
   safetyMode?: "full" | "compact" | "none";
 };
 
-const { title, description, eyebrow, safetyMode = "compact" } = Astro.props;
+const { title, description, eyebrow, safetyMode = "none" } = Astro.props;
+const hasSafetyPanel = safetyMode !== "none";
 ---
 
 <BaseLayout title={title} description={description}>
-  <div class="mx-auto grid max-w-6xl gap-6 px-4 py-6 sm:px-6 lg:py-10">
+  <div class="mx-auto grid max-w-6xl gap-8 px-4 py-6 sm:px-6 lg:py-10">
     <section
       class="overflow-hidden rounded-lg border border-proofline-border bg-proofline-surface shadow-lg shadow-proofline-bg-deep/30"
     >
-      <div class="grid gap-0 lg:grid-cols-[minmax(0,1fr)_360px]">
+      <div
+        class={`grid gap-0 ${
+          hasSafetyPanel ? "lg:grid-cols-[minmax(0,1fr)_360px]" : ""
+        }`}
+      >
         <header class="relative min-w-0 p-6 sm:p-8 lg:p-10">
           <img
             src="/proofline-p-mark.svg"
@@ -55,12 +60,14 @@ const { title, description, eyebrow, safetyMode = "compact" } = Astro.props;
             }
           </div>
         </header>
-        <div
-          class="border-t border-proofline-border bg-proofline-bg-deep/45 p-4 sm:p-6 lg:border-l lg:border-t-0"
-        >
-          {safetyMode === "full" ? <SafetyNotice compact /> : null}
-          {safetyMode === "compact" ? <SafetyLinkNote /> : null}
-        </div>
+        {
+          hasSafetyPanel ? (
+            <div class="border-t border-proofline-border bg-proofline-bg-deep/45 p-4 sm:p-6 lg:border-l lg:border-t-0">
+              {safetyMode === "full" ? <SafetyNotice compact /> : null}
+              {safetyMode === "compact" ? <SafetyLinkNote /> : null}
+            </div>
+          ) : null
+        }
       </div>
     </section>
     <slot />

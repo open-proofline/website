@@ -13,7 +13,7 @@ const { label, title, tone = "info" } = Astro.props;
 ---
 
 <article
-  class="flex min-h-full min-w-0 flex-col rounded-lg border border-proofline-border bg-proofline-surface-elevated p-4 shadow-lg shadow-proofline-bg-deep/10 sm:p-5"
+  class="flex min-h-full scroll-mt-28 flex-col rounded-lg border border-proofline-border bg-proofline-surface-elevated p-4 shadow-lg shadow-proofline-bg-deep/10 sm:p-5 lg:scroll-mt-32"
 >
   <StatusBadge tone={tone}>{label}</StatusBadge>
   <h3

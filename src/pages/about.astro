@@ -56,9 +56,9 @@ const sources = [
       sharing.
     </ClaimCard>
     <ClaimCard label="Evidence" tone="info" title="Context where available">
-      Future clients may preserve audio, video, location, timestamps, notes,
-      check-ins, photos, and supporting context where platform permissions and
-      user choices allow.
+      Future clients may capture and preserve audio, video, location,
+      timestamps, notes, check-ins, photos, and supporting context where
+      platform permissions and user choices allow.
     </ClaimCard>
     <ClaimCard label="Privacy" tone="success" title="Encrypted by design">
       Sensitive material should be encrypted before Proofline receives it.
@@ -73,24 +73,17 @@ const sources = [
   </div>
 
   <PageSection title="What it is not">
-    <ul
-      class="grid gap-3 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
-    >
-      <li>Proofline is not production-ready.</li>
-      <li>Proofline is not emergency dispatch.</li>
-      <li>Proofline does not guarantee real-time review or response.</li>
-      <li>
-        Proofline does not replace calling emergency services when immediate
-        help is needed.
-      </li>
-      <li>
-        Production iOS and Android capture clients are not available today.
-      </li>
-      <li>
-        Trusted-contact notifications, live context sharing, hosted accounts,
-        billing, and decryption workflows are not production features today.
-      </li>
-    </ul>
+    <div class="grid gap-3 text-sm leading-6 text-proofline-text-secondary">
+      <p>
+        Proofline is experimental, not an emergency service, and not a
+        guaranteed real-time response system.
+      </p>
+      <p>
+        Production mobile capture, trusted-contact notifications, hosted
+        accounts, billing, live context sharing, and decryption workflows are
+        not production features today.
+      </p>
+    </div>
   </PageSection>
 
   <SourceList sources={sources} />

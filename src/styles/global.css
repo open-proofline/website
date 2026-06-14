@@ -45,7 +45,13 @@
 }
 
 html {
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 7rem;
+}
+
+@media (min-width: 80rem) {
+  html {
+    scroll-padding-top: 7.5rem;
+  }
 }
 
 body {
