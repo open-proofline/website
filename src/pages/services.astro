@@ -7,6 +7,7 @@ import SourceList from "../components/SourceList.astro";
 import ContentLayout from "../layouts/ContentLayout.astro";
 
 const redlibUrl = "https://redlib.proofline.live";
+const statusPageUrl = "https://status.proofline.live";
 
 const sources = [
   {
@@ -33,6 +34,24 @@ const sources = [
   eyebrow="Active lightweight open-source tools"
   description="Community services are best-effort public tools operated separately from Proofline's safety, evidence, account, and emergency boundaries."
 >
+  <a
+    slot="heroActions"
+    href={statusPageUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-proofline-border-strong bg-proofline-primary px-4 py-3 text-sm font-semibold text-proofline-primary-text shadow-lg shadow-proofline-bg-deep/30 transition-colors hover:bg-proofline-primary-hover focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
+  >
+    <Icon name="arrow-up-right" class="size-4" />
+    <span>Check service status</span>
+  </a>
+  <p
+    slot="heroActions"
+    class="basis-full text-sm leading-6 text-proofline-text-muted"
+  >
+    Live service status and planned maintenance notices are available on the
+    Proofline status page.
+  </p>
+
   <PageSection title="Active services">
     <div class="grid gap-4 md:grid-cols-2">
       <ClaimCard label="Active" tone="success" title="Redlib">
@@ -48,7 +67,7 @@ const sources = [
           Redlib may present a brief anti-abuse challenge to protect service
           availability and reduce automated scraping.
         </p>
-        <p class="mt-3">
+        <div class="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
           <a
             href={redlibUrl}
             target="_blank"
@@ -58,7 +77,16 @@ const sources = [
             <Icon name="globe" class="size-4" />
             <span>Open Redlib</span>
           </a>
-        </p>
+          <a
+            href={statusPageUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-proofline-border-strong bg-proofline-surface-strong/90 px-4 py-2.5 text-sm font-semibold text-proofline-text shadow-lg shadow-proofline-bg-deep/30 transition-colors hover:bg-proofline-border focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
+          >
+            <Icon name="arrow-up-right" class="size-4" />
+            <span>Check status</span>
+          </a>
+        </div>
         <p class="mt-4">
           <SourceLink href="https://github.com/open-proofline/redlib">
             Open Proofline Redlib fork
