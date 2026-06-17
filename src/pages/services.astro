@@ -1,11 +1,18 @@
 ---
 import ClaimCard from "../components/ClaimCard.astro";
+import Icon from "../components/Icon.astro";
 import PageSection from "../components/PageSection.astro";
 import SourceLink from "../components/SourceLink.astro";
 import SourceList from "../components/SourceList.astro";
 import ContentLayout from "../layouts/ContentLayout.astro";
 
+const redlibUrl = "https://redlib.proofline.live";
+
 const sources = [
+  {
+    label: "Proofline Redlib fork",
+    href: "https://github.com/open-proofline/redlib",
+  },
   {
     label: "Redlib upstream repository",
     href: "https://github.com/redlib-org/redlib",
@@ -23,23 +30,41 @@ const sources = [
 
 <ContentLayout
   title="Community services"
-  eyebrow="Planned lightweight open-source tools"
+  eyebrow="Active lightweight open-source tools"
   description="Community services are best-effort public tools operated separately from Proofline's safety, evidence, account, and emergency boundaries."
 >
-  <PageSection title="Planned services">
+  <PageSection title="Active services">
     <div class="grid gap-4 md:grid-cols-2">
-      <ClaimCard label="Planned" tone="info" title="Redlib">
+      <ClaimCard label="Active" tone="success" title="Redlib">
         <p>
-          Redlib is planned as a separate best-effort community service. It is a
-          lightweight private front end for browsing Reddit, not part of
-          Proofline's safety model.
+          A privacy-friendly Reddit frontend operated as a Proofline community
+          service.
         </p>
         <p class="mt-3">
-          The upstream Redlib project describes itself as an alternative private
-          front end to Reddit focused on lighter, more private browsing.
+          Hosted on Proofline-operated dedicated hardware in Victoria,
+          Australia.
         </p>
-        <p class="mt-3">Public URL will be listed here when available.</p>
         <p class="mt-3">
+          Redlib may present a brief anti-abuse challenge to protect service
+          availability and reduce automated scraping.
+        </p>
+        <p class="mt-3">
+          <a
+            href={redlibUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-proofline-border-strong bg-proofline-primary px-4 py-2.5 text-sm font-semibold text-proofline-primary-text shadow-lg shadow-proofline-bg-deep/30 transition-colors hover:bg-proofline-primary-hover focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
+          >
+            <Icon name="globe" class="size-4" />
+            <span>Open Redlib</span>
+          </a>
+        </p>
+        <p class="mt-4">
+          <SourceLink href="https://github.com/open-proofline/redlib">
+            Open Proofline Redlib fork
+          </SourceLink>
+        </p>
+        <p class="mt-2">
           <SourceLink href="https://github.com/redlib-org/redlib">
             Open Redlib upstream repository
           </SourceLink>
@@ -51,11 +76,17 @@ const sources = [
   <PageSection title="Service boundaries">
     <div class="grid gap-3 text-sm leading-6 text-proofline-text-secondary">
       <p>
-        Community services are separate from Proofline's incident-capture,
-        evidence-preservation, account, and safety-context systems.
+        Community services are operated separately from Proofline Server and are
+        not part of Proofline's safety, evidence, account, or emergency
+        workflows.
+      </p>
+      <p>
+        Proofline community services are provided on a best-effort basis. They
+        may be updated, restarted, rate-limited, or temporarily unavailable
+        during maintenance or abuse mitigation.
       </p>
       <ul class="grid gap-2 md:grid-cols-3">
-        <li>They are best-effort and may change, pause, or move.</li>
+        <li>They do not guarantee uptime, availability, or an SLA.</li>
         <li>They are not emergency infrastructure or support channels.</li>
         <li>
           They do not store Proofline evidence, account data, or safety records.

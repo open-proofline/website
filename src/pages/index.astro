@@ -108,13 +108,26 @@ import { site } from "../../site.config.mjs";
         <p
           class="mt-4 max-w-3xl text-base leading-7 text-proofline-text-secondary sm:text-lg"
         >
-          Community services are planned best-effort open-source tools operated
+          Community services are best-effort open-source tools operated
           separately from Proofline Server. They are not part of Proofline's
           safety, evidence, account, or emergency workflows.
         </p>
-        <p class="mt-5">
-          <SourceLink href="/services/">Review community services</SourceLink>
+        <p class="mt-5 text-base font-semibold leading-7 text-proofline-text">
+          Redlib is now live as the first Proofline Community Service.
         </p>
+        <p class="mt-2 max-w-3xl text-sm leading-6 text-proofline-text-muted">
+          A privacy-friendly Reddit frontend, hosted on Proofline-operated
+          dedicated hardware in Victoria, Australia.
+        </p>
+        <div class="mt-6">
+          <a
+            href="/services/"
+            class="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-proofline-border-strong bg-proofline-primary px-4 py-3 text-sm font-semibold text-proofline-primary-text shadow-lg shadow-proofline-bg-deep/30 transition-colors hover:bg-proofline-primary-hover focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
+          >
+            <Icon name="globe" class="size-4" />
+            <span>View community services</span>
+          </a>
+        </div>
       </div>
       <div
         class="mt-6 grid gap-4 text-sm leading-6 text-proofline-text-secondary md:grid-cols-2"
@@ -124,8 +137,8 @@ import { site } from "../../site.config.mjs";
         >
           <p class="font-semibold text-proofline-text">Best effort</p>
           <p class="mt-1">
-            Services may change, pause, move, or go offline while the project is
-            early.
+            Services may be updated, restarted, rate-limited, or temporarily
+            unavailable during maintenance or abuse mitigation.
           </p>
         </div>
         <div
@@ -133,8 +146,8 @@ import { site } from "../../site.config.mjs";
         >
           <p class="font-semibold text-proofline-text">Separate system</p>
           <p class="mt-1">
-            They do not store Proofline evidence, encrypted chunks, account
-            data, or safety-context records.
+            They are separate from Proofline Server and do not store Proofline
+            evidence, account data, or safety-context records.
           </p>
         </div>
       </div>
