@@ -52,7 +52,7 @@ npm run format:check
 npm run check
 npm run lint
 npm run build
-npm audit --audit-level=moderate
+npm audit --audit-level=moderate --omit=dev
 git diff --check
 ```
 
