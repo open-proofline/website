@@ -7,6 +7,8 @@ import SourceList from "../components/SourceList.astro";
 import ContentLayout from "../layouts/ContentLayout.astro";
 
 const redlibUrl = "https://redlib.proofline.live";
+const redlibOnionUrl =
+  "http://2l4dpw6we2w3dhqwuecdgj3rxn2cyn7vuwjuyi323fugbp5hafvz2xid.onion";
 const statusPageUrl = "https://status.proofline.live";
 
 const sources = [
@@ -85,6 +87,28 @@ const sources = [
           >
             <Icon name="arrow-up-right" class="size-4" />
             <span>Check status</span>
+          </a>
+        </div>
+        <div
+          class="mt-4 rounded-md border border-proofline-border bg-proofline-bg-deep/45 p-3 text-sm leading-6 text-proofline-text-secondary"
+        >
+          <p class="font-semibold text-proofline-text">
+            Optional Tor onion access
+          </p>
+          <p class="mt-2">
+            Tor onion access is also available for very privacy-conscious users
+            who want to avoid the clearnet/Cloudflare delivery path. This is an
+            optional best-effort access method, not an anonymity guarantee. Use
+            Tor Browser correctly and avoid identifying yourself.
+          </p>
+          <a
+            href={redlibOnionUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-3 inline-flex max-w-full items-center gap-2 font-mono text-xs text-proofline-accent-cyan underline decoration-proofline-accent-cyan/40 underline-offset-4 transition-colors hover:text-proofline-text focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
+          >
+            <Icon name="lock" class="size-4 shrink-0" />
+            <span class="break-all">{redlibOnionUrl}</span>
           </a>
         </div>
         <p class="mt-4">
