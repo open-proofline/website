@@ -27,6 +27,13 @@ small copy correction.
 - text does not overflow buttons, cards, or nav items
 - mobile and desktop widths do not horizontally scroll
 - source links remain usable
+- public personality or dry humour does not make headings, labels, warnings, or
+  calls to action harder to understand
+- witty copy does not create long unbreakable text, cramped cards, confusing
+  table cells, or screen-reader-unfriendly labels
+- emergency warnings, security reporting instructions, crypto transaction
+  warnings, encryption/decryption/key-custody claims, and not-ready capability
+  lists remain plain enough for quick scanning
 
 ## Validation
 

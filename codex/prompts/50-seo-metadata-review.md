@@ -31,6 +31,14 @@ Do **not** add analytics, tracking scripts, remote fonts, or deployment secrets.
 - robots output
 - no temporary preview URL treated as canonical without confirmation
 - no overclaims in metadata descriptions
+- metadata, title, Open Graph, Twitter, manifest, and social-preview text remain
+  mostly plain, concise, and source-of-truth aligned
+- dry humour or personality is not added to metadata where it could confuse
+  search results, social previews, accessibility tooling, or safety/status
+  expectations
+- metadata does not imply production readiness, emergency response, legal
+  reliability, implemented future behavior, decryption, notifications, hosted
+  accounts, billing, or stronger security than source docs support
 
 ## Validation
 

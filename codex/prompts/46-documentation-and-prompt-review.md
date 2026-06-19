@@ -173,6 +173,25 @@ Check website content and public-facing copy:
   clear and not misleading?
 - Are missing pages, missing sections, or duplicated explanations identified?
 
+Check public voice and personality:
+
+- Does public copy follow the current Proofline voice: clear, humane,
+  principled, dryly witty where appropriate, anti-SaaS/anti-capture, and
+  public-good oriented?
+- Do docs and prompts distinguish between sections where personality is useful
+  and safety-critical sections where humour should not be used?
+- Is personality limited to places where it clarifies values, governance,
+  public-good/cooperative alignment, vendor-spam boundaries, community-service
+  separation, donation ethics, or harmless utility/error states?
+- Do emergency boundary warnings, not-ready lists, security reporting,
+  vulnerability handling, encryption/decryption/key-custody claims, crypto
+  transaction warnings, metadata, navigation labels, and source-of-truth
+  implementation claims remain plain and precise?
+- Would reusable prompts prevent future Codex runs from over-sanitising the
+  site into generic SaaS copy or over-applying jokes to safety-critical text?
+- Is the "one sharp line per section" restraint preserved, so the site has
+  character without becoming a manifesto?
+
 Check website source/code where relevant:
 
 - Do route labels, navigation, footer links, page descriptions, and metadata
@@ -377,18 +396,19 @@ Produce a structured report with:
 7. Website content and public-facing copy findings.
 8. Website source/code findings.
 9. Readability and approachability findings.
-10. Navigation, metadata, and link findings.
-11. Accessibility text findings.
-12. Codex prompt findings.
-13. Missing documentation or missing website content gaps.
-14. Safety/security wording findings.
-15. Recommended edits grouped by priority:
+10. Voice/personality consistency findings.
+11. Navigation, metadata, and link findings.
+12. Accessibility text findings.
+13. Codex prompt findings.
+14. Missing documentation or missing website content gaps.
+15. Safety/security wording findings.
+16. Recommended edits grouped by priority:
     - High
     - Medium
     - Low
-16. Suggested follow-up backlog draft titles, if any.
-17. Validation commands recommended or run.
-18. Clear statement whether files were changed.
+17. Suggested follow-up backlog draft titles, if any.
+18. Validation commands recommended or run.
+19. Clear statement whether files were changed.
 
 Findings should include file paths and section/component names where possible.
 If edit mode is used, the report must also summarize exactly what changed.

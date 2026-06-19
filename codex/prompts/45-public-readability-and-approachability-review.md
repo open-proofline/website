@@ -36,6 +36,8 @@ For each concern, distinguish:
 - security, safety, emergency, or production-readiness boundary risk
 - dense, internal, developer-centric, or legalistic wording
 - inconsistent terminology or calls to action
+- voice/personality placement: too strong, too weak, confusing, misplaced, or
+  likely to be misunderstood by public readers
 
 Do not weaken necessary warnings. Do not make Proofline sound more finished,
 more staffed, more operational, more secure, more emergency-ready, or more
@@ -121,6 +123,20 @@ Review whether the website:
   to read
 - avoids duplicate explanations that make the site feel dense or repetitive
 - uses page headings, summaries, and section order to help readers scan
+- has a consistent public voice: clear, humane, principled, lightly witty where
+  appropriate, anti-SaaS/anti-capture, and public-good oriented
+- uses personality where it clarifies governance, vendor-spam boundaries,
+  cooperative/public-good alignment, donation ethics, community-service
+  separation, or harmless utility/error states
+- avoids humour where it could obscure emergency limits, implementation status,
+  security meaning, source-of-truth claims, donation limits, encryption or
+  decryption boundaries, key custody, vulnerability reporting, crypto
+  transaction warnings, or not-ready capability lists
+- keeps navigation labels, metadata, safety warnings, and security instructions
+  plain enough for users who are scanning quickly
+- uses jokes or sharp lines that public readers can understand without internal
+  project context
+- follows the rule that one sharp line per section is usually enough
 
 ## Review-Only Mode
 
@@ -181,16 +197,18 @@ Report:
 2. Whether this was review-only mode or edit mode.
 3. Findings by page or shared component, ordered by priority.
 4. Public-facing approachability findings.
-5. Confusing or overly technical phrases.
-6. Places where current, experimental, planned, future, or not-implemented
+5. Voice/personality findings, including whether humour clarifies values or
+   obscures safety, status, security, or source-of-truth meaning.
+6. Confusing or overly technical phrases.
+7. Places where current, experimental, planned, future, or not-implemented
    behavior could be clearer.
-7. Safety, emergency, production-readiness, or security wording that is too
+8. Safety, emergency, production-readiness, or security wording that is too
    weak, too heavy, or potentially misleading.
-8. Suggested replacement wording for each actionable finding.
-9. Priority for each finding: high, medium, or low.
-10. Whether edits were made.
-11. Validation commands run and their results.
-12. Remaining follow-up, if any.
+9. Suggested replacement wording for each actionable finding.
+10. Priority for each finding: high, medium, or low.
+11. Whether edits were made.
+12. Validation commands run and their results.
+13. Remaining follow-up, if any.
 
 If there are no findings, say that clearly and mention any residual risk or
 areas not covered.

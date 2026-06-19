@@ -36,8 +36,21 @@ details, or user safety data to public docs or issue drafts.
   issue drafts
 - public copy does not encourage unsafe deployment of current `/v1` or admin
   surfaces
+- humour, metaphor, or personality does not weaken security or safety precision
+- emergency, encryption, decryption, key-custody, key-escrow, wrapped-key,
+  vulnerability-reporting, and security-response copy stays plain enough to be
+  actionable under stress
+- dry humour in adjacent public copy does not make security claims sound casual,
+  stronger than implemented, legally reliable, production-ready, or less
+  source-bound than they are
+- vendor-spam, public-good, donation, or community-service personality does not
+  bleed into security reporting instructions, sensitive-data warnings, crypto
+  transaction warnings, or not-ready capability lists
 
 ## Output
 
 List findings with file paths and line numbers. If sensitive, summarize the
 category and recommend private reporting rather than public detail.
+Include any voice/personality finding where wording makes a security, safety,
+source-of-truth, emergency, encryption, decryption, or key-custody claim less
+precise.

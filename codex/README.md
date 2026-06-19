@@ -27,6 +27,19 @@ security review, or endorsement by OpenAI.
 - `80-backlog-scan-issue-drafts.md`: create local backlog issue drafts
 - `85-create-github-issues-from-drafts.md`: prepare issue creation commands from reviewed drafts
 
+## Public Voice Guardrail
+
+Proofline public copy should sound like serious public-interest infrastructure
+with a dry sense of humour. Personality is welcome where it clarifies values,
+cooperative/public-good alignment, anti-capture commitments, vendor-spam
+boundaries, community-service separation, donation ethics, or harmless utility
+pages.
+
+Keep emergency warnings, implementation-status claims, security reporting,
+encryption/decryption/key-custody claims, cryptocurrency transaction warnings,
+navigation labels, metadata, and source-of-truth summaries plain and precise.
+One sharp line per section is usually enough.
+
 ## Standard Validation
 
 ```bash

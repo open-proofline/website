@@ -19,12 +19,16 @@ components as a reusable UI kit.
 ## Requirements
 
 - Keep navigation labels clear and user-facing.
+- Keep navigation labels plain. Do not make navigation text jokey, metaphorical,
+  or dependent on internal project context.
 - Preserve active route state.
 - Keep desktop nav and mobile hamburger menu accessible.
 - Use decorative icons with `aria-hidden="true"`.
 - Keep GitHub and repository links accessible.
 - Avoid horizontal overflow at mobile and desktop widths.
 - Preserve Proofline safety wording and current/future boundaries.
+- If surrounding page copy has more personality, verify that navigation,
+  `aria-label` text, and skip/menu labels remain direct and predictable.
 
 ## Validation
 
