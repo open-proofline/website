@@ -14,8 +14,8 @@ type NavItem = {
 
 const desktopPrimaryLinks: readonly NavItem[] = [
   { href: "/", label: "Home", icon: "home" },
-  { href: "/about/", label: "About", icon: "info" },
   { href: "/status/", label: "Status", icon: "activity" },
+  { href: "/about/", label: "About", icon: "info" },
   { href: "/services/", label: "Community services", icon: "globe" },
 ] as const;
 
@@ -35,8 +35,8 @@ const mobileGroups: readonly { label: string; items: readonly NavItem[] }[] = [
     label: "Main",
     items: [
       { href: "/", label: "Home", icon: "home" },
-      { href: "/about/", label: "About Proofline", icon: "info" },
       { href: "/status/", label: "Current status", icon: "activity" },
+      { href: "/about/", label: "About Proofline", icon: "info" },
       { href: "/services/", label: "Community services", icon: "globe" },
       { href: "/support/", label: "Support Proofline", icon: "heart" },
       {

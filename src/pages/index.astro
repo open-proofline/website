@@ -30,7 +30,8 @@ import { site } from "../../site.config.mjs";
           <StatusBadge tone="danger">Not an emergency service</StatusBadge>
         </div>
         <p class="mt-7 text-sm font-medium text-proofline-accent-cyan">
-          Public-interest privacy and safety infrastructure
+          Experimental public-interest privacy infrastructure, built to stay in
+          public hands
         </p>
         <h1
           class="mt-4 max-w-4xl text-5xl font-semibold leading-none tracking-normal text-proofline-text sm:text-7xl lg:text-[5.5rem]"
@@ -40,9 +41,10 @@ import { site } from "../../site.config.mjs";
         <p
           class="mt-6 max-w-2xl text-lg leading-7 text-proofline-text-secondary sm:text-xl sm:leading-8"
         >
-          Proofline helps preserve end-to-end encrypted evidence as events
-          unfold, while giving trusted contacts controlled access when it
-          matters.
+          Proofline is an experimental open-source project for records that
+          should not disappear just because a phone does. It is being built to
+          preserve encrypted evidence as events unfold, while keeping access
+          explicit, bounded, and user-controlled.
         </p>
         <p class="mt-4 max-w-2xl text-sm leading-6 text-proofline-text-muted">
           Proofline is experimental, not an emergency service, and not a
@@ -161,35 +163,44 @@ import { site } from "../../site.config.mjs";
         <h2
           class="mt-3 text-2xl font-semibold tracking-normal text-proofline-text sm:text-4xl"
         >
-          What to know now.
+          Start with the boring truths.
         </h2>
+        <p
+          class="mt-4 max-w-3xl text-base leading-7 text-proofline-text-secondary"
+        >
+          Prototype status, safety boundaries, and source links, because trust
+          should not require interpretive dance.
+        </p>
       </div>
       <div class="mt-6 grid gap-4 md:grid-cols-2">
         <ClaimCard label="Start here" tone="info" title="Plain explanation">
-          Read the About page for what Proofline is being built for, why losing
-          the record can matter, and how trusted-contact access is meant to fit.
+          Read the About page for what Proofline is being built for, what it
+          refuses to be, and why safety software needs governance that cannot be
+          quietly sold with a nicer logo.
           <p class="mt-3">
             <SourceLink href="/about/">Read about Proofline</SourceLink>
           </p>
         </ClaimCard>
         <ClaimCard label="Reality check" tone="warning" title="Current status">
-          Proofline has experimental server and web-client work today. Mobile
-          capture, official hosted accounts, cost-recovery billing,
-          notifications, and decryption workflows are not ready today.
+          Proofline has experimental server and web-client work today. The
+          status page separates what exists from what is partial, planned, or
+          not ready, because prototype optimism is not a safety feature.
           <p class="mt-3">
             <SourceLink href="/status/">Check current status</SourceLink>
           </p>
         </ClaimCard>
         <ClaimCard label="Separate" tone="info" title="Community services">
-          Community services are best-effort public tools operated separately
-          from Proofline's safety, evidence, account, and emergency boundaries.
+          Community services are useful public tools operated separately from
+          Proofline's safety and evidence system. They are side quests, clearly
+          labelled.
           <p class="mt-3">
             <SourceLink href="/services/">View community services</SourceLink>
           </p>
         </ClaimCard>
         <ClaimCard label="Developers" tone="success" title="Source on GitHub">
-          Detailed implementation notes, security models, repository roles, and
-          contribution work belong in the open-source repositories.
+          Implementation notes, security models, repository roles, and
+          contribution work live in the open-source repositories, where claims
+          can be checked instead of merely admired.
           <p class="mt-3">
             <SourceLink href={site.githubOrg}
               >Open GitHub organization</SourceLink
