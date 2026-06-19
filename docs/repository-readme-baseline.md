@@ -40,21 +40,11 @@ Default layout:
 
 ```md
 <p align="center">
-  <a href="https://github.com/open-proofline/<repo>/actions/workflows/ci.yml">
-    <img alt="CI" src="https://github.com/open-proofline/<repo>/actions/workflows/ci.yml/badge.svg" />
-  </a>
-  <a href="LICENSE">
-    <img alt="License: AGPL-3.0-only" src="https://img.shields.io/badge/license-AGPL--3.0--only-blue.svg" />
-  </a>
-  <a href="#current-status">
-    <img alt="Status: Experimental" src="https://img.shields.io/badge/status-experimental-orange.svg" />
-  </a>
-  <a href="SECURITY.md">
-    <img alt="Security policy" src="https://img.shields.io/badge/security-policy-blue.svg" />
-  </a>
-  <a href="https://proofline.live/support/">
-    <img alt="Support Proofline" src="https://img.shields.io/badge/support-%E2%99%A5%20Proofline-d946ef.svg" />
-  </a>
+  <a href="https://github.com/open-proofline/<repo>/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/open-proofline/<repo>/actions/workflows/ci.yml/badge.svg" /></a>
+  <a href="LICENSE"><img alt="License: AGPL-3.0-only" src="https://img.shields.io/badge/license-AGPL--3.0--only-blue.svg" /></a>
+  <a href="#current-status"><img alt="Status: Experimental" src="https://img.shields.io/badge/status-experimental-orange.svg" /></a>
+  <a href="SECURITY.md"><img alt="Security policy" src="https://img.shields.io/badge/security-policy-blue.svg" /></a>
+  <a href="https://proofline.live/support/"><img alt="Support Proofline" src="https://img.shields.io/badge/support-%E2%99%A5%20Proofline-d946ef.svg" /></a>
 </p>
 ```
 
