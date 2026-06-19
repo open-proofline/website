@@ -50,6 +50,8 @@ Before reporting findings, inspect:
 - `AGENTS.md`
 - `README.md`
 - `SECURITY.md`
+- `docs/governance-and-political-alignment.md`
+- `docs/repository-readme-baseline.md`
 - `codex/README.md`
 - existing files under `codex/prompts/`
 - `../.github/profile/README.md`
@@ -117,6 +119,9 @@ Review whether the website:
   contacts, hosted service direction, source code, licensing, and repositories
 - presents open-source and funding language plainly, without SaaS hype or
   unsupported nonprofit/charity implications
+- presents governance, public-good, cooperative, libertarian socialist,
+  anti-capture, funding, and README-baseline language consistently with the
+  website repo `docs/` source files
 - gives useful calls to action for source code, security reporting,
   self-hosting, and repository links
 - keeps warnings visible enough but not so heavy that every page becomes hard

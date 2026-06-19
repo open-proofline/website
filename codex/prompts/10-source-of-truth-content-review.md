@@ -17,6 +17,8 @@ open-proofline/website
 - `README.md`
 - `AGENTS.md`
 - `SECURITY.md`
+- `docs/governance-and-political-alignment.md`
+- `docs/repository-readme-baseline.md`
 - `../.github/profile/README.md`
 - `../server/README.md`
 - `../server/SECURITY.md`
@@ -38,6 +40,8 @@ open-proofline/website
   hosted-account billing, payment-gated product access, decryption, key escrow,
   raw server-held keys, or playable export is implied
 - source links still point to relevant public docs
+- governance, public-good, cooperative, political-alignment, funding, and
+  reusable README claims align with the website repo `docs/` source documents
 - dry humour, metaphor, or personality does not obscure whether a claim is
   current, partial, planned, not ready, source-backed, or safety-critical
 

@@ -24,6 +24,8 @@ Start with current website source-of-truth files:
 - `AGENTS.md`
 - `SECURITY.md`
 - `CONTRIBUTING.md`, if present
+- `docs/governance-and-political-alignment.md`
+- `docs/repository-readme-baseline.md`
 - `codex/README.md`
 - `codex/prompts/`
 - package, config, CI, deployment, metadata, and content documentation
@@ -79,6 +81,8 @@ Review:
 - reusable Codex prompt files
 - public-facing project claims
 - source-of-truth alignment
+- governance and political-alignment source-of-truth alignment
+- reusable README baseline and public-voice alignment
 - technical accuracy
 - linguistic coherence
 - readability and approachability
@@ -97,6 +101,11 @@ Preserve these website-specific boundaries:
 - The website summarizes Proofline but is not the source of truth for backend
   or web-client behavior.
 - Treat `.github`, `server`, and `web-client` as source-of-truth references.
+- Treat `docs/governance-and-political-alignment.md` as the website repo source
+  for public governance posture, political alignment, public-good framing, and
+  anti-capture commitments.
+- Treat `docs/repository-readme-baseline.md` as the source for reusable
+  Proofline README structure and public voice guidance.
 - If website copy conflicts with source docs, report the conflict and fix it
   only in edit mode.
 - Future concepts must remain future-tense unless source docs prove they are
@@ -158,6 +167,8 @@ Check source-of-truth consistency:
 - Do website docs and pages agree with current `README.md`, `AGENTS.md`,
   `SECURITY.md`, sibling source docs, and source files?
 - Do Codex prompts agree with current repo rules?
+- Do docs, prompts, and README content point to the new governance and README
+  baseline docs where relevant?
 - Are public claims supported by source repositories or website docs?
 - Are current, experimental/partial, planned/future, and not implemented
   behavior clearly separated?

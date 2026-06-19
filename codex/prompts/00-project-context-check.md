@@ -23,6 +23,8 @@ Read current website files as relevant:
 - `README.md`
 - `AGENTS.md`
 - `SECURITY.md`
+- `docs/governance-and-political-alignment.md`
+- `docs/repository-readme-baseline.md`
 - `codex/README.md`
 - relevant files in `codex/prompts/`
 - `src/pages/`
@@ -43,6 +45,11 @@ involved, also read the relevant sibling source documents as read-only inputs:
 - `../server/SECURITY.md`
 - `../web-client/README.md`
 - `../web-client/SECURITY.md`
+
+For governance, political alignment, funding posture, public-good framing,
+public voice, reusable README structure, or source-of-truth mapping, treat
+`docs/governance-and-political-alignment.md` and
+`docs/repository-readme-baseline.md` as website-repo source documents.
 
 If a referenced source file is unavailable locally, say so and continue from the
 available files.

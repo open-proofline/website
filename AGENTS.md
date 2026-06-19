@@ -8,8 +8,18 @@
   cross-repository task.
 - Treat sibling `.github`, `server`, and `web-client` repositories as read-only
   source-of-truth inputs.
+- Treat `docs/governance-and-political-alignment.md` as this repository's
+  canonical source for Proofline public governance posture, political alignment,
+  cooperative/public-good framing, and anti-capture commitments.
+- Treat `docs/repository-readme-baseline.md` as the baseline for future
+  Proofline repository README structure and public voice. Other repositories
+  may read or link these docs, but this repository task scope does not modify
+  sibling repos.
 - Inspect source docs before changing public claims about implemented behavior,
   planned behavior, security posture, deployment, or safety.
+- Inspect the governance and README baseline docs before changing public claims
+  about governance, political alignment, project-wide framing, funding posture,
+  public-good structure, or reusable README guidance.
 - Keep current, experimental/partial, planned/future, and not implemented
   behavior clearly separated.
 - Do not imply production readiness, emergency dispatch, emergency-services
@@ -40,6 +50,7 @@
 - Layouts under `src/layouts/`.
 - Site-local components under `src/components/`.
 - Central site metadata in `site.config.mjs`.
+- Project-level governance and README baseline docs under `docs/`.
 - Cloudflare Workers static-assets deployment is configured through
   `wrangler.jsonc`; do not add deployment automation, account IDs, API tokens,
   or private deployment details without an explicit maintainer request.
@@ -69,6 +80,9 @@ Before accepting changes, check:
 
 - edits stayed in `website/`
 - source documents were inspected for public claims
+- governance and README baseline docs were inspected for public governance,
+  political alignment, funding, public-good, source-map, or README-structure
+  claims
 - safety wording still says Proofline is experimental and not an emergency
   service
 - future mobile, GPS/location, notifications, live context, near-live upload,

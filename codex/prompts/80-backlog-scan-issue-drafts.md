@@ -34,6 +34,8 @@ intended branch scope.
 - `AGENTS.md`
 - `SECURITY.md`
 - `CONTRIBUTING.md`
+- `docs/governance-and-political-alignment.md`
+- `docs/repository-readme-baseline.md`
 - `../.github/profile/README.md`
 - `../server/README.md`
 - `../server/SECURITY.md`
@@ -69,6 +71,8 @@ Create a `README.md` index and numbered public drafts named
 ## Candidate Areas
 
 - content gaps or stale source links
+- governance, public-good, public-voice, source-of-truth mapping, or reusable
+  README baseline gaps
 - accessibility and responsive layout issues
 - metadata, sitemap, robots, and favicon issues
 - security or safety claim ambiguity

@@ -16,6 +16,8 @@ Do **not** deploy, push, create a remote repository, or configure secrets.
 - `AGENTS.md`
 - `SECURITY.md`
 - `CONTRIBUTING.md`
+- `docs/governance-and-political-alignment.md`
+- `docs/repository-readme-baseline.md`
 - `.github/workflows/ci.yml`
 - `.github/dependabot.yml`
 - `.github/PULL_REQUEST_TEMPLATE.md`
@@ -34,6 +36,8 @@ Do **not** deploy, push, create a remote repository, or configure secrets.
 - docs explain local development, validation, Cloudflare Workers static-assets
   basics, and
   safety boundaries
+- docs explain the website repo's governance source role and reusable README
+  baseline role without weakening safety or source-of-truth boundaries
 - prompts are scoped, reusable, and website-specific
 
 ## Validation

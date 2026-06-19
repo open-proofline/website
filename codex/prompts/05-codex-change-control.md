@@ -23,6 +23,8 @@ Read current source-of-truth files as relevant before assessing readiness:
 - `README.md`
 - `AGENTS.md`
 - `SECURITY.md`
+- `docs/governance-and-political-alignment.md`
+- `docs/repository-readme-baseline.md`
 - `codex/README.md`
 - relevant files in `codex/prompts/`
 - relevant website source, asset, metadata, CI, or documentation files
@@ -39,6 +41,9 @@ these sibling documents as read-only source inputs:
 - `../web-client/SECURITY.md`
 
 Do not rely on stale prompt assumptions if current repository files disagree.
+For governance, political alignment, public-good framing, funding posture,
+public voice, reusable README structure, or source-of-truth mapping, inspect
+the two `docs/` source files above before assessing readiness.
 
 ## Global Constraints
 

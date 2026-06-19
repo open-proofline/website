@@ -8,6 +8,14 @@ The website is a static public site. Sibling repositories are source inputs:
 - `../server` for backend behavior, deployment, API, and security facts
 - `../web-client` for account portal and incident-review prototype facts
 
+The website repository is also the project source for:
+
+- `docs/governance-and-political-alignment.md` for Proofline public governance
+  posture, political alignment, cooperative/public-good framing, and
+  anti-capture commitments
+- `docs/repository-readme-baseline.md` for reusable Proofline repository README
+  structure and public voice guidance
+
 Codex output is maintainer-reviewed work. It is not an audit, certification,
 security review, or endorsement by OpenAI.
 
@@ -39,6 +47,10 @@ Keep emergency warnings, implementation-status claims, security reporting,
 encryption/decryption/key-custody claims, cryptocurrency transaction warnings,
 navigation labels, metadata, and source-of-truth summaries plain and precise.
 One sharp line per section is usually enough.
+
+When tasks touch governance, public-good framing, funding posture, project-wide
+README structure, public voice, or source-of-truth mapping, inspect the two
+`docs/` source files above before editing.
 
 ## Standard Validation
 
