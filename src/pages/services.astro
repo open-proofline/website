@@ -9,6 +9,8 @@ import ContentLayout from "../layouts/ContentLayout.astro";
 const redlibUrl = "https://redlib.proofline.live";
 const redlibOnionUrl =
   "http://2l4dpw6we2w3dhqwuecdgj3rxn2cyn7vuwjuyi323fugbp5hafvz2xid.onion";
+const searchUrl = "https://search.proofline.live";
+const invidiousUrl = "https://invidious.proofline.live";
 const statusPageUrl = "https://status.proofline.live";
 
 const sources = [
@@ -19,6 +21,14 @@ const sources = [
   {
     label: "Redlib upstream repository",
     href: "https://github.com/redlib-org/redlib",
+  },
+  {
+    label: "SearXNG upstream repository",
+    href: "https://github.com/searxng/searxng",
+  },
+  {
+    label: "Invidious upstream repository",
+    href: "https://github.com/iv-org/invidious",
   },
   {
     label: "Organization profile funding reality",
@@ -55,28 +65,34 @@ const sources = [
   </p>
 
   <PageSection title="Active services">
-    <p class="mb-5 max-w-3xl text-sm leading-6 text-proofline-text-secondary">
-      These services may be useful to the public web, but they are not part of
-      Proofline's evidence system. Separation is the point.
-    </p>
-    <div class="grid gap-4 md:grid-cols-2">
+    <div
+      class="mb-5 max-w-3xl space-y-3 text-sm leading-6 text-proofline-text-secondary"
+    >
+      <p>
+        These services may be useful to the public web, but they are not part of
+        Proofline's evidence system. Separation is the point.
+      </p>
+      <p>
+        Active services are hosted on Proofline-operated dedicated hardware in
+        Victoria, Australia. They are useful public infrastructure, not
+        emergency infrastructure, and not part of Proofline's safety or evidence
+        workflows.
+      </p>
+      <p>
+        Services may use rate limiting or anti-abuse checks to protect
+        availability and reduce automated scraping. The internet remains full of
+        tiny machines trying to ruin public things.
+      </p>
+    </div>
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       <ClaimCard label="Active" tone="success" title="Redlib">
         <p>
           A privacy-respecting Reddit frontend operated as a best-effort
           Proofline community service.
         </p>
         <p class="mt-3">
-          Hosted on Proofline-operated dedicated hardware in Victoria,
-          Australia.
-        </p>
-        <p class="mt-3">
-          It is useful public infrastructure, not emergency infrastructure, and
-          not part of Proofline's safety or evidence workflows.
-        </p>
-        <p class="mt-3">
           Redlib may present a brief anti-abuse challenge to protect
-          availability and reduce automated scraping. The internet remains full
-          of tiny machines trying to ruin public things.
+          availability and reduce automated scraping.
         </p>
         <div class="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
           <a
@@ -128,6 +144,79 @@ const sources = [
         <p class="mt-2">
           <SourceLink href="https://github.com/redlib-org/redlib">
             Open Redlib upstream repository
+          </SourceLink>
+        </p>
+      </ClaimCard>
+
+      <ClaimCard label="Active" tone="success" title="Search">
+        <p>
+          A SearXNG-powered metasearch service for searching the public web
+          across multiple sources, operated as a best-effort Proofline community
+          service.
+        </p>
+        <p class="mt-3">
+          Search may rate-limit requests to protect availability and reduce
+          automated scraping.
+        </p>
+        <div class="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+          <a
+            href={searchUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-proofline-border-strong bg-proofline-primary px-4 py-2.5 text-sm font-semibold text-proofline-primary-text shadow-lg shadow-proofline-bg-deep/30 transition-colors hover:bg-proofline-primary-hover focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
+          >
+            <Icon name="globe" class="size-4" />
+            <span>Open Search</span>
+          </a>
+          <a
+            href={statusPageUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-proofline-border-strong bg-proofline-surface-strong/90 px-4 py-2.5 text-sm font-semibold text-proofline-text shadow-lg shadow-proofline-bg-deep/30 transition-colors hover:bg-proofline-border focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
+          >
+            <Icon name="arrow-up-right" class="size-4" />
+            <span>Check status</span>
+          </a>
+        </div>
+        <p class="mt-4">
+          <SourceLink href="https://github.com/searxng/searxng">
+            Open SearXNG upstream repository
+          </SourceLink>
+        </p>
+      </ClaimCard>
+
+      <ClaimCard label="Active" tone="success" title="Invidious">
+        <p>
+          A privacy-friendly YouTube frontend operated as a best-effort
+          Proofline community service.
+        </p>
+        <p class="mt-3">
+          Invidious may rate-limit frontend and playback requests separately to
+          protect availability and reduce automated scraping.
+        </p>
+        <div class="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+          <a
+            href={invidiousUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-proofline-border-strong bg-proofline-primary px-4 py-2.5 text-sm font-semibold text-proofline-primary-text shadow-lg shadow-proofline-bg-deep/30 transition-colors hover:bg-proofline-primary-hover focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
+          >
+            <Icon name="globe" class="size-4" />
+            <span>Open Invidious</span>
+          </a>
+          <a
+            href={statusPageUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-proofline-border-strong bg-proofline-surface-strong/90 px-4 py-2.5 text-sm font-semibold text-proofline-text shadow-lg shadow-proofline-bg-deep/30 transition-colors hover:bg-proofline-border focus:outline-2 focus:outline-offset-2 focus:outline-proofline-focus"
+          >
+            <Icon name="arrow-up-right" class="size-4" />
+            <span>Check status</span>
+          </a>
+        </div>
+        <p class="mt-4">
+          <SourceLink href="https://github.com/iv-org/invidious">
+            Open Invidious upstream repository
           </SourceLink>
         </p>
       </ClaimCard>
