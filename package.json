@@ -26,22 +26,22 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.9",
-    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/sitemap": "^3.7.4",
     "@eslint/js": "^10.0.1",
-    "@tailwindcss/vite": "~4.3.2",
+    "@tailwindcss/vite": "~4.3.3",
     "@types/qrcode": "^1.5.6",
-    "astro": "^7.0.5",
-    "eslint": "^10.6.0",
-    "eslint-plugin-astro": "^2.1.1",
-    "globals": "^17.7.0",
-    "prettier": "^3.9.4",
+    "astro": "^7.3.1",
+    "eslint": "^10.10.0",
+    "eslint-plugin-astro": "^3.1.0",
+    "globals": "^17.12.0",
+    "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
     "qrcode": "^1.5.4",
     "tailwindcss": "~4.3.0",
-    "typescript": "^6.0.3",
-    "typescript-eslint": "^8.62.1",
-    "wrangler": "^4.107.0"
+    "typescript": "^7.0.2",
+    "typescript-eslint": "^8.69.0",
+    "wrangler": "^4.129.1"
   },
   "overrides": {
     "yaml": "^2.9.0"
